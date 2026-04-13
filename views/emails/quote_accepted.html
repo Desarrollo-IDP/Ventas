@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: #27ae60; color: white; padding: 30px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; font-weight: 600; }
+        .content { padding: 30px 20px; }
+        .success-message { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; border-radius: 4px; margin: 20px 0; }
+        .btn { display: inline-block; padding: 12px 24px; background-color: #27ae60; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px; }
+        .btn:hover { background-color: #229954; }
+        .footer { background: #ecf0f1; color: #7f8c8d; padding: 20px; text-align: center; font-size: 12px; border-top: 1px solid #e0e0e0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>¡Cotización Aceptada!</h1>
+        </div>
+        <div class="content">
+            <p>Estimado/a <strong>{client_name}</strong>,</p>
+
+            <div class="success-message">
+                <strong>¡Excelente noticia!</strong> Hemos recibido la aceptación de su cotización #{quote_number}.
+            </div>
+
+            <p>Estamos muy agradecidos por su confianza en nosotros. Procederemos inmediatamente con los siguientes pasos para asegurar que su pedido se procese de manera eficiente.</p>
+
+            <p><strong>Próximos pasos:</strong></p>
+            <ul>
+                <li>Confirmación de entrega y plazos</li>
+                <li>Preparación de la documentación necesaria</li>
+                <li>Coordinación de pago si aplica</li>
+                <li>Contacto directo para cualquier detalle adicional</li>
+            </ul>
+
+            <p>Nos pondremos en contacto con usted muy pronto para continuar con el proceso. Si tiene alguna pregunta o necesita información adicional, no dude en responder a este correo.</p>
+
+            <div style="text-align: center;">
+                <a href="{quote_url}" class="btn">Ver Detalles de la Cotización</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; {year} {company_name}. Todos los derechos reservados.</p>
+            <p>Este es un correo automático, por favor no responda directamente si no es necesario.</p>
+        </div>
+    </div>
+</body>
+</html>

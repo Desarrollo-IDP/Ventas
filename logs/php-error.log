@@ -1,0 +1,60 @@
+[21-Nov-2025 14:16:00 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 108
+[21-Nov-2025 14:16:00 America/Mexico_City] [enviar_email_cotizacion] Falló reenviar para cotizacion_id=34
+[21-Nov-2025 14:16:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.045s
+[21-Nov-2025 14:19:02 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":34}
+[21-Nov-2025 14:19:02 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":34,"tipo":"creacion"}
+[21-Nov-2025 14:19:04 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 108
+[21-Nov-2025 14:19:04 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":34}
+[21-Nov-2025 14:19:04 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.043s
+[21-Nov-2025 17:54:00 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":34}
+[21-Nov-2025 17:54:00 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":34,"tipo":"creacion"}
+[21-Nov-2025 17:54:02 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 108
+[21-Nov-2025 17:54:02 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":34}
+[21-Nov-2025 17:54:02 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.155s
+[24-Nov-2025 17:18:57 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":37}
+[24-Nov-2025 17:18:57 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":37,"tipo":"creacion"}
+[24-Nov-2025 17:18:59 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 108
+[24-Nov-2025 17:18:59 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":37}
+[24-Nov-2025 17:18:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.091s
+[25-Nov-2025 12:47:19 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":39}
+[25-Nov-2025 12:47:20 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":39,"tipo":"creacion"}
+[25-Nov-2025 12:47:22 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 108
+[25-Nov-2025 12:47:22 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":39}
+[25-Nov-2025 12:47:22 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.144s
+[25-Nov-2025 12:48:18 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":39}
+[25-Nov-2025 12:48:18 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":39,"tipo":"creacion"}
+[25-Nov-2025 12:48:20 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 108
+[25-Nov-2025 12:48:20 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":39}
+[25-Nov-2025 12:48:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.139s
+[01-Dec-2025 10:56:25 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":40}
+[01-Dec-2025 10:56:25 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":40,"tipo":"creacion"}
+[01-Dec-2025 10:56:27 America/Mexico_City] PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\P.V\models\Notificacion.php on line 237
+[01-Dec-2025 10:56:27 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":40}
+[01-Dec-2025 10:56:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 2.097s
+[02-Dec-2025 11:39:35 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":49}
+[02-Dec-2025 11:39:35 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":49,"tipo":"creacion"}
+[02-Dec-2025 11:39:35 America/Mexico_City] PHP Deprecated:  str_replace(): Passing null to parameter #2 ($replace) of type array|string is deprecated in C:\xampp\htdocs\P.V\config\email.php on line 280
+[02-Dec-2025 11:39:35 America/Mexico_City] PHP Deprecated:  str_replace(): Passing null to parameter #2 ($replace) of type array|string is deprecated in C:\xampp\htdocs\P.V\config\email.php on line 280
+[02-Dec-2025 11:39:42 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":49}
+[02-Dec-2025 11:39:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 6.72s
+[03-Dec-2025 11:18:16 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":51}
+[03-Dec-2025 11:18:16 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":51,"tipo":"creacion"}
+[03-Dec-2025 11:18:16 America/Mexico_City] PHP Deprecated:  str_replace(): Passing null to parameter #2 ($replace) of type array|string is deprecated in C:\xampp\htdocs\P.V\config\email.php on line 280
+[03-Dec-2025 11:18:16 America/Mexico_City] PHP Deprecated:  str_replace(): Passing null to parameter #2 ($replace) of type array|string is deprecated in C:\xampp\htdocs\P.V\config\email.php on line 280
+[03-Dec-2025 11:18:23 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":51}
+[03-Dec-2025 11:18:23 America/Mexico_City] Script finalizado - Tiempo de ejecución: 6.933s
+[03-Dec-2025 13:12:11 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":53}
+[03-Dec-2025 13:12:11 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":53,"tipo":"creacion"}
+[03-Dec-2025 13:12:11 America/Mexico_City] Error al enviar notificación: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sistema_pos_development.cotizaciones_detalles' doesn't exist
+[03-Dec-2025 13:12:11 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":53}
+[03-Dec-2025 13:12:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.068s
+[03-Dec-2025 13:29:42 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":54}
+[03-Dec-2025 13:29:42 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":54,"tipo":"creacion"}
+[03-Dec-2025 13:29:42 America/Mexico_City] Error al enviar notificación: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sistema_pos_development.cotizaciones_detalles' doesn't exist
+[03-Dec-2025 13:29:42 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":54}
+[03-Dec-2025 13:29:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.047s
+[03-Dec-2025 13:44:13 America/Mexico_City] [enviar_email_cotizacion] Request recibido | {"cotizacion_id":55}
+[03-Dec-2025 13:44:13 America/Mexico_City] [enviar_email_cotizacion] Invocando Notificacion->reenviar | {"cotizacion_id":55,"tipo":"creacion"}
+[03-Dec-2025 13:44:13 America/Mexico_City] Error al enviar notificación: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sistema_pos_development.cotizaciones_detalles' doesn't exist
+[03-Dec-2025 13:44:13 America/Mexico_City] [enviar_email_cotizacion] Reenvío devolvió false | {"cotizacion_id":55}
+[03-Dec-2025 13:44:13 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.069s

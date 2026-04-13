@@ -1,0 +1,738 @@
+[
+    {
+        "timestamp": "2025-11-21 10:07:23",
+        "to": "test@example.com",
+        "subject": "Test Email - Sistema POS [2025-11-21 10:07:23]",
+        "status": "tested",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 10:31:42",
+        "to": "test@example.com",
+        "subject": "Test Email - Sistema POS [2025-11-21 10:31:40]",
+        "status": "failed",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 10:33:03",
+        "to": "test@example.com",
+        "subject": "Test Email - Sistema POS [2025-11-21 10:32:51]",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 10:35:04",
+        "to": "cliente@test.com",
+        "subject": "Cotizaci\u00f3n #COT-20251121-2911 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 10:36:18",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251119-7220 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 10:36:23",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251119-7220 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 10:39:26",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251121-1855 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:18:07",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251121-1855 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:18:16",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251121-1855 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:35:06",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251121-3635 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:44:44",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251121-0299 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:46:01",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Email - Sistema P.V.",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:46:18",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Email - Sistema P.V.",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:47:04",
+        "to": "test@example.com",
+        "subject": "Test Email - Sistema POS [2025-11-21 11:46:52]",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:48:35",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:48:47",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:50:28",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251121-5440 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:51:06",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251121-6223 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:52:39",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:53:09",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 11:53:33",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 13:28:27",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251121-4368 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-21 13:30:25",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251121-4368 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-24 11:01:02",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251124-4463 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-24 13:22:11",
+        "to": "cliente@test.com",
+        "subject": "Cotizaci\u00f3n #COT-20251124-5466 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-24 13:45:09",
+        "to": "test@example.com",
+        "subject": "Test Email - Sistema POS [2025-11-24 13:45:07]",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-24 13:48:29",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Email - Sistema P.V.",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-24 17:18:27",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251124-0657 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-25 11:14:38",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251125-7460 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-25 11:15:04",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251124-0657 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-25 12:46:23",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251125-5796 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-25 12:48:25",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251125-5796 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-25 12:49:08",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Cancelada #COT-20251125-5796 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-11-25 16:40:41",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251125-7460 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-01 10:54:45",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251201-0028 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-01 11:06:22",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251201-4911 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-01 11:13:27",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Nueva cotizaci\u00f3n: COT-20251201-9872",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-01 16:26:41",
+        "to": "egarduno@securiti.info",
+        "subject": "Nueva cotizaci\u00f3n: COT-20251201-0518",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-01 16:55:37",
+        "to": "cliente@test.com",
+        "subject": "Cotizaci\u00f3n #COT-20251201-1177 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-01 16:57:50",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251201-0351 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-02 10:47:02",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251202-2603 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-02 10:57:45",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251202-1188 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-02 11:07:51",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251202-9032 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-02 11:39:42",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251202-9032 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 10:27:04",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251203-8346 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 11:14:57",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251203-9619 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 11:18:23",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251203-9619 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 11:53:57",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n #COT-20251203-4928 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:43:02",
+        "to": "egarduno@securiti.info",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251203-6150 - ",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:56:54",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:57:01",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:57:24",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Email - Sistema P.V.",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:57:31",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:57:38",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:57:54",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:58:01",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:58:07",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:58:14",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:58:20",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:59:20",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:59:27",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:59:34",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 13:59:40",
+        "to": "egarduno@securiti.info",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 14:14:58",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Simple",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 14:24:16",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Simple",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 14:33:42",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Simple",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-03 17:20:58",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Simple",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 11:58:22",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Test Email - Sistema P.V.",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 11:58:54",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 11:59:01",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Test Email - Sistema POS",
+        "status": "error",
+        "error": "SMTP Error: Could not authenticate.",
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 12:11:03",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251204-9956 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:05:39",
+        "to": "test@example.com",
+        "subject": "Test Subject",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:06:54",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-9164 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:07:55",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-9164 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:08:18",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-9164 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:08:37",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-9164 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:11:14",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-9164 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:12:37",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-9164 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:13:48",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-0125 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:19:02",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-0729 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:20:54",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251204-0729 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:26:55",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-0729 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:30:53",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-1006 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:31:30",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n Aceptada #COT-20251204-1006 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-04 14:40:34",
+        "to": "egarduno@securiti.com.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251204-1006 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 09:24:29",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251208-6009 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 09:26:25",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251208-3678 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 10:27:21",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251208-3846 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 10:34:49",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251208-4453 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 11:39:57",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251208-0762 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 12:55:57",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n #COT-20251208-9601 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    },
+    {
+        "timestamp": "2025-12-08 13:50:03",
+        "to": "21302115@utfv.edu.mx",
+        "subject": "Cotizaci\u00f3n Rechazada #COT-20251208-9601 - ",
+        "status": "sent",
+        "error": null,
+        "environment": "smtp"
+    }
+]

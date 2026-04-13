@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header { background: #f39c12; color: white; padding: 30px 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; font-weight: 600; }
+        .content { padding: 30px 20px; }
+        .alert { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 15px; border-radius: 4px; margin: 20px 0; }
+        .product-info { background-color: #f8f9fa; border-radius: 6px; padding: 20px; margin: 20px 0; border-left: 4px solid #f39c12; }
+        .info-item { margin-bottom: 10px; }
+        .label { font-weight: 600; color: #555; }
+        .btn { display: inline-block; padding: 12px 24px; background-color: #f39c12; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 20px; }
+        .btn:hover { background-color: #e67e22; }
+        .footer { background: #ecf0f1; color: #7f8c8d; padding: 20px; text-align: center; font-size: 12px; border-top: 1px solid #e0e0e0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Alerta: Stock Bajo</h1>
+        </div>
+        <div class="content">
+            <div class="alert">
+                <strong>¡Atención!</strong> Uno de nuestros productos ha alcanzado niveles de stock críticos.
+            </div>
+
+            <div class="product-info">
+                <div class="info-item">
+                    <span class="label">Producto:</span> {product_name}
+                </div>
+                <div class="info-item">
+                    <span class="label">Código:</span> {product_code}
+                </div>
+                <div class="info-item">
+                    <span class="label">Stock Actual:</span> {current_stock} unidades
+                </div>
+                <div class="info-item">
+                    <span class="label">Stock Mínimo:</span> {minimum_stock} unidades
+                </div>
+            </div>
+
+            <p>Se recomienda tomar acciones inmediatas para reponer el inventario y evitar interrupciones en las ventas o entregas.</p>
+
+            <p><strong>Acciones sugeridas:</strong></p>
+            <ul>
+                <li>Contactar al proveedor para reposición</li>
+                <li>Revisar pedidos pendientes que puedan afectar el stock</li>
+                <li>Considerar ajustes en precios si es necesario</li>
+                <li>Monitorear ventas del producto en los próximos días</li>
+            </ul>
+
+            <div style="text-align: center;">
+                <a href="#" class="btn">Gestionar Inventario</a>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; {year} {company_name}. Todos los derechos reservados.</p>
+            <p>Este es un correo automático del sistema de inventario.</p>
+        </div>
+    </div>
+</body>
+</html>

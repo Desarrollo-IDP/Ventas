@@ -1,0 +1,62 @@
+[03-Nov-2025 14:12:25 America/Mexico_City] Sistema iniciado - 2025-11-03 14:12:25
+[03-Nov-2025 14:12:25 America/Mexico_City] PHP Warning:  require_once(../config/init.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\P.V\views\dashboard\index.php on line 3
+[03-Nov-2025 14:12:25 America/Mexico_City] PHP Fatal error:  Uncaught Error: Failed opening required '../config/init.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\P.V\views\dashboard\index.php:3
+Stack trace:
+#0 Command line code(1): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\P.V\views\dashboard\index.php on line 3
+[03-Nov-2025 14:12:25 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.048s
+[03-Nov-2025 14:12:48 America/Mexico_City] Sistema iniciado - 2025-11-03 14:12:48
+[03-Nov-2025 14:12:48 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to private Database::__construct() from global scope in C:\xampp\htdocs\P.V\views\dashboard\index.php:6
+Stack trace:
+#0 Command line code(1): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\P.V\views\dashboard\index.php on line 6
+[03-Nov-2025 14:12:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.043s
+[03-Nov-2025 14:13:20 America/Mexico_City] Sistema iniciado - 2025-11-03 14:13:20
+[03-Nov-2025 14:13:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[03-Nov-2025 15:37:01 America/Mexico_City] Sistema iniciado - 2025-11-03 15:37:01
+[03-Nov-2025 15:37:03 America/Mexico_City] Sistema iniciado - 2025-11-03 15:37:03
+[03-Nov-2025 15:44:20 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:20
+[03-Nov-2025 15:44:45 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:45
+[03-Nov-2025 15:44:45 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:45
+[03-Nov-2025 15:44:47 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:47
+[03-Nov-2025 15:44:50 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:50
+[03-Nov-2025 15:44:52 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:52
+[03-Nov-2025 15:44:52 America/Mexico_City] Sistema iniciado - 2025-11-03 15:44:52
+[03-Nov-2025 15:45:38 America/Mexico_City] Sistema iniciado - 2025-11-03 15:45:38
+[03-Nov-2025 15:45:38 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.068s
+[03-Nov-2025 15:59:47 America/Mexico_City] Sistema iniciado - 2025-11-03 15:59:47
+[03-Nov-2025 16:01:31 America/Mexico_City] Sistema iniciado - 2025-11-03 16:01:31
+[03-Nov-2025 16:12:57 America/Mexico_City] Sistema iniciado - 2025-11-03 16:12:57
+[03-Nov-2025 16:14:23 America/Mexico_City] Sistema iniciado - 2025-11-03 16:14:23
+[03-Nov-2025 16:14:23 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[03-Nov-2025 16:15:43 America/Mexico_City] Sistema iniciado - 2025-11-03 16:15:43
+[03-Nov-2025 16:21:30 America/Mexico_City] Sistema iniciado - 2025-11-03 16:21:30
+[03-Nov-2025 16:22:02 America/Mexico_City] Sistema iniciado - 2025-11-03 16:22:02
+[03-Nov-2025 16:22:10 America/Mexico_City] Sistema iniciado - 2025-11-03 16:22:10
+[03-Nov-2025 16:22:11 America/Mexico_City] Sistema iniciado - 2025-11-03 16:22:11
+[03-Nov-2025 16:22:11 America/Mexico_City] Sistema iniciado - 2025-11-03 16:22:11
+[03-Nov-2025 16:22:21 America/Mexico_City] Sistema iniciado - 2025-11-03 16:22:21
+[03-Nov-2025 16:23:28 America/Mexico_City] Sistema iniciado - 2025-11-03 16:23:28
+[03-Nov-2025 16:34:00 America/Mexico_City] Sistema iniciado - 2025-11-03 16:34:00
+[03-Nov-2025 16:37:49 America/Mexico_City] Sistema iniciado - 2025-11-03 16:37:49
+[03-Nov-2025 17:06:04 America/Mexico_City] Sistema iniciado - 2025-11-03 17:06:04
+[03-Nov-2025 17:06:04 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[03-Nov-2025 17:11:10 America/Mexico_City] Sistema iniciado - 2025-11-03 17:11:10
+[03-Nov-2025 17:12:36 America/Mexico_City] Sistema iniciado - 2025-11-03 17:12:36
+[04-Nov-2025 09:20:45 America/Mexico_City] Sistema iniciado - 2025-11-04 09:20:45
+[06-Nov-2025 09:24:38 America/Mexico_City] Sistema iniciado - 2025-11-06 09:24:38
+[07-Nov-2025 09:13:06 America/Mexico_City] Sistema iniciado - 2025-11-07 09:13:06
+[07-Nov-2025 09:37:24 America/Mexico_City] Sistema iniciado - 2025-11-07 09:37:24
+[07-Nov-2025 09:37:25 America/Mexico_City] Sistema iniciado - 2025-11-07 09:37:25
+[10-Nov-2025 09:06:03 America/Mexico_City] Sistema iniciado - 2025-11-10 09:06:03
+[11-Nov-2025 09:09:17 America/Mexico_City] Sistema iniciado - 2025-11-11 09:09:17
+[12-Nov-2025 09:09:55 America/Mexico_City] Sistema iniciado - 2025-11-12 09:09:55
+[12-Nov-2025 10:36:54 America/Mexico_City] Sistema iniciado - 2025-11-12 10:36:54
+[12-Nov-2025 10:41:07 America/Mexico_City] Sistema iniciado - 2025-11-12 10:41:07
+[13-Nov-2025 09:01:50 America/Mexico_City] Sistema iniciado - 2025-11-13 09:01:50
+[13-Nov-2025 09:21:21 America/Mexico_City] Sistema iniciado - 2025-11-13 09:21:21
+[13-Nov-2025 09:22:04 America/Mexico_City] Sistema iniciado - 2025-11-13 09:22:04
+[18-Nov-2025 13:01:55 America/Mexico_City] Sistema iniciado - 2025-11-18 13:01:55
+[18-Nov-2025 13:06:31 America/Mexico_City] Sistema iniciado - 2025-11-18 13:06:31

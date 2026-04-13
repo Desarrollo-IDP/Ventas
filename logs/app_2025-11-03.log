@@ -1,0 +1,21 @@
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 97
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 101
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 104
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 107
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 110
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 113
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 116
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Undefined array key "REMOTE_ADDR" in C:\xampp\htdocs\P.V\config\security.php on line 139
+[03-Nov-2025 13:52:23 America/Mexico_City] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\xampp\htdocs\P.V\config\security.php on line 149
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 97
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 101
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 104
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 107
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 110
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 113
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Cannot modify header information - headers already sent by (output started at C:\xampp\htdocs\P.V\config\config.php:244) in C:\xampp\htdocs\P.V\config\security.php on line 116
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Undefined array key "REMOTE_ADDR" in C:\xampp\htdocs\P.V\config\security.php on line 139
+[03-Nov-2025 13:52:57 America/Mexico_City] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\xampp\htdocs\P.V\config\security.php on line 149
+[03-Nov-2025 13:53:22 America/Mexico_City] PHP Warning:  Undefined array key "REMOTE_ADDR" in C:\xampp\htdocs\P.V\config\security.php on line 142
+[03-Nov-2025 13:53:22 America/Mexico_City] PHP Warning:  Undefined array key "HTTP_USER_AGENT" in C:\xampp\htdocs\P.V\config\security.php on line 152
+[03-Nov-2025 13:57:47 America/Mexico_City] Error de conexión a la base de datos: SQLSTATE[HY000] [1049] Unknown database 'sistema_pos_production'

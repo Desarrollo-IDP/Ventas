@@ -1,0 +1,161 @@
+[10-Nov-2025 17:36:04 America/Mexico_City] Sistema iniciado - 2025-11-10 17:36:04
+[10-Nov-2025 17:36:11 America/Mexico_City] Sistema iniciado - 2025-11-10 17:36:11
+[10-Nov-2025 17:36:38 America/Mexico_City] Sistema iniciado - 2025-11-10 17:36:38
+[10-Nov-2025 17:38:02 America/Mexico_City] Sistema iniciado - 2025-11-10 17:38:02
+[10-Nov-2025 17:39:57 America/Mexico_City] Sistema iniciado - 2025-11-10 17:39:57
+[10-Nov-2025 17:41:06 America/Mexico_City] Sistema iniciado - 2025-11-10 17:41:06
+[11-Nov-2025 13:39:27 America/Mexico_City] Sistema iniciado - 2025-11-11 13:39:27
+[12-Nov-2025 09:27:40 America/Mexico_City] Sistema iniciado - 2025-11-12 09:27:40
+[12-Nov-2025 10:29:27 America/Mexico_City] Sistema iniciado - 2025-11-12 10:29:27
+[12-Nov-2025 10:29:27 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:29:27 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:30:34 America/Mexico_City] Sistema iniciado - 2025-11-12 10:30:34
+[12-Nov-2025 10:30:34 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:30:34 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:30:48 America/Mexico_City] Sistema iniciado - 2025-11-12 10:30:48
+[12-Nov-2025 10:30:48 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:30:48 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:30:59 America/Mexico_City] Sistema iniciado - 2025-11-12 10:30:59
+[12-Nov-2025 10:30:59 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:30:59 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:32:15 America/Mexico_City] Sistema iniciado - 2025-11-12 10:32:15
+[12-Nov-2025 10:32:15 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:32:15 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:41:20 America/Mexico_City] Sistema iniciado - 2025-11-12 10:41:20
+[12-Nov-2025 10:41:20 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:41:20 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:59:02 America/Mexico_City] Sistema iniciado - 2025-11-12 10:59:02
+[12-Nov-2025 10:59:02 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 10:59:02 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:00:24 America/Mexico_City] Sistema iniciado - 2025-11-12 11:00:24
+[12-Nov-2025 11:00:24 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:00:24 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:24:10 America/Mexico_City] Sistema iniciado - 2025-11-12 11:24:10
+[12-Nov-2025 11:24:10 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:24:10 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:24:29 America/Mexico_City] Sistema iniciado - 2025-11-12 11:24:29
+[12-Nov-2025 11:24:29 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:24:29 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:25:26 America/Mexico_City] Sistema iniciado - 2025-11-12 11:25:26
+[12-Nov-2025 11:25:26 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:25:26 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:26:03 America/Mexico_City] Sistema iniciado - 2025-11-12 11:26:03
+[12-Nov-2025 11:26:03 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:26:03 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:26:16 America/Mexico_City] Sistema iniciado - 2025-11-12 11:26:16
+[12-Nov-2025 11:26:16 America/Mexico_City] PHP Warning:  Undefined variable $clienteModel in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:26:16 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to a member function crear() on null in C:\xampp\htdocs\P.V\controllers\crear_cliente.php:66
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 66
+[12-Nov-2025 11:42:33 America/Mexico_City] Sistema iniciado - 2025-11-12 11:42:33
+[12-Nov-2025 11:42:33 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 11:50:39 America/Mexico_City] Sistema iniciado - 2025-11-12 11:50:39
+[12-Nov-2025 11:50:39 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:00:44 America/Mexico_City] Sistema iniciado - 2025-11-12 12:00:44
+[12-Nov-2025 12:00:44 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:00:49 America/Mexico_City] Sistema iniciado - 2025-11-12 12:00:49
+[12-Nov-2025 12:00:49 America/Mexico_City] Error en crear_cliente.php: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'updated_at' in 'field list'
+[12-Nov-2025 12:01:22 America/Mexico_City] Sistema iniciado - 2025-11-12 12:01:22
+[12-Nov-2025 12:01:22 America/Mexico_City] Error en crear_cliente.php: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'updated_at' in 'field list'
+[12-Nov-2025 12:01:31 America/Mexico_City] Sistema iniciado - 2025-11-12 12:01:31
+[12-Nov-2025 12:01:31 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:02:14 America/Mexico_City] Sistema iniciado - 2025-11-12 12:02:14
+[12-Nov-2025 12:02:14 America/Mexico_City] Error en crear_cliente.php: Correo inválido
+[12-Nov-2025 12:02:21 America/Mexico_City] Sistema iniciado - 2025-11-12 12:02:21
+[12-Nov-2025 12:02:21 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:02:43 America/Mexico_City] Sistema iniciado - 2025-11-12 12:02:43
+[12-Nov-2025 12:02:43 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 43
+[12-Nov-2025 12:02:43 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:02:55 America/Mexico_City] Sistema iniciado - 2025-11-12 12:02:55
+[12-Nov-2025 12:02:55 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 43
+[12-Nov-2025 12:02:55 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:25:22 America/Mexico_City] Sistema iniciado - 2025-11-12 12:25:22
+[12-Nov-2025 12:25:29 America/Mexico_City] Sistema iniciado - 2025-11-12 12:25:29
+[12-Nov-2025 12:29:16 America/Mexico_City] Sistema iniciado - 2025-11-12 12:29:16
+[12-Nov-2025 12:29:23 America/Mexico_City] Sistema iniciado - 2025-11-12 12:29:23
+[12-Nov-2025 12:29:47 America/Mexico_City] Sistema iniciado - 2025-11-12 12:29:47
+[12-Nov-2025 12:29:47 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 43
+[12-Nov-2025 12:29:47 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:32:25 America/Mexico_City] Sistema iniciado - 2025-11-12 12:32:25
+[12-Nov-2025 12:32:25 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 43
+[12-Nov-2025 12:32:25 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:34:27 America/Mexico_City] Sistema iniciado - 2025-11-12 12:34:27
+[12-Nov-2025 12:34:27 America/Mexico_City] Error en crear_cliente.php: Correo inválido
+[12-Nov-2025 12:34:33 America/Mexico_City] Sistema iniciado - 2025-11-12 12:34:33
+[12-Nov-2025 12:34:33 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 43
+[12-Nov-2025 12:34:33 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:52:07 America/Mexico_City] Sistema iniciado - 2025-11-12 12:52:07
+[12-Nov-2025 12:52:07 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 43
+[12-Nov-2025 12:52:07 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:59:33 America/Mexico_City] Sistema iniciado - 2025-11-12 12:59:33
+[12-Nov-2025 12:59:33 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 12:59:33 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 12:59:42 America/Mexico_City] Sistema iniciado - 2025-11-12 12:59:42
+[12-Nov-2025 12:59:42 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 12:59:42 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 13:00:01 America/Mexico_City] Sistema iniciado - 2025-11-12 13:00:01
+[12-Nov-2025 13:00:01 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 13:00:01 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 13:05:50 America/Mexico_City] Sistema iniciado - 2025-11-12 13:05:50
+[12-Nov-2025 13:05:50 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 13:05:50 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 13:19:47 America/Mexico_City] Sistema iniciado - 2025-11-12 13:19:47
+[12-Nov-2025 16:53:49 America/Mexico_City] Sistema iniciado - 2025-11-12 16:53:49
+[12-Nov-2025 16:53:57 America/Mexico_City] Sistema iniciado - 2025-11-12 16:53:57
+[12-Nov-2025 17:44:21 America/Mexico_City] Sistema iniciado - 2025-11-12 17:44:21
+[12-Nov-2025 17:44:21 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 17:44:21 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 17:51:14 America/Mexico_City] Sistema iniciado - 2025-11-12 17:51:14
+[12-Nov-2025 17:51:14 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 17:51:14 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 17:51:58 America/Mexico_City] Sistema iniciado - 2025-11-12 17:51:58
+[12-Nov-2025 17:52:17 America/Mexico_City] Sistema iniciado - 2025-11-12 17:52:17
+[12-Nov-2025 17:53:09 America/Mexico_City] Sistema iniciado - 2025-11-12 17:53:09
+[12-Nov-2025 17:53:09 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 17:53:09 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 17:53:31 America/Mexico_City] Sistema iniciado - 2025-11-12 17:53:31
+[12-Nov-2025 17:53:31 America/Mexico_City] PHP Warning:  preg_match(): Unknown modifier '\' in C:\xampp\htdocs\P.V\controllers\crear_cliente.php on line 47
+[12-Nov-2025 17:53:31 America/Mexico_City] Error en crear_cliente.php: La dirección contiene caracteres no válidos
+[12-Nov-2025 17:58:26 America/Mexico_City] Sistema iniciado - 2025-11-12 17:58:26
+[12-Nov-2025 17:58:26 America/Mexico_City] Error en crear_cliente.php: SQLSTATE[HY093]: Invalid parameter number
+[12-Nov-2025 17:58:45 America/Mexico_City] Sistema iniciado - 2025-11-12 17:58:45
+[12-Nov-2025 17:58:45 America/Mexico_City] Error en crear_cliente.php: SQLSTATE[HY093]: Invalid parameter number
+[14-Nov-2025 15:33:45 America/Mexico_City] Sistema iniciado - 2025-11-14 15:33:45
+[18-Nov-2025 12:03:25 America/Mexico_City] Sistema iniciado - 2025-11-18 12:03:25
