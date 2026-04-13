@@ -5,6 +5,9 @@ $json_response = true;
 
 require_once '../config/init.php';
 
+// Solo el administrador puede eliminar productos
+SecurityService::requiredRole('admin');
+
 // Verificar si hay errores de PHP
 error_reporting(0); // Desactivar reporting para evitar output no deseado
 ini_set('display_errors', 0);

@@ -8,7 +8,7 @@ define('APP_NAME', 'Sistema Punto de Venta');
 define('APP_VERSION', '1.0.0');
 define('APP_BUILD', '2023121501');
 define('APP_AUTHOR', 'Tu Empresa');
-define('APP_URL', 'http://localhost/sistema-pos');
+define('APP_URL', 'http://13.0.0.49:1993');
 define('APP_ROOT', dirname(__DIR__));
 
 // ===== CONSTANTES DE ENTORNO =====

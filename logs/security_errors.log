@@ -1217,3 +1217,53 @@ Stack trace:
 [13-Apr-2026 10:47:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
 [13-Apr-2026 10:47:25 America/Mexico_City] Sistema iniciado - 2026-04-13 10:47:25
 [13-Apr-2026 10:47:25 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[13-Apr-2026 12:46:16 America/Mexico_City] Sistema iniciado - 2026-04-13 12:46:16
+[13-Apr-2026 12:46:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.075s
+[13-Apr-2026 13:51:09 America/Mexico_City] Sistema iniciado - 2026-04-13 13:51:09
+[13-Apr-2026 13:51:09 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[13-Apr-2026 13:51:09 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.082s
+[13-Apr-2026 13:51:09 America/Mexico_City] Sistema iniciado - 2026-04-13 13:51:09
+[13-Apr-2026 13:51:09 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.06s
+[13-Apr-2026 17:20:54 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to private method SecurityConfig::redirectToLogin() from scope SecurityService in C:\xampp\htdocs\Punto-de-venta\config\security.php:464
+Stack trace:
+#0 C:\xampp\htdocs\Punto-de-venta\config\init.php(125): SecurityService::requiredAuth()
+#1 C:\xampp\htdocs\Punto-de-venta\config\init.php(140): initialize_system()
+#2 C:\xampp\htdocs\Punto-de-venta\index.php(8): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Punto-de-venta\config\security.php on line 464
+[13-Apr-2026 17:21:12 America/Mexico_City] PHP Fatal error:  Uncaught Error: Call to private method SecurityConfig::redirectToLogin() from scope SecurityService in C:\xampp\htdocs\Punto-de-venta\config\security.php:464
+Stack trace:
+#0 C:\xampp\htdocs\Punto-de-venta\config\init.php(125): SecurityService::requiredAuth()
+#1 C:\xampp\htdocs\Punto-de-venta\config\init.php(140): initialize_system()
+#2 C:\xampp\htdocs\Punto-de-venta\index.php(8): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Punto-de-venta\config\security.php on line 464
+[13-Apr-2026 17:22:25 America/Mexico_City] Sistema iniciado - 2026-04-13 17:22:25
+[13-Apr-2026 17:22:25 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[13-Apr-2026 17:22:25 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.428s
+[13-Apr-2026 17:22:29 America/Mexico_City] Sistema iniciado - 2026-04-13 17:22:29
+[13-Apr-2026 17:22:30 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[13-Apr-2026 17:22:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.394s
+[13-Apr-2026 17:22:30 America/Mexico_City] Sistema iniciado - 2026-04-13 17:22:30
+[13-Apr-2026 17:22:31 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[13-Apr-2026 17:22:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.4s
+[13-Apr-2026 17:22:31 America/Mexico_City] Sistema iniciado - 2026-04-13 17:22:31
+[13-Apr-2026 17:22:32 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[13-Apr-2026 17:22:32 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.388s
+[13-Apr-2026 17:26:11 America/Mexico_City] Sistema iniciado - 2026-04-13 17:26:11
+[13-Apr-2026 17:26:11 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[13-Apr-2026 17:26:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.028s
+[13-Apr-2026 17:27:50 America/Mexico_City] Sistema iniciado - 2026-04-13 17:27:50
+[13-Apr-2026 17:27:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.429s
+[13-Apr-2026 17:27:51 America/Mexico_City] Sistema iniciado - 2026-04-13 17:27:51
+[13-Apr-2026 17:27:51 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[13-Apr-2026 17:27:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[13-Apr-2026 17:27:51 America/Mexico_City] Sistema iniciado - 2026-04-13 17:27:51
+[13-Apr-2026 17:27:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.056s
+[13-Apr-2026 17:28:14 America/Mexico_City] Sistema iniciado - 2026-04-13 17:28:14
+[13-Apr-2026 17:28:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.442s
+[13-Apr-2026 17:28:15 America/Mexico_City] Sistema iniciado - 2026-04-13 17:28:15
+[13-Apr-2026 17:28:15 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[13-Apr-2026 17:28:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[13-Apr-2026 17:28:15 America/Mexico_City] Sistema iniciado - 2026-04-13 17:28:15
+[13-Apr-2026 17:28:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.03s

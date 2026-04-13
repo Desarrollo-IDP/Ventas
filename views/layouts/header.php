@@ -562,15 +562,15 @@
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                         <div class="avatar-circle me-2" style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-color), #2980b9); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
-                            U
+                            <?php echo strtoupper(substr($_SESSION['user_nombre'] ?? 'U', 0, 1)); ?>
                         </div>
-                        <span>Usuario</span>
+                        <span><?php echo htmlspecialchars($_SESSION['user_nombre'] ?? 'Usuario'); ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-user-edit"></i> Perfil</a></li>
                         <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Configuración</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                        <li><a class="dropdown-item" href="/controllers/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>

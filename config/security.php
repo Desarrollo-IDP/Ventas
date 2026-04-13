@@ -126,6 +126,12 @@ class SecurityConfig {
 
             // Permissions Policy
             header("Permissions-Policy: geolocation=(), microphone=(), camera=()");
+
+            // Cache Control - Previene que el contenido se guarde en cache y se vea con el botón "Atrás" después de logout
+            header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+            header("Cache-Control: post-check=0, pre-check=0", false);
+            header("Pragma: no-cache");
+            header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
         }
     }
 
@@ -182,10 +188,17 @@ class SecurityConfig {
         }
     }
 
-    private static function redirectToLogin($message = '') {
-        $_SESSION['flash_error'] = $message;
-        header('Location: /login.php');
-        exit;
+    public static function redirectToLogin($message = '') {
+        if ($message) {
+            $_SESSION['flash_error'] = $message;
+        }
+        
+        // Evitar bucle de redirección si ya estamos en la página de login
+        $current_page = $_SERVER['PHP_SELF'];
+        if (strpos($current_page, 'login.php') === false) {
+            header('Location: /views/auth/login.php');
+            exit;
+        }
     }
 }
 
@@ -423,6 +436,41 @@ class SecurityService {
 
         $logFile = config('logging.path') . 'security_audit.log';
         file_put_contents($logFile, json_encode($logEntry) . PHP_EOL, FILE_APPEND);
+    }
+
+    // Métodos de autenticación y roles
+    public static function isAuthenticated() {
+        return isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+    }
+
+    public static function hasRole($role) {
+        if (!self::isAuthenticated()) return false;
+        
+        $user_rol = $_SESSION['user_rol'] ?? '';
+        
+        // Soporte para múltiples roles si se pasa un array
+        if (is_array($role)) {
+            return in_array($user_rol, $role);
+        }
+        
+        // Admin tiene acceso a todo
+        if ($user_rol === 'admin') return true;
+        
+        return $user_rol === $role;
+    }
+
+    public static function requiredAuth() {
+        if (!self::isAuthenticated()) {
+            SecurityConfig::redirectToLogin('Debe iniciar sesión para acceder a esta página');
+        }
+    }
+
+    public static function requiredRole($role) {
+        self::requiredAuth();
+        if (!self::hasRole($role)) {
+            header('HTTP/1.1 403 Forbidden');
+            die('Acceso denegado: No tiene permisos para acceder a esta sección.');
+        }
     }
 }
 

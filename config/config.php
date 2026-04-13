@@ -11,7 +11,7 @@ class AppConfig {
             'name' => 'Sistema Punto de Venta',
             'version' => '1.0.0',
             'description' => 'Sistema completo de punto de venta con cotizaciones',
-            'url' => 'http://13.0.0.49:1993/P.V',
+            'url' => 'http://13.0.0.49:1993',
             'timezone' => 'America/Mexico_City',
             'locale' => 'es_MX',
             'currency' => 'MXN'

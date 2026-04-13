@@ -111,8 +111,19 @@ function initialize_system() {
     // Inicializar seguridad (solo si no hay errores)
     try {
         // Verificar que AppConfig esté disponible antes de usarlo
-        if (class_exists('AppConfig')) {
+        if (class_exists('AppConfig') || class_exists('SecurityConfig')) {
             SecurityConfig::initialize();
+        }
+
+        // --- NUEVA VERIFICACIÓN DE AUTENTICACIÓN GLOBAL ---
+        // Se omite si:
+        // 1. Es un proceso de autenticación (IS_AUTH_PROCESS)
+        // 2. Es la página de login (IS_LOGIN_PAGE)
+        // 3. Ya está autenticado
+        if (!defined('IS_AUTH_PROCESS') && !defined('IS_LOGIN_PAGE')) {
+            if (function_exists('get_user_roles')) { // Verificar que constants.php cargó bien
+                SecurityService::requiredAuth();
+            }
         }
     } catch (Exception $e) {
         $error_message = "Error al inicializar seguridad: " . $e->getMessage();

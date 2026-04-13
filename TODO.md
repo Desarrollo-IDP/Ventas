@@ -1,20 +1,16 @@
-# TODO: Configurar Sistema en Puerto 1993 - ✅ COMPLETADO
+# TODO - Fix acceso al sistema via 13.0.0.49:1993
 
-## ✅ Pasos Completados
-- [x] Crear TODO.md con pasos
-- [x] 1. Editado httpd-vhosts.conf - Agregado VirtualHost *:1993 para P.V
-app.url a http://localhost:1993/P.V
-## Instrucciones del Usuario
-## ⏳ Pasos Pendientes (Usuario)
-- [ ] 3. **Reiniciar Apache**: XAMPP Control Panel → Apache Stop → Start
-1. **Después de cada paso**: Reinicia Apache en XAMPP Control Panel (Stop → Start)
-- [ ] 5. **Logs**: c:/xampp/apache/logs/P.V-1993-error.log y error.log
+## Plan aprobado: Actualizar URL en config/config.php
 
-## Instrucciones Finales
-1. Reinicia Apache ahora.
-`http://13.0.0.49:1993/`
-3. Si puerto ocupado: `netstat -ano | findstr :1993` → `taskkill /PID [numero] /F`
-4. ¡Listo! Sistema POS ahora en puerto 1993.
-2. **Prueba**: Abre http://localhost:1993/ en el navegador
-3. **Si hay error de puerto**: Ejecuta `netstat -ano | findstr :1993` y mata procesos con `taskkill /PID [numero] /F`
-4. **Logs**: Revisa c:/xampp/apache/logs/error.log si hay problemas
+**Estado: En progreso**
+
+### Pasos:
+- [ ] 1. Crear este TODO.md ✅
+- [✅] 2. Editar config/config.php: Cambiar URL de 'http://13.0.0.49:1993/P.V' a 'http://13.0.0.49:1993/Punto-de-venta'\n- [ ] 3. Verificar acceso: http://13.0.0.49:1993/Punto-de-venta/
+- [ ] 4. Actualizar TODO con resultados
+- [ ] 5. Completar tarea
+
+**Notas:** 
+- Server activo en puerto 1993 confirmado.
+- Acceso inmediato posible sin cambios: http://13.0.0.49:1993/Punto-de-venta/
+
