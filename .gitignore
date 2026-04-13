@@ -1,1 +1,45 @@
-/.qodo
+### Dependencies
+/vendor/
+
+### Logs
+*.log
+logs/
+email_log.json
+emails.log
+security_errors.log
+
+### Backups
+/backups/
+*.bak
+*.sql
+
+### Cache
+/cache/
+*.cache
+
+### Uploads
+/uploads/
+
+### Config sensibles
+config/database.php
+config/email.php
+
+### OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+### IDE
+.vscode/
+.idea/
+*.code-workspace
+
+### Env
+.env
+.env.local
+.env.*.local
+
+### Temp
+tmp/
+temp/
