@@ -10,11 +10,11 @@ class EmailConfig {
             'driver' => 'smtp',
             'host' => 'mail.securiti.info',
             'port' => 587,
-            'username' => 'egarduno@securiti.info',
-            'password' => 'Elisa.2025',
+            'username' => 'sispuntoventa@secureitmx.com',
+            'password' => 'sispuntoventa123',
             'encryption' => 'tls',
             'from' => [
-                'address' => 'egarduno@securiti.info',
+                'address' => 'sispuntoventa@secureitmx.com',
                 'name' => 'Elisa Garduño'
             ],
             'testing' => false,
@@ -22,8 +22,8 @@ class EmailConfig {
                 'enabled' => true,
                 'host' => 'mail.securiti.info',
                 'port' => 993,
-                'username' => 'egarduno@securiti.info',
-                'password' => 'Elisa.2025',
+                'username' => 'sispuntoventa@secureitmx.com',
+                'password' => 'sispuntoventa123',
                 'encryption' => 'ssl',
                 'mailbox' => 'INBOX',
                 'mark_as_read' => true
@@ -33,11 +33,11 @@ class EmailConfig {
             'driver' => 'smtp',
             'host' => 'mail.securiti.info',
             'port' => 587,
-            'username' => 'egarduno@securiti.info',
-            'password' => 'Elisa.2025',
+            'username' => 'sispuntoventa@secureitmx.com',
+            'password' => 'sispuntoventa123',
             'encryption' => 'tls',
             'from' => [
-                'address' => 'egarduno@securiti.info',
+                'address' => 'sispuntoventa@secureitmx.com',
                 'name' => 'Sistema Punto de Venta'
             ],
             'testing' => false,
@@ -45,8 +45,8 @@ class EmailConfig {
                 'enabled' => true,
                 'host' => 'mail.securiti.info',
                 'port' => 993,
-                'username' => 'egarduno@securiti.info',
-                'password' => 'Elisa.2025',
+                'username' => 'sispuntoventa@secureitmx.com',
+                'password' => 'sispuntoventa123',
                 'encryption' => 'ssl',
                 'mailbox' => 'INBOX',
                 'mark_as_read' => true
@@ -56,11 +56,11 @@ class EmailConfig {
             'driver' => 'log',
             'host' => 'mail.securiti.info',
             'port' => 587,
-            'username' => 'egarduno@securiti.info',
-            'password' => 'Elisa.2025',
+            'username' => 'sispuntoventa@secureitmx.com',
+            'password' => 'sispuntoventa123',
             'encryption' => 'tls',
             'from' => [
-                'address' => 'egarduno@securiti.info',
+                'address' => 'sispuntoventa@secureitmx.com',
                 'name' => 'Sistema Punto de Venta - Testing'
             ],
             'testing' => true,
@@ -68,8 +68,8 @@ class EmailConfig {
                 'enabled' => false,
                 'host' => 'mail.securiti.info',
                 'port' => 993,
-                'username' => 'egarduno@securiti.info',
-                'password' => 'Elisa.2025',
+                'username' => 'sispuntoventa@secureitmx.com',
+                'password' => 'sispuntoventa123',
                 'encryption' => 'ssl',
                 'mailbox' => 'INBOX',
                 'mark_as_read' => false

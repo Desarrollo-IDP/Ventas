@@ -4,7 +4,7 @@ require_once '../../config/init.php';
 $page_title = "Gestión de Clientes";
 $page_actions = '
     <a href="crear.php" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Nuevo Cliente
+        <i class="fas fa-plus me-1"></i> Nuevo Cliente
     </a>
 ';
 
@@ -37,116 +37,130 @@ try {
 ob_start();
 ?>
 
-<!-- Estadísticas -->
-<div class="row mb-4">
+<!-- Estadísticas Ejecutivas -->
+<div class="row g-3 mb-4">
     <div class="col-md-4">
-        <div class="card bg-primary text-white">
-            <div class="card-body py-3">
-                <h4 class="mb-0"><?= $total_clientes ?></h4>
-                <small>Total Clientes</small>
+        <div class="card h-100 p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase" style="letter-spacing: 0.03em;">Total Clientes</span>
+                    <h3 class="fw-bold mb-0 text-dark mt-1" style="font-size: 1.8rem;"><?= $total_clientes ?></h3>
+                </div>
+                <div class="p-2.5 bg-light rounded text-secondary">
+                    <i class="fas fa-building fs-4"></i>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card bg-success text-white">
-            <div class="card-body py-3">
-                <h4 class="mb-0"><?= $clientes_activos ?></h4>
-                <small>Activos</small>
+        <div class="card h-100 p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase" style="letter-spacing: 0.03em;">Clientes Activos</span>
+                    <h3 class="fw-bold mb-0 text-success mt-1" style="font-size: 1.8rem;"><?= $clientes_activos ?></h3>
+                </div>
+                <div class="p-2.5 bg-light rounded text-success">
+                    <i class="fas fa-check-circle fs-4"></i>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card bg-warning text-white">
-            <div class="card-body py-3">
-                <h4 class="mb-0"><?= $clientes_inactivos ?></h4>
-                <small>Inactivos</small>
+        <div class="card h-100 p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase" style="letter-spacing: 0.03em;">Clientes Inactivos</span>
+                    <h3 class="fw-bold mb-0 text-dark mt-1" style="font-size: 1.8rem;"><?= $clientes_inactivos ?></h3>
+                </div>
+                <div class="p-2.5 bg-light rounded text-secondary">
+                    <i class="fas fa-pause-circle fs-4"></i>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Filtros -->
+<!-- Filtros de búsqueda -->
 <div class="card mb-4">
-    <div class="card-header">
-        <h5 class="card-title mb-0"><i class="fas fa-filter"></i> Filtros de Búsqueda</h5>
+    <div class="card-header bg-white py-3">
+        <h6 class="card-title mb-0 fw-semibold text-dark"><i class="fas fa-filter text-primary me-2"></i> Filtros de Búsqueda</h6>
     </div>
     <div class="card-body">
         <form method="GET" class="row g-3" id="form-filtros">
             <div class="col-md-4">
                 <label class="form-label">Estado</label>
                 <select name="estado" class="form-select">
-                    <option value="">Todos</option>
+                    <option value="">Todos los Estados</option>
                     <option value="activo" <?= ($_GET['estado'] ?? '') == 'activo' ? 'selected' : '' ?>>Activos</option>
                     <option value="inactivo" <?= ($_GET['estado'] ?? '') == 'inactivo' ? 'selected' : '' ?>>Inactivos</option>
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <label class="form-label">Buscar</label>
-                <input type="text" name="busqueda" class="form-control" placeholder="Nombre, email, teléfono..."
+                <input type="text" name="busqueda" class="form-control" placeholder="Nombre, email, teléfono, RFC..."
                        value="<?= htmlspecialchars($_GET['busqueda'] ?? '') ?>">
             </div>
-            <div class="col-12">
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-search"></i> Buscar
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary" onclick="limpiarFiltros()">
-                        <i class="fas fa-eraser"></i> Limpiar
-                    </button>
-                    <div class="ms-auto">
-                        <span class="text-muted"><?= count($clientes) ?> cliente(s) encontrado(s)</span>
-                    </div>
-                </div>
+            <div class="col-md-3 d-flex align-items-end gap-2">
+                <button type="submit" class="btn btn-primary flex-grow-1">
+                    <i class="fas fa-search me-1"></i> Buscar
+                </button>
+                <button type="button" class="btn btn-outline-secondary" onclick="limpiarFiltros()" title="Limpiar filtros">
+                    <i class="fas fa-redo"></i>
+                </button>
             </div>
         </form>
     </div>
 </div>
 
-<!-- Tabla -->
+<!-- Tabla de Clientes -->
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title mb-0"><i class="fas fa-list"></i> Lista de Clientes</h5>
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <h6 class="card-title mb-0 fw-semibold text-dark"><i class="fas fa-list text-secondary me-2"></i> Directorio de Clientes</h6>
+        <span class="text-muted small"><?= count($clientes) ?> registro(s)</span>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-striped table-hover mb-0">
-                <thead class="table-light">
+            <table class="table align-middle mb-0">
+                <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th>Nombre del Cliente</th>
                         <th>Contacto</th>
                         <th>Dirección</th>
                         <th class="text-center">Estado</th>
-                        <th class="text-center">Acciones</th>
+                        <th class="text-end">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if ($clientes): ?>
                         <?php foreach ($clientes as $cliente): ?>
                             <tr>
-                                <td><?= htmlspecialchars($cliente['nombre']) ?></td>
+                                <td class="fw-bold text-dark">
+                                    <a href="detalle.php?id=<?= $cliente['id'] ?>" class="text-decoration-none text-dark">
+                                        <?= htmlspecialchars($cliente['nombre']) ?>
+                                    </a>
+                                </td>
                                 <td>
                                     <div class="small">
-                                        <div><i class="fas fa-envelope me-1 text-muted"></i> <?= $cliente['email'] ?></div>
-                                        <div><i class="fas fa-phone me-1 text-muted"></i> <?= $cliente['telefono'] ?></div>
+                                        <div><i class="fas fa-envelope me-1 text-muted"></i> <?= htmlspecialchars($cliente['email']) ?></div>
+                                        <div><i class="fas fa-phone me-1 text-muted"></i> <?= htmlspecialchars($cliente['telefono']) ?></div>
                                     </div>
                                 </td>
-                                <td><?= htmlspecialchars($cliente['direccion'] ?? '') ?></td>
+                                <td class="small text-secondary"><?= htmlspecialchars($cliente['direccion'] ?? '-') ?></td>
                                 <td class="text-center">
                                     <span class="badge bg-<?= $cliente['activo'] ? 'success' : 'secondary' ?>">
                                         <?= $cliente['activo'] ? 'Activo' : 'Inactivo' ?>
                                     </span>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-end">
                                     <div class="btn-group btn-group-sm">
-                                        <a href="detalle.php?id=<?php echo $cliente['id']; ?>" class="btn btn-outline-primary" 
-                                           data-bs-toggle="tooltip" title="Ver detalle">
+                                        <a href="detalle.php?id=<?php echo $cliente['id']; ?>" class="btn btn-outline-primary" title="Ver detalle">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="editar.php?id=<?= $cliente['id'] ?>" class="btn btn-outline-secondary">
+                                        <a href="editar.php?id=<?= $cliente['id'] ?>" class="btn btn-outline-secondary" title="Editar">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <button class="btn btn-outline-danger"
-                                            onclick="eliminarCliente(<?= $cliente['id'] ?>, '<?= htmlspecialchars($cliente['nombre']) ?>')">
+                                        <button class="btn btn-outline-danger" title="Eliminar"
+                                            onclick="eliminarCliente(<?= $cliente['id'] ?>, '<?= htmlspecialchars(addslashes($cliente['nombre'])) ?>')">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
@@ -156,10 +170,10 @@ ob_start();
                     <?php else: ?>
                         <tr>
                             <td colspan="5" class="text-center py-5">
-                                <i class="fas fa-users fa-3x text-muted mb-3"></i>
-                                <p class="text-muted">No hay clientes registrados</p>
-                                <a href="crear.php" class="btn btn-primary">
-                                    <i class="fas fa-plus me-2"></i>Agregar cliente
+                                <i class="fas fa-users fa-2x text-muted mb-3 opacity-50"></i>
+                                <p class="text-muted small mb-3">No hay clientes registrados en el sistema</p>
+                                <a href="crear.php" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-plus me-1"></i> Registrar primer cliente
                                 </a>
                             </td>
                         </tr>

@@ -2,7 +2,7 @@
 $page_title = "Gestión de Cotizaciones";
 $page_actions = '
     <a href="crear.php" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Nueva Cotización
+        <i class="fas fa-plus me-1"></i> Nueva Cotización
     </a>
 ';
 
@@ -80,12 +80,55 @@ $pagina_actual = 1;
 ob_start();
 ?>
 
-<!-- Filtros -->
+<!-- Estadísticas Rápidas Ejecutivas -->
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card h-100 p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase" style="letter-spacing: 0.03em;">Pendientes</span>
+                    <h3 id="pendingCount" class="fw-bold mb-0 text-dark mt-1" style="font-size: 1.8rem;"><?php echo count(array_filter($cotizaciones, fn($c) => $c['estatus'] == 'pendiente')); ?></h3>
+                </div>
+                <div class="p-2.5 bg-light rounded text-warning">
+                    <i class="fas fa-clock fs-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase" style="letter-spacing: 0.03em;">Aceptadas</span>
+                    <h3 id="acceptedCount" class="fw-bold mb-0 text-success mt-1" style="font-size: 1.8rem;"><?php echo count(array_filter($cotizaciones, fn($c) => $c['estatus'] == 'aceptada')); ?></h3>
+                </div>
+                <div class="p-2.5 bg-light rounded text-success">
+                    <i class="fas fa-check-circle fs-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 p-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted small fw-semibold text-uppercase" style="letter-spacing: 0.03em;">Rechazadas</span>
+                    <h3 id="rejectedCount" class="fw-bold mb-0 text-danger mt-1" style="font-size: 1.8rem;"><?php echo count(array_filter($cotizaciones, fn($c) => $c['estatus'] == 'rechazada')); ?></h3>
+                </div>
+                <div class="p-2.5 bg-light rounded text-danger">
+                    <i class="fas fa-times-circle fs-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filtros de búsqueda -->
 <div class="card mb-4">
-    <div class="card-header">
-        <h5 class="card-title mb-0">
-            <i class="fas fa-filter"></i> Filtros de Búsqueda
-        </h5>
+    <div class="card-header bg-white py-3">
+        <h6 class="card-title mb-0 fw-semibold text-dark">
+            <i class="fas fa-filter text-primary me-2"></i> Filtros de Búsqueda
+        </h6>
     </div>
     <div class="card-body">
         <form method="GET" class="row g-3" id="form-filtros">
@@ -115,85 +158,34 @@ ob_start();
                        placeholder="Nombre del cliente..."
                        value="<?php echo $_GET['cliente'] ?? ''; ?>">
             </div>
-            <div class="col-12">
+            <div class="col-12 d-flex justify-content-between align-items-center">
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-search"></i> Buscar
+                        <i class="fas fa-search me-1"></i> Buscar
                     </button>
                     <button type="button" class="btn btn-outline-secondary" onclick="limpiarFiltros()">
-                        <i class="fas fa-eraser"></i> Limpiar
+                        <i class="fas fa-redo me-1"></i> Limpiar
                     </button>
-                    <div class="ms-auto">
-                        <span class="text-muted">
-                            <?php echo count($cotizaciones); ?> cotización(es) encontrada(s)
-                        </span>
-                    </div>
                 </div>
+                <span class="text-muted small">
+                    <?php echo count($cotizaciones); ?> cotización(es) encontrada(s)
+                </span>
             </div>
         </form>
     </div>
 </div>
 
-<!-- Estadísticas Rápidas -->
-<div class="row mb-4">
-    <div class="col-md-4">
-        <div class="card bg-primary text-white">
-            <div class="card-body py-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1">
-                        <h4 id="pendingCount" class="mb-0"><?php echo count(array_filter($cotizaciones, fn($c) => $c['estatus'] == 'pendiente')); ?></h4>
-                        <small>Pendientes</small>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-clock fa-2x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card bg-success text-white">
-            <div class="card-body py-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1">
-                        <h4 id="acceptedCount" class="mb-0"><?php echo count(array_filter($cotizaciones, fn($c) => $c['estatus'] == 'aceptada')); ?></h4>
-                        <small>Aceptadas</small>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-check-circle fa-2x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card bg-danger text-white">
-            <div class="card-body py-3">
-                <div class="d-flex align-items-center">
-                    <div class="flex-grow-1">
-                        <h4 id="rejectedCount" class="mb-0"><?php echo count(array_filter($cotizaciones, fn($c) => $c['estatus'] == 'rechazada')); ?></h4>
-                        <small>Rechazadas</small>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-times-circle fa-2x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Tabla de Cotizaciones -->
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title mb-0">
-            <i class="fas fa-list"></i> Lista de Cotizaciones
-        </h5>
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <h6 class="card-title mb-0 fw-semibold text-dark">
+            <i class="fas fa-file-invoice text-secondary me-2"></i> Listado de Cotizaciones
+        </h6>
     </div>
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table table-striped table-hover mb-0">
-                <thead class="table-light">
+            <table class="table align-middle mb-0">
+                <thead>
                     <tr>
                         <th width="120">Folio</th>
                         <th>Cliente</th>
@@ -203,35 +195,33 @@ ob_start();
                         <th width="100" class="text-end">IVA</th>
                         <th width="120" class="text-end">Total</th>
                         <th width="120">Estatus</th>
-                        <th width="100" class="text-center">Acciones</th>
+                        <th width="100" class="text-end">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if(!empty($cotizaciones)): ?>
                         <?php foreach($cotizaciones as $cotizacion): ?>
                             <tr data-id="<?php echo $cotizacion['id']; ?>" data-estatus="<?php echo htmlspecialchars($cotizacion['estatus']); ?>" data-total="<?php echo $cotizacion['total']; ?>">
-                                <td>
-                                    <strong class="text-primary"><?php echo htmlspecialchars($cotizacion['folio']); ?></strong>
+                                <td class="fw-bold">
+                                    <a href="detalle.php?id=<?php echo $cotizacion['id']; ?>" class="text-decoration-none text-primary">
+                                        <?php echo htmlspecialchars($cotizacion['folio']); ?>
+                                    </a>
                                 </td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <div class="flex-grow-1">
-                                            <div class="fw-semibold"><?php echo htmlspecialchars($cotizacion['cliente_nombre']); ?></div>
-                                        </div>
-                                    </div>
+                                <td class="fw-semibold text-dark">
+                                    <?php echo htmlspecialchars($cotizacion['cliente_nombre']); ?>
                                 </td>
                                 <td>
                                     <small class="text-muted"><?php echo date('d/m/Y', strtotime($cotizacion['fecha_creacion'])); ?></small>
                                 </td>
                                 <td>
-                                    <small class="<?php echo (strtotime($cotizacion['fecha_vencimiento']) < time()) ? 'text-danger' : 'text-muted'; ?>">
+                                    <small class="<?php echo (strtotime($cotizacion['fecha_vencimiento']) < time()) ? 'text-danger fw-bold' : 'text-muted'; ?>">
                                         <?php echo date('d/m/Y', strtotime($cotizacion['fecha_vencimiento'])); ?>
                                     </small>
                                 </td>
-                                <td class="text-end">$<?php echo number_format($cotizacion['subtotal'], 2); ?></td>
-                                <td class="text-end">$<?php echo number_format($cotizacion['iva'], 2); ?></td>
-                                <td class="text-end">
-                                    <strong>$<?php echo number_format($cotizacion['total'], 2); ?></strong>
+                                <td class="text-end text-muted">$<?php echo number_format($cotizacion['subtotal'], 2); ?></td>
+                                <td class="text-end text-muted">$<?php echo number_format($cotizacion['iva'], 2); ?></td>
+                                <td class="text-end fw-bold text-dark">
+                                    $<?php echo number_format($cotizacion['total'], 2); ?>
                                 </td>
                                 <td>
                                     <?php 
@@ -243,42 +233,24 @@ ob_start();
                                     ][$cotizacion['estatus']] ?? 'bg-secondary';
                                     ?>
                                     <span class="badge <?php echo $badge_class; ?>">
-                                        <i class="fas <?php echo [
-                                            'pendiente' => 'fa-clock',
-                                            'aceptada' => 'fa-check',
-                                            'rechazada' => 'fa-times',
-                                            'expirada' => 'fa-calendar-times'
-                                        ][$cotizacion['estatus']] ?? 'fa-question'; ?> me-1"></i>
                                         <?php echo ucfirst($cotizacion['estatus']); ?>
                                     </span>
                                 </td>
-                                <td>
+                                <td class="text-end">
                                     <div class="btn-group btn-group-sm" role="group">
                                         <a href="detalle.php?id=<?php echo $cotizacion['id']; ?>" 
-                                           class="btn btn-outline-primary" 
-                                           data-bs-toggle="tooltip" 
-                                           title="Ver detalle">
+                                           class="btn btn-outline-primary" title="Ver detalle">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <?php $can_edit = ($cotizacion['estatus'] === 'pendiente'); ?>
                                         <?php if ($can_edit): ?>
                                             <a href="editar.php?id=<?php echo $cotizacion['id']; ?>" 
-                                               class="btn btn-outline-secondary"
-                                               data-bs-toggle="tooltip"
-                                               title="Editar">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                        <?php else: ?>
-                                            <a class="btn btn-outline-secondary disabled" 
-                                               tabindex="-1" aria-disabled="true"
-                                               data-bs-toggle="tooltip"
-                                               title="No se puede editar en este estatus">
+                                               class="btn btn-outline-secondary" title="Editar">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         <?php endif; ?>
-                                        <?php $can_delete = ($cotizacion['estatus'] === 'pendiente'); ?>
                                         <button class="btn btn-outline-danger" 
-                                            <?php echo $can_delete ? '' : 'disabled title="No se puede eliminar en este estatus"'; ?>
+                                            <?php echo ($cotizacion['estatus'] === 'pendiente') ? '' : 'disabled'; ?>
                                             onclick="eliminarCotizacion(<?= $cotizacion['id'] ?>, '<?= htmlspecialchars($cotizacion['folio']) ?>')">
                                             <i class="fas fa-trash"></i>
                                         </button>
@@ -289,14 +261,11 @@ ob_start();
                     <?php else: ?>
                         <tr>
                             <td colspan="9" class="text-center py-5">
-                                <div class="py-4">
-                                    <i class="fas fa-inbox fa-4x text-muted mb-3"></i>
-                                    <h5 class="text-muted">No hay cotizaciones registradas</h5>
-                                    <p class="text-muted mb-3">Comienza creando tu primera cotización</p>
-                                    <a href="crear.php" class="btn btn-primary">
-                                        <i class="fas fa-plus me-2"></i>Crear primera cotización
-                                    </a>
-                                </div>
+                                <i class="fas fa-file-invoice fa-2x text-muted mb-3 opacity-50"></i>
+                                <h6 class="text-muted small mb-3">No hay cotizaciones registradas</h6>
+                                <a href="crear.php" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-plus me-1"></i> Crear primera cotización
+                                </a>
                             </td>
                         </tr>
                     <?php endif; ?>
@@ -307,7 +276,7 @@ ob_start();
     
     <!-- Pie de tabla con resumen -->
     <?php if(!empty($cotizaciones)): ?>
-    <div class="card-footer">
+    <div class="card-footer bg-white py-3">
         <div class="row align-items-center">
             <div class="col-md-6">
                 <small class="text-muted">
@@ -316,7 +285,7 @@ ob_start();
             </div>
             <div class="col-md-6 text-end">
                 <small class="text-muted">
-                    Total general: <strong>$<?php echo number_format(array_sum(array_column($cotizaciones, 'total')), 2); ?></strong>
+                    Total general: <strong class="text-dark">$<?php echo number_format(array_sum(array_column($cotizaciones, 'total')), 2); ?></strong>
                 </small>
             </div>
         </div>
@@ -339,151 +308,20 @@ function eliminarCotizacion(id, folio) {
         let data;
         try { data = await res.json(); } catch (err) { throw new Error('Respuesta inválida del servidor'); }
         if (res.ok && data.success) {
-            // Actualizar UI sin recargar: eliminar fila y actualizar contadores y totales
-            const row = document.querySelector("tr[data-id='" + id + "']");
-            if (row) {
-                const estatus = row.dataset.estatus || '';
-                const total = parseFloat(row.dataset.total || '0') || 0;
-                row.remove();
-
-                // Actualizar contadores rápidos
-                try {
-                    const pendingEl = document.getElementById('pendingCount');
-                    const acceptedEl = document.getElementById('acceptedCount');
-                    const rejectedEl = document.getElementById('rejectedCount');
-                    const totalEl = document.getElementById('totalCotizado');
-
-                    if (estatus === 'pendiente' && pendingEl) pendingEl.textContent = Math.max(0, parseInt(pendingEl.textContent) - 1);
-                    if (estatus === 'aceptada' && acceptedEl) acceptedEl.textContent = Math.max(0, parseInt(acceptedEl.textContent) - 1);
-                    if (estatus === 'rechazada' && rejectedEl) rejectedEl.textContent = Math.max(0, parseInt(rejectedEl.textContent) - 1);
-
-                    if (totalEl) {
-                        const current = parseFloat(totalEl.textContent.replace(/[^0-9.-]+/g, '')) || 0;
-                        const nuevo = Math.max(0, current - total);
-                        totalEl.textContent = '$' + nuevo.toFixed(2);
-                    }
-                } catch (e) { console.error('Error actualizando stats:', e); }
-
-                // Actualizar pie de tabla (conteo)
-                try {
-                    const tbody = document.querySelector('table tbody');
-                    const filas = tbody ? tbody.querySelectorAll('tr') : [];
-                    const footerLeft = document.querySelector('.card-footer .col-md-6');
-                    if (footerLeft) {
-                        const small = footerLeft.querySelector('small');
-                        if (small) small.innerHTML = `Mostrando ${filas.length} cotización(es)`;
-                    }
-                } catch (e) { /* no bloquear por errores UI */ }
-            }
-
-            if (typeof mostrarAlerta === 'function') {
-                mostrarAlerta(data.message || 'Cotización eliminada correctamente', 'success');
-            }
+            location.reload();
         } else {
-            throw new Error(data.message || 'Error al eliminar');
+            alert(data.message || 'Error al eliminar');
         }
     })
     .catch(err => {
-        if (typeof mostrarAlerta === 'function') {
-            mostrarAlerta(err.message, 'danger');
-        } else {
-            alert(err.message);
-        }
+        alert(err.message);
     });
-}
-function cambiarEstatus(cotizacionId, nuevoEstatus) {
-    const acciones = {
-        'aceptada': 'aceptar',
-        'rechazada': 'rechazar'
-    };
-    
-    const accion = acciones[nuevoEstatus] || nuevoEstatus;
-    
-    confirmarAccion(`¿Está seguro de ${accion} esta cotización?`, function() {
-        fetch(`../../controllers/cambiar_estatus_cotizacion.php`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `cotizacion_id=${cotizacionId}&estatus=${nuevoEstatus}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.success) {
-                mostrarAlerta(`Cotización ${accion}da correctamente`);
-                setTimeout(() => location.reload(), 1500);
-            } else {
-                mostrarAlerta(data.message, 'danger');
-            }
-        })
-        .catch(error => {
-            mostrarAlerta('Error al procesar la solicitud', 'danger');
-        });
-    });
-}
-
-function enviarEmail(cotizacionId) {
-    mostrarAlerta('Enviando email...', 'info');
-    
-    fetch(`../../controllers/enviar_email_cotizacion.php`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: `cotizacion_id=${cotizacionId}`
-    })
-    .then(response => response.json())
-    .then(data => {
-        if(data.success) {
-            mostrarAlerta('Email enviado correctamente');
-        } else {
-            mostrarAlerta(data.message, 'danger');
-        }
-    });
-}
-
-function descargarPDF(cotizacionId) {
-    window.open(`../../controllers/generar_pdf_cotizacion.php?id=${cotizacionId}`, '_blank');
-}
-
-function duplicarCotizacion(cotizacionId) {
-    confirmarAccion('¿Está seguro de duplicar esta cotización?', function() {
-        fetch(`../../controllers/duplicar_cotizacion.php`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `cotizacion_id=${cotizacionId}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.success) {
-                mostrarAlerta('Cotización duplicada correctamente');
-                setTimeout(() => location.href = `editar.php?id=${data.nueva_cotizacion_id}`, 1500);
-            } else {
-                mostrarAlerta(data.message, 'danger');
-            }
-        });
-    });
-}
-
-function exportarCotizaciones() {
-    const params = new URLSearchParams(window.location.search);
-    window.open(`../../controllers/exportar_cotizaciones.php?${params.toString()}`, '_blank');
 }
 
 function limpiarFiltros() {
     document.getElementById('form-filtros').reset();
     window.location.href = 'listar.php';
 }
-
-// Inicializar tooltips
-document.addEventListener('DOMContentLoaded', function() {
-    const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    tooltips.forEach(tooltip => {
-        new bootstrap.Tooltip(tooltip);
-    });
-});
 </script>
 
 <?php

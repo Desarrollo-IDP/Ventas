@@ -119,7 +119,7 @@ $conversaciones = $conversacion_model->obtenerPorCotizacion($cotizacion_id);
                     formData.append('cotizacion_id', '<?php echo htmlspecialchars($cotizacion_id); ?>');
                     formData.append('mensaje', mensaje);
                     // Send AJAX POST request
-                    fetch('/controllers/enviar_mensaje_conversacion.php', {
+                    fetch('../../controllers/enviar_mensaje_conversacion.php', {
                         method: 'POST',
                         body: formData
                     })

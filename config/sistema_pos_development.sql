@@ -82,7 +82,7 @@ CREATE TABLE `cotizaciones` (
   `subtotal` decimal(10,2) DEFAULT 0.00,
   `iva` decimal(10,2) DEFAULT 0.00,
   `total` decimal(10,2) DEFAULT 0.00,
-  `estatus` enum('pendiente','aceptada','rechazada','expirada') DEFAULT 'pendiente',
+  `estatus` enum('pendiente','aceptada','rechazada','expirada','cancelada') DEFAULT 'pendiente',
   `notas` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

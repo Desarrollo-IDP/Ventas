@@ -1,6 +1,6 @@
 <?php
 /**
- * Página de Inicio de Sesión
+ * Página de Inicio de Sesión Corporativa
  */
 define('IS_LOGIN_PAGE', true);
 require_once '../../config/constants.php';
@@ -21,23 +21,20 @@ $logout_success = isset($_GET['logout']) && $_GET['logout'] === 'success';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión | Sistema Punto de Venta</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>Iniciar Sesión | Sistema CRM & Punto de Venta Enterprise</title>
+    <!-- Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="../../assets/css/styles.css" rel="stylesheet">
+    
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --card-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
-            --border-radius: 16px;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #0f172a; /* Slate 900 */
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -46,168 +43,157 @@ $logout_success = isset($_GET['logout']) && $_GET['logout'] === 'success';
             padding: 20px;
         }
 
-        .login-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
+        .login-wrapper {
             width: 100%;
-            max-width: 420px;
-            overflow: hidden;
-            border: none;
-            transition: transform 0.3s ease;
+            max-width: 400px;
         }
 
-        .login-card:hover {
-            transform: translateY(-5px);
+        .login-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid #1e293b;
         }
 
         .login-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            padding: 40px 20px;
+            background: #ffffff;
+            padding: 36px 30px 20px 30px;
             text-align: center;
-            color: white;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .login-header i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        .login-brand-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 10px;
+            background: #eff6ff;
+            color: #2563eb;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
         }
 
         .login-body {
-            padding: 40px;
+            padding: 30px;
         }
 
         .form-label {
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #6c757d;
-            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.825rem;
+            color: #334155;
+            margin-bottom: 6px;
         }
 
         .form-control {
-            border-radius: 10px;
-            padding: 12px 15px;
-            border: 2px solid #f1f3f5;
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
 
         .form-control:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
-            transform: scale(1.01);
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .input-group-text {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #64748b;
+            border-radius: 6px 0 0 6px;
         }
 
         .btn-login {
-            background: linear-gradient(135deg, var(--accent-color), #2980b9);
+            background: #2563eb;
             border: none;
-            border-radius: 10px;
-            padding: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border-radius: 6px;
+            padding: 11px;
+            font-weight: 600;
+            font-size: 0.9rem;
             width: 100%;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            color: white;
+            margin-top: 15px;
+            transition: all 0.2s ease;
+            color: #ffffff;
         }
 
         .btn-login:hover {
-            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.3);
-            transform: translateY(-2px);
-            opacity: 0.9;
-            color: white;
-        }
-
-        .btn-login:active {
-            transform: translateY(0);
+            background: #1d4ed8;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
         }
 
         .alert {
-            border-radius: 12px;
-            font-size: 0.9rem;
-            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+            padding: 10px 14px;
         }
 
         .login-footer {
             text-align: center;
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: #adb5bd;
-        }
-
-        /* Glassmorphism effect for decorative circles */
-        .decoration {
-            position: fixed;
-            z-index: -1;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .decor-1 { width: 300px; height: 300px; top: -100px; left: -100px; }
-        .decor-2 { width: 200px; height: 200px; bottom: -50px; right: -50px; }
-
-        /* Loading spinner */
-        .spinner-border-sm {
-            display: none;
-            margin-right: 8px;
+            margin-top: 24px;
+            font-size: 0.78rem;
+            color: #64748b;
         }
     </style>
 </head>
 <body>
-    <div class="decoration decor-1"></div>
-    <div class="decoration decor-2"></div>
 
-    <div class="login-card">
-        <div class="login-header">
-            <i class="fas fa-store"></i>
-            <h3>BIENVENIDO</h3>
-            <p class="mb-0 opacity-75">Sistema Punto de Venta</p>
-        </div>
-        
-        <div class="login-body">
-            <?php if ($error): ?>
-                <div class="alert alert-danger fade show" role="alert">
-                    <i class="fas fa-exclamation-circle me-2"></i>
-                    <?php echo htmlspecialchars($error); ?>
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-brand-icon">
+                    <i class="fas fa-building"></i>
                 </div>
-            <?php endif; ?>
-
-            <?php if ($logout_success): ?>
-                <div class="alert alert-success fade show" role="alert">
-                    <i class="fas fa-check-circle me-2"></i>
-                    Sesión cerrada correctamente.
-                </div>
-            <?php endif; ?>
-
-            <form id="loginForm" method="POST" action="../../controllers/login_process.php">
-                <div class="mb-3">
-                    <label for="email" class="form-label">Correo Electrónico</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-0"><i class="fas fa-envelope text-muted"></i></span>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="nombre@ejemplo.com" required>
+                <h4 class="fw-bold text-dark mb-1">ACCESO AL SISTEMA</h4>
+                <p class="text-muted small mb-0">CRM & Punto de Venta Enterprise</p>
+            </div>
+            
+            <div class="login-body">
+                <?php if ($error): ?>
+                    <div class="alert alert-danger fade show" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        <?php echo htmlspecialchars($error); ?>
                     </div>
-                </div>
-                
-                <div class="mb-4">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-0"><i class="fas fa-lock text-muted"></i></span>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                <?php endif; ?>
+
+                <?php if ($logout_success): ?>
+                    <div class="alert alert-success fade show" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Sesión cerrada correctamente.
                     </div>
+                <?php endif; ?>
+
+                <form id="loginForm" method="POST" action="../../controllers/login_process.php">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="usuario@empresa.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-login" id="submitBtn">
+                        <span class="spinner-border spinner-border-sm text-light me-2" style="display:none;" role="status" aria-hidden="true"></span>
+                        INGRESAR AL SISTEMA
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    &copy; <?php echo date('Y'); ?> CRM & POS Enterprise v3.0
                 </div>
-
-                <button type="submit" class="btn btn-login" id="submitBtn">
-                    <span class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"></span>
-                    INGRESAR
-                </button>
-            </form>
-
-            <div class="login-footer">
-                &copy; <?php echo date('Y'); ?> Punto de Venta v1.0
             </div>
         </div>
     </div>
@@ -251,10 +237,7 @@ $logout_success = isset($_GET['logout']) && $_GET['logout'] === 'success';
             });
 
             function alertError(message) {
-                // Eliminar alertas existentes
                 $('.alert').remove();
-                
-                // Añadir nueva alerta
                 const alertHtml = `
                     <div class="alert alert-danger fade show" role="alert">
                         <i class="fas fa-exclamation-circle me-2"></i>

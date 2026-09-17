@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/database.php';
+require_once '../config/init.php';
 
 header('Content-Type: application/json');
 
@@ -18,12 +18,14 @@ try {
         exit;
     }
 
-    // Buscar productos por código o nombre (solo productos con stock > 0)
-    $query = "SELECT id, codigo, nombre, precio, stock, stock_minimo
+    // Buscar ítems por código o nombre (Productos con stock > 0, o Servicios/Licencias que son intangibles)
+    $query = "SELECT id, codigo, COALESCE(tipo, 'producto') as tipo, nombre, precio, stock, stock_minimo
               FROM productos
-              WHERE activo = 1 AND stock > 0 AND (codigo LIKE :terminoCodigo OR nombre LIKE :terminoNombre)
+              WHERE activo = 1 
+                AND (tipo != 'producto' OR stock > 0) 
+                AND (codigo LIKE :terminoCodigo OR nombre LIKE :terminoNombre)
               ORDER BY nombre
-              LIMIT 10";
+              LIMIT 15";
 
     $stmt = $db->prepare($query);
     $like = '%' . $termino . '%';
@@ -42,7 +44,7 @@ try {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Error al buscar productos: ' . $e->getMessage()
+        'message' => 'Error al buscar ítems: ' . $e->getMessage()
     ]);
 }
 ?>

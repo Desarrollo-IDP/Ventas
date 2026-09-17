@@ -8,6 +8,7 @@ class Producto {
 
     public $id;
     public $codigo;
+    public $tipo; // 'producto', 'servicio', 'licencia'
     public $nombre;
     public $descripcion;
     public $precio;
@@ -30,11 +31,14 @@ class Producto {
         $query = "SELECT * FROM productos WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row && empty($row['tipo'])) {
+            $row['tipo'] = 'producto';
+        }
+        return $row;
     }
 
     public function actualizarStock($id, $nuevo_stock) {
-        // Validar que el stock no sea negativo
         if ($nuevo_stock < 0) {
             $nuevo_stock = 0;
         }
@@ -45,15 +49,26 @@ class Producto {
 
     public function verificarStock($producto_id, $cantidad) {
         $producto = $this->obtenerPorId($producto_id);
-        return $producto && $producto['stock'] >= $cantidad;
+        if (!$producto) return false;
+        // Servicios y Licencias no se agotan por stock físico
+        if (isset($producto['tipo']) && $producto['tipo'] !== 'producto') {
+            return true;
+        }
+        return $producto['stock'] >= $cantidad;
     }
 
     public function listarConFiltros($filtros = []) {
         $query = "SELECT * FROM " . $this->table . " WHERE 1=1";
         $params = [];
 
+        // Filtro por tipo (producto, servicio, licencia)
+        if (!empty($filtros['tipo'])) {
+            $query .= " AND tipo = ?";
+            $params[] = $filtros['tipo'];
+        }
+
         // Filtro por estado
-        if (isset($filtros['estado'])) {
+        if (isset($filtros['estado']) && $filtros['estado'] !== '') {
             if ($filtros['estado'] === 'activo') {
                 $query .= " AND activo = 1";
             } elseif ($filtros['estado'] === 'inactivo') {
@@ -61,26 +76,28 @@ class Producto {
             }
         }
 
-        // Filtro por stock
-        if (isset($filtros['stock'])) {
+        // Filtro por stock (solo aplica a productos físicos)
+        if (isset($filtros['stock']) && $filtros['stock'] !== '') {
             switch ($filtros['stock']) {
                 case 'disponible':
-                    $query .= " AND stock > 0";
+                    $query .= " AND (tipo != 'producto' OR stock > 0)";
                     break;
                 case 'bajo':
-                    $query .= " AND stock > 0 AND stock <= stock_minimo";
+                    $query .= " AND tipo = 'producto' AND stock > 0 AND stock <= stock_minimo";
                     break;
                 case 'agotado':
-                    $query .= " AND stock = 0";
+                    $query .= " AND tipo = 'producto' AND stock = 0";
                     break;
             }
         }
 
         // Búsqueda por código o nombre
         if (isset($filtros['busqueda']) && !empty($filtros['busqueda'])) {
-            $query .= " AND (codigo LIKE ? OR nombre LIKE ?)";
-            $params[] = '%' . $filtros['busqueda'] . '%';
-            $params[] = '%' . $filtros['busqueda'] . '%';
+            $query .= " AND (codigo LIKE ? OR nombre LIKE ? OR descripcion LIKE ?)";
+            $searchTerm = '%' . $filtros['busqueda'] . '%';
+            $params[] = $searchTerm;
+            $params[] = $searchTerm;
+            $params[] = $searchTerm;
         }
 
         $query .= " ORDER BY nombre";
@@ -90,10 +107,15 @@ class Producto {
         return $stmt;
     }
 
-    // En tu modelo Producto.php
     public function crear($datos) {
-        $query = "INSERT INTO productos (codigo, nombre, descripcion, precio, stock, stock_minimo, activo, created_at, updated_at) 
-                VALUES (:codigo, :nombre, :descripcion, :precio, :stock, :stock_minimo, :activo, :created_at, :updated_at)";
+        if (!isset($datos['tipo'])) {
+            $datos['tipo'] = 'producto';
+        }
+        $datos['created_at'] = $datos['created_at'] ?? date('Y-m-d H:i:s');
+        $datos['updated_at'] = $datos['updated_at'] ?? date('Y-m-d H:i:s');
+        
+        $query = "INSERT INTO productos (codigo, tipo, nombre, descripcion, precio, stock, stock_minimo, activo, created_at, updated_at) 
+                VALUES (:codigo, :tipo, :nombre, :descripcion, :precio, :stock, :stock_minimo, :activo, :created_at, :updated_at)";
         
         $stmt = $this->conn->prepare($query);
         
@@ -108,14 +130,17 @@ class Producto {
         $query = "SELECT * FROM productos WHERE codigo = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$codigo]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row && empty($row['tipo'])) {
+            $row['tipo'] = 'producto';
+        }
+        return $row;
     }
 
     public function actualizar($id, $datos) {
         $campos = [];
         $valores = [];
         
-        // Validar que stock no sea negativo
         if (isset($datos['stock']) && $datos['stock'] < 0) {
             $datos['stock'] = 0;
         }
@@ -141,7 +166,6 @@ class Producto {
         $stmt->bindParam(2, $id);
 
         if($stmt->execute()) {
-            // Auditoría
             $this->auditoria->registrar(
                 'productos',
                 $id,
@@ -162,7 +186,6 @@ class Producto {
         $stmt->bindParam(1, $id);
 
         if($stmt->execute()) {
-            // Auditoría
             $this->auditoria->registrar(
                 'productos',
                 $id,
@@ -179,15 +202,15 @@ class Producto {
         $producto = $this->obtenerPorId($id);
         if (!$producto) return false;
 
-        // Generar nuevo código
         $nuevo_codigo = $producto['codigo'] . '_COPY';
 
         $datos = [
             'codigo' => $nuevo_codigo,
+            'tipo' => $producto['tipo'] ?? 'producto',
             'nombre' => $producto['nombre'] . ' (Copia)',
             'descripcion' => $producto['descripcion'],
             'precio' => $producto['precio'],
-            'stock' => 0, // Copia sin stock
+            'stock' => 0,
             'stock_minimo' => $producto['stock_minimo'],
             'activo' => 1
         ];
@@ -207,14 +230,12 @@ class Producto {
                 break;
             case 'salida':
                 $nuevo_stock -= $cantidad;
-                // Prevenir stock negativo
                 if ($nuevo_stock < 0) {
                     $nuevo_stock = 0;
                 }
                 break;
             case 'ajuste':
                 $nuevo_stock = $cantidad;
-                // Prevenir stock negativo
                 if ($nuevo_stock < 0) {
                     $nuevo_stock = 0;
                 }
@@ -227,8 +248,6 @@ class Producto {
         $stmt->bindParam(2, $id);
 
         if($stmt->execute()) {
-            // Registrar movimiento de stock (si existe tabla movimientos_stock)
-            // Por ahora, solo auditoría
             $this->auditoria->registrar(
                 'productos',
                 $id,
@@ -245,8 +264,11 @@ class Producto {
         $query = "SELECT
                     COUNT(*) as total,
                     SUM(CASE WHEN activo = 1 THEN 1 ELSE 0 END) as activos,
-                    SUM(CASE WHEN activo = 1 AND stock > 0 AND stock <= stock_minimo THEN 1 ELSE 0 END) as stock_bajo,
-                    SUM(CASE WHEN activo = 1 AND stock = 0 THEN 1 ELSE 0 END) as sin_stock
+                    SUM(CASE WHEN (tipo IS NULL OR tipo = 'producto') THEN 1 ELSE 0 END) as total_productos,
+                    SUM(CASE WHEN tipo = 'servicio' THEN 1 ELSE 0 END) as total_servicios,
+                    SUM(CASE WHEN tipo = 'licencia' THEN 1 ELSE 0 END) as total_licencias,
+                    SUM(CASE WHEN (tipo IS NULL OR tipo = 'producto') AND activo = 1 AND stock > 0 AND stock <= stock_minimo THEN 1 ELSE 0 END) as stock_bajo,
+                    SUM(CASE WHEN (tipo IS NULL OR tipo = 'producto') AND activo = 1 AND stock = 0 THEN 1 ELSE 0 END) as sin_stock
                   FROM " . $this->table;
 
         $stmt = $this->conn->prepare($query);

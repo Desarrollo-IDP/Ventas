@@ -29,7 +29,6 @@ class Usuario {
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario && password_verify($password, $usuario['password'])) {
-            // Actualizar último acceso
             $this->actualizarUltimoAcceso($usuario['id']);
             return $usuario;
         }
@@ -41,7 +40,7 @@ class Usuario {
      * Obtener un usuario por ID
      */
     public function obtenerPorId($id) {
-        $query = "SELECT id, nombre, email, rol, estado, ultimo_acceso FROM {$this->table} WHERE id = ?";
+        $query = "SELECT id, nombre, email, rol, estado, ultimo_acceso, created_at FROM {$this->table} WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -60,7 +59,6 @@ class Usuario {
      * Crear un nuevo usuario
      */
     public function crear($datos) {
-        // Hashear contraseña antes de guardar
         if (isset($datos['password'])) {
             $datos['password'] = password_hash($datos['password'], PASSWORD_BCRYPT, ['cost' => 12]);
         }
@@ -70,13 +68,59 @@ class Usuario {
         
         $stmt = $this->conn->prepare($query);
         
-        if ($stmt->execute($datos)) {
+        $params = [
+            ':nombre' => $datos['nombre'],
+            ':email' => $datos['email'],
+            ':password' => $datos['password'],
+            ':rol' => $datos['rol'] ?? 'vendedor',
+            ':estado' => isset($datos['estado']) ? intval($datos['estado']) : 1
+        ];
+
+        if ($stmt->execute($params)) {
             $nuevoId = $this->conn->lastInsertId();
-            // Auditoría
-            $this->auditoria->registrar($this->table, $nuevoId, 'CREATE', null, json_encode($datos));
+            $this->auditoria->registrar($this->table, $nuevoId, 'INSERT', null, json_encode($datos));
             return $nuevoId;
         }
         
+        return false;
+    }
+
+    public function actualizar($id, $datos) {
+        $actual = $this->obtenerPorId($id);
+        $campos = [];
+        $params = [];
+
+        if (!empty($datos['nombre'])) {
+            $campos[] = "nombre = ?";
+            $params[] = $datos['nombre'];
+        }
+        if (!empty($datos['email'])) {
+            $campos[] = "email = ?";
+            $params[] = $datos['email'];
+        }
+        if (!empty($datos['password'])) {
+            $campos[] = "password = ?";
+            $params[] = password_hash($datos['password'], PASSWORD_BCRYPT, ['cost' => 12]);
+        }
+        if (isset($datos['rol'])) {
+            $campos[] = "rol = ?";
+            $params[] = $datos['rol'];
+        }
+        if (isset($datos['estado'])) {
+            $campos[] = "estado = ?";
+            $params[] = intval($datos['estado']);
+        }
+
+        if (empty($campos)) return false;
+
+        $params[] = $id;
+        $query = "UPDATE {$this->table} SET " . implode(', ', $campos) . " WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+
+        if ($stmt->execute($params)) {
+            $this->auditoria->registrar($this->table, $id, 'UPDATE', json_encode($actual), json_encode($datos));
+            return true;
+        }
         return false;
     }
 
@@ -88,6 +132,16 @@ class Usuario {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
+    }
+
+    /**
+     * Listar únicamente usuarios activos con rol de vendedor o supervisor
+     */
+    public function listarVendedores() {
+        $query = "SELECT id, nombre, email, rol FROM {$this->table} WHERE estado = 1 ORDER BY nombre ASC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 ?>

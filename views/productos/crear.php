@@ -1,7 +1,7 @@
 <?php
 require_once '../../config/init.php';
 
-$page_title = "Crear Nuevo Producto";
+$page_title = "Crear Nuevo Ítem (Producto, Servicio o Licencia)";
 
 // Generar token CSRF si no existe
 if (empty($_SESSION['csrf_token'])) {
@@ -29,122 +29,132 @@ ob_start();
             </div>
             <?php unset($_SESSION['error']); ?>
         <?php endif; ?>
-        <!-- Información de Ayuda -->
-        <div class="card mt-4">
-            <div class="card-header">
-                <h6 class="card-title mb-0">
-                    <i class="fas fa-info-circle me-2"></i>Información Importante
+
+        <div class="card">
+            <div class="card-header bg-white py-3">
+                <h6 class="card-title mb-0 fw-semibold text-dark">
+                    <i class="fas fa-plus-circle text-primary me-2"></i> Registrar Nuevo Ítem en Catálogo
                 </h6>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-barcode me-2 text-primary"></i>Código del Producto</h6>
-                        <p class="text-muted small">Use un código único que facilite la identificación del producto en el sistema.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <h6><i class="fas fa-exclamation-triangle me-2 text-warning"></i>Stock Mínimo</h6>
-                        <p class="text-muted small">El sistema alertará cuando el stock llegue a este nivel para realizar pedidos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title mb-0">
-                    <i class="fas fa-plus-circle me-2"></i>Nuevo Producto
-                </h5>
-            </div>
-            <div class="card-body">
+            <div class="card-body p-4">
                 <form id="form-producto" action="../../controllers/crear_producto.php" method="POST" novalidate>
                     <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     
-                    <div class="row">
-                        <!-- Información Básica -->
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Código del Producto <span class="text-danger">*</span></label>
-                            <input type="text" name="codigo" class="form-control" 
-                                    placeholder="Ej: PROD-001" required
-                                    pattern="[A-Za-z0-9\-_]+" 
-                                    maxlength="50"
-                                    title="Solo letras, números, guiones y guiones bajos">
-                            <div class="invalid-feedback">Por favor ingrese un código válido</div>
-                            <div class="form-text">Código único para identificar el producto</div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Nombre del Producto <span class="text-danger">*</span></label>
-                                <input type="text" name="nombre" class="form-control" 
-                                       placeholder="Ej: Laptop Dell Inspiron 15" 
-                                       required maxlength="255">
-                                <div class="invalid-feedback">Por favor ingrese un nombre válido</div>
-                            </div>
-
-                            
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Stock Inicial</label>
-                                <input type="number" name="stock" class="form-control" 
-                                       value="0" min="0" required>
-                                <div class="invalid-feedback">El stock no puede ser negativo</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Precio <span class="text-danger">*</span></label>
-                                <div class="input-group">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" name="precio" class="form-control" 
-                                           step="0.01" min="0.01" placeholder="0.00" 
-                                           required>
+                    <!-- Selección del Tipo de Ítem -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Tipo de Ítem <span class="text-danger">*</span></label>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="card h-100 border p-3 cursor-pointer text-center option-type-card active-type" onclick="seleccionarTipo('producto')" id="card-type-producto">
+                                    <input class="form-check-input d-none" type="radio" name="tipo" id="tipo_producto" value="producto" checked>
+                                    <div class="mb-2 text-primary fs-3"><i class="fas fa-box"></i></div>
+                                    <strong class="d-block text-dark small">Producto Físico</strong>
+                                    <small class="text-muted d-block" style="font-size: 0.72rem;">Inventario físico en almacén</small>
                                 </div>
-                                <div class="invalid-feedback">El precio debe ser mayor a 0</div>
                             </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Stock Mínimo</label>
-                                <input type="number" name="stock_minimo" class="form-control" 
-                                       value="0" min="0" required>
-                                <div class="invalid-feedback">El stock mínimo no puede ser negativo</div>
-                                <div class="form-text">Se generará alerta cuando el stock llegue a este nivel</div>
+                            <div class="col-md-4">
+                                <div class="card h-100 border p-3 cursor-pointer text-center option-type-card" onclick="seleccionarTipo('servicio')" id="card-type-servicio">
+                                    <input class="form-check-input d-none" type="radio" name="tipo" id="tipo_servicio" value="servicio">
+                                    <div class="mb-2 text-info fs-3"><i class="fas fa-tools"></i></div>
+                                    <strong class="d-block text-dark small">Servicio Profesional</strong>
+                                    <small class="text-muted d-block" style="font-size: 0.72rem;">Mano de obra, hora, proyecto</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card h-100 border p-3 cursor-pointer text-center option-type-card" onclick="seleccionarTipo('licencia')" id="card-type-licencia">
+                                    <input class="form-check-input d-none" type="radio" name="tipo" id="tipo_licencia" value="licencia">
+                                    <div class="mb-2 text-secondary fs-3"><i class="fas fa-key"></i></div>
+                                    <strong class="d-block text-dark small">Licencia / Digital</strong>
+                                    <small class="text-muted d-block" style="font-size: 0.72rem;">Software, clave o suscripción</small>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Datos Generales -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Código <span class="text-danger">*</span></label>
+                            <input type="text" name="codigo" class="form-control" 
+                                    placeholder="Ej: PROD-001 / SERV-01" required
+                                    pattern="[A-Za-z0-9\-_]+" 
+                                    maxlength="50">
+                            <div class="invalid-feedback">Por favor ingrese un código válido</div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Precio de Venta <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="number" name="precio" class="form-control" 
+                                       step="0.01" min="0.01" placeholder="0.00" 
+                                       required>
+                            </div>
+                            <div class="invalid-feedback">El precio debe ser mayor a 0</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre del Ítem <span class="text-danger">*</span></label>
+                        <input type="text" name="nombre" class="form-control" 
+                               placeholder="Ej: Mantenimiento Preventivo / Licencia CRM Anual" 
+                               required maxlength="255">
+                        <div class="invalid-feedback">Ingrese un nombre válido</div>
+                    </div>
+
+                    <!-- Sección de Inventario Físico (Solo para Productos) -->
+                    <div id="seccion-inventario" class="p-3 bg-light rounded mb-3 border border-light">
+                        <h6 class="fw-semibold text-dark mb-3 small"><i class="fas fa-warehouse me-1 text-primary"></i> Control de Inventario Físico</h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Stock Inicial</label>
+                                <input type="number" name="stock" id="input_stock" class="form-control" 
+                                       value="0" min="0">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Stock Mínimo Alerta</label>
+                                <input type="number" name="stock_minimo" id="input_stock_minimo" class="form-control" 
+                                       value="0" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="aviso-intangible" class="p-3 bg-light rounded mb-3 border border-light" style="display: none;">
+                        <small class="text-muted d-block"><i class="fas fa-info-circle me-1 text-info"></i> <strong>Ítem Intangible:</strong> Servicios y Licencias no requieren control de inventario o stock de almacén.</small>
                     </div>
 
                     <!-- Descripción -->
                     <div class="mb-3">
-                        <label class="form-label fw-semibold">Descripción</label>
-                        <textarea name="descripcion" class="form-control" rows="4" 
-                                  placeholder="Descripción detallada del producto, características, especificaciones..."
+                        <label class="form-label">Descripción</label>
+                        <textarea name="descripcion" class="form-control" rows="3" 
+                                  placeholder="Detalles del producto, alcance del servicio o términos de la licencia..."
                                   maxlength="500"></textarea>
-                        <div class="form-text"><span id="contador-descripcion">0</span>/500 caracteres</div>
                     </div>
 
                     <!-- Estado -->
                     <div class="mb-4">
-                        <label class="form-label fw-semibold">Estado del Producto</label>
-                        <div class="form-check">
+                        <label class="form-label d-block">Estado</label>
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="activo" id="activo_si" value="1" checked>
-                            <label class="form-check-label text-success" for="activo_si">
-                                <i class="fas fa-check-circle me-1"></i> Activo - Disponible para ventas
+                            <label class="form-check-label text-dark" for="activo_si">
+                                <i class="fas fa-check-circle text-success me-1"></i> Activo
                             </label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="activo" id="activo_no" value="0">
-                            <label class="form-check-label text-secondary" for="activo_no">
-                                <i class="fas fa-pause-circle me-1"></i> Inactivo - No disponible para ventas
+                            <label class="form-check-label text-muted" for="activo_no">
+                                <i class="fas fa-pause-circle text-secondary me-1"></i> Inactivo
                             </label>
                         </div>
                     </div>
 
                     <!-- Botones -->
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="listar.php" class="btn btn-outline-secondary me-md-2">
-                            <i class="fas fa-times me-2"></i> Cancelar
+                    <div class="d-flex justify-content-end gap-2 pt-3 border-top border-light">
+                        <a href="listar.php" class="btn btn-outline-secondary">
+                            Cancelar
                         </a>
                         <button type="submit" class="btn btn-primary" id="btn-guardar">
-                            <i class="fas fa-save me-2"></i> Guardar Producto
+                            <i class="fas fa-save me-1"></i> Guardar Ítem
                         </button>
                     </div>
                 </form>
@@ -153,121 +163,90 @@ ob_start();
     </div>
 </div>
 
-<script>
-    // Contador de caracteres para descripción
-    document.querySelector('textarea[name="descripcion"]').addEventListener('input', function() {
-        const contador = document.getElementById('contador-descripcion');
-        contador.textContent = this.value.length;
-    });
-
-    // Validación en tiempo real del código
-    document.querySelector('input[name="codigo"]').addEventListener('blur', function() {
-        const codigo = this.value.trim();
-        if (codigo && this.validity.valid) {
-            fetch(`../../controllers/verificar_codigo.php?codigo=${encodeURIComponent(codigo)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.disponible) {
-                        mostrarAlerta('Este código ya está en uso por otro producto', 'warning');
-                        this.focus();
-                        this.setCustomValidity('Código ya en uso');
-                    } else {
-                        this.setCustomValidity('');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error al verificar código:', error);
-                });
-        }
-    });
-
-    // Envío del formulario
-    document.getElementById('form-producto').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        if (!this.checkValidity()) {
-            e.stopPropagation();
-            this.classList.add('was-validated');
-            return;
-        }
-
-        const btnGuardar = document.getElementById('btn-guardar');
-        const textoOriginal = btnGuardar.innerHTML;
-        btnGuardar.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Guardando...';
-        btnGuardar.disabled = true;
-
-        const formData = new FormData(this);
-
-        fetch(this.action, {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.success) {
-                mostrarAlerta('Producto creado exitosamente', 'success');
-                setTimeout(() => {
-                    window.location.href = `detalle.php?id=${data.producto_id}`;
-                }, 1500);
-            } else {
-                mostrarAlerta(data.message, 'danger');
-                btnGuardar.innerHTML = textoOriginal;
-                btnGuardar.disabled = false;
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            mostrarAlerta('Error de conexión al crear el producto', 'danger');
-            btnGuardar.innerHTML = textoOriginal;
-            btnGuardar.disabled = false;
-        });
-    });
-
-    function mostrarAlerta(mensaje, tipo = 'success') {
-        const alerta = document.createElement('div');
-        alerta.className = `alert alert-${tipo} alert-dismissible fade show`;
-        alerta.innerHTML = `
-            <i class="fas fa-${tipo === 'success' ? 'check' : 'exclamation'}-circle me-2"></i>
-            ${mensaje}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        `;
-        
-        // Insertar al inicio del card-body
-        const cardBody = document.querySelector('.card-body');
-        cardBody.insertBefore(alerta, cardBody.firstChild);
-        
-        setTimeout(() => {
-            if (alerta.parentNode) {
-                alerta.remove();
-            }
-        }, 5000);
-    }
-
-    // Validación básica de campos
-    document.querySelectorAll('input[required]').forEach(input => {
-        input.addEventListener('blur', function() {
-            this.classList.add('touched');
-            if (!this.validity.valid) {
-                this.classList.add('is-invalid');
-            } else {
-                this.classList.remove('is-invalid');
-            }
-        });
-    });
-</script>
-
 <style>
-    .form-control.touched:invalid {
-        border-color: #dc3545;
-    }
-
-    .form-control.touched:valid {
-        border-color: #198754;
-    }
+.option-type-card {
+    transition: all 0.2s ease-in-out;
+    border-radius: 8px;
+}
+.option-type-card:hover {
+    border-color: #2563eb !important;
+    background-color: #f8fafc;
+}
+.option-type-card.active-type {
+    border-color: #2563eb !important;
+    background-color: #eff6ff;
+    box-shadow: 0 0 0 1px #2563eb;
+}
 </style>
 
+<script>
+function seleccionarTipo(tipo) {
+    document.querySelectorAll('.option-type-card').forEach(card => card.classList.remove('active-type'));
+    const targetRadio = document.getElementById('tipo_' + tipo);
+    if (targetRadio) {
+        targetRadio.checked = true;
+    }
+    const targetCard = document.getElementById('card-type-' + tipo);
+    if (targetCard) {
+        targetCard.classList.add('active-type');
+    }
+
+    const secInventario = document.getElementById('seccion-inventario');
+    const avisoIntangible = document.getElementById('aviso-intangible');
+
+    if (tipo === 'producto') {
+        secInventario.style.display = 'block';
+        avisoIntangible.style.display = 'none';
+    } else {
+        secInventario.style.display = 'none';
+        avisoIntangible.style.display = 'block';
+        document.getElementById('input_stock').value = 0;
+        document.getElementById('input_stock_minimo').value = 0;
+    }
+}
+
+document.getElementById('form-producto').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (!this.checkValidity()) {
+        e.stopPropagation();
+        this.classList.add('was-validated');
+        return;
+    }
+
+    const btnGuardar = document.getElementById('btn-guardar');
+    const textoOriginal = btnGuardar.innerHTML;
+    btnGuardar.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Guardando...';
+    btnGuardar.disabled = true;
+
+    const formData = new FormData(this);
+
+    fetch(this.action, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            window.location.href = `detalle.php?id=${data.producto_id}`;
+        } else {
+            alert(data.message || 'Error al crear ítem');
+            btnGuardar.innerHTML = textoOriginal;
+            btnGuardar.disabled = false;
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error de conexión');
+        btnGuardar.innerHTML = textoOriginal;
+        btnGuardar.disabled = false;
+    });
+});
+</script>
+
 <?php
-    $content = ob_get_clean();
-    include '../layouts/header.php';
-    echo $content;
-    include '../layouts/footer.php';
+$content = ob_get_clean();
+include '../layouts/header.php';
+echo $content;
+include '../layouts/footer.php';
+?>

@@ -21,7 +21,7 @@ try {
     // Validar datos requeridos
     $required_fields = ['cliente_id', 'nombre', 'email', 'telefono', 'direccion', 'activo'];
     foreach ($required_fields as $field) {
-        if (empty($_POST[$field])) {
+        if (!array_key_exists($field, $_POST) || ($field !== 'activo' && trim((string) $_POST[$field]) === '')) {
             throw new Exception("El campo {$field} es requerido");
         }
     }
@@ -30,8 +30,12 @@ try {
     $nombre = trim($_POST['nombre']);
     $email = trim($_POST['email']);
     $telefono = trim($_POST['telefono'] ?? '');
-    $direccion = floatval($_POST['direccion']);
-    $activo = isset($_POST['activo']) ? intval($_POST['activo']) : 0;
+    $direccion = trim($_POST['direccion']);
+    $activo = (int) $_POST['activo'];
+
+    if (!in_array($activo, [0, 1], true)) {
+        throw new Exception('El estado del cliente no es válido');
+    }
 
     // Validaciones adicionales
     if (strlen($nombre) > 255) {
@@ -39,21 +43,15 @@ try {
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Correo inválido.";
+        throw new Exception('El correo electrónico no es válido');
     }
 
-    if (!preg_match("/^\+?[\d\s]{10,15}$/", $telefono)) {
-        echo "El número de teléfono no tiene un formato válido.";
-    } else {
-        echo "Teléfono válido.";
+    if (!preg_match("/^\+?[\d\s-]{10,20}$/", $telefono)) {
+        throw new Exception('El número de teléfono no tiene un formato válido');
     }
 
-    if (empty($direccion)) {
-        echo "La dirección no puede estar vacía.";
-    }elseif (!preg_match("/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ#.,\s-]+$/", $direccion)) {
-        echo "La dirección contiene caracteres no válidos.";
-    } else {
-        echo "Dirección válida.";
+    if (!preg_match("/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ#.,\s-]+$/u", $direccion)) {
+        throw new Exception('La dirección contiene caracteres no válidos');
     }
 
     // Conectar a la base de datos
@@ -64,7 +62,7 @@ try {
     $clienteModel = new Cliente($db);
     $cliente_existente = $clienteModel->obtenerPorId($cliente_id);
     
-    if (!$producto_existente) {
+    if (!$cliente_existente) {
         throw new Exception('Cliente no encontrado');
     }
 
