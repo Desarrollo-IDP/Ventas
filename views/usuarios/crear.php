@@ -2,6 +2,8 @@
 require_once '../../config/init.php';
 require_once '../../models/Usuario.php';
 
+SecurityService::requiredRole('admin');
+
 $id = intval($_GET['id'] ?? 0);
 $usuario = null;
 

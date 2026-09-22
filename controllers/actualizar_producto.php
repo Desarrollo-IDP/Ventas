@@ -19,7 +19,7 @@ try {
     }
 
     // Validar datos requeridos
-    $required_fields = ['producto_id', 'nombre', 'codigo', 'precio'];
+    $required_fields = ['producto_id', 'nombre', 'codigo'];
     foreach ($required_fields as $field) {
         if (empty($_POST[$field])) {
             throw new Exception("El campo {$field} es requerido");
@@ -31,7 +31,6 @@ try {
     $nombre = trim($_POST['nombre']);
     $codigo = trim($_POST['codigo']);
     $descripcion = trim($_POST['descripcion'] ?? '');
-    $precio = floatval($_POST['precio']);
     $stock = intval($_POST['stock'] ?? 0);
     $stock_minimo = intval($_POST['stock_minimo'] ?? 0);
     $activo = isset($_POST['activo']) ? intval($_POST['activo']) : 0;
@@ -52,10 +51,6 @@ try {
 
     if (!preg_match('/^[A-Za-z0-9\-_]+$/', $codigo)) {
         throw new Exception('El código solo puede contener letras, números, guiones y guiones bajos');
-    }
-
-    if ($precio <= 0) {
-        throw new Exception('El precio debe ser mayor a 0');
     }
 
     if ($stock < 0) {
@@ -94,7 +89,6 @@ try {
         'nombre' => $nombre,
         'codigo' => $codigo,
         'descripcion' => $descripcion,
-        'precio' => $precio,
         'stock' => $stock,
         'stock_minimo' => $stock_minimo,
         'activo' => $activo,

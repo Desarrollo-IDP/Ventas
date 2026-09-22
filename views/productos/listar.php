@@ -194,7 +194,6 @@ ob_start();
                         <th width="100">Código</th>
                         <th width="120">Tipo</th>
                         <th>Nombre / Descripción</th>
-                        <th width="120" class="text-end">Precio</th>
                         <th width="130" class="text-center">Stock / Inv.</th>
                         <th width="90" class="text-center">Estado</th>
                         <th width="120" class="text-end">Acciones</th>
@@ -226,9 +225,6 @@ ob_start();
                                         </a>
                                     </div>
                                     <small class="text-muted d-block text-truncate" style="max-width: 320px;"><?php echo htmlspecialchars($producto['descripcion'] ?? ''); ?></small>
-                                </td>
-                                <td class="text-end fw-bold text-dark">
-                                    $<?php echo number_format($producto['precio'], 2); ?>
                                 </td>
                                 <td class="text-center">
                                     <?php if ($tipo_item !== 'producto'): ?>
@@ -272,7 +268,7 @@ ob_start();
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="7" class="text-center py-5">
+                            <td colspan="6" class="text-center py-5">
                                 <i class="fas fa-box-open fa-2x text-muted mb-3 opacity-50"></i>
                                 <h6 class="text-muted small">No hay ítems registrados en el catálogo</h6>
                                 <a href="crear.php" class="btn btn-sm btn-primary mt-2">

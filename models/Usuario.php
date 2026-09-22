@@ -128,7 +128,7 @@ class Usuario {
      * Listar todos los usuarios
      */
     public function listar() {
-        $query = "SELECT id, nombre, email, rol, estado, ultimo_acceso FROM {$this->table} ORDER BY nombre ASC";
+        $query = "SELECT id, nombre, email, rol, estado, ultimo_acceso FROM {$this->table} WHERE rol <> 'admin' ORDER BY nombre ASC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
@@ -138,7 +138,7 @@ class Usuario {
      * Listar únicamente usuarios activos con rol de vendedor o supervisor
      */
     public function listarVendedores() {
-        $query = "SELECT id, nombre, email, rol FROM {$this->table} WHERE estado = 1 ORDER BY nombre ASC";
+        $query = "SELECT id, nombre, email, rol FROM {$this->table} WHERE estado = 1 AND rol <> 'admin' ORDER BY nombre ASC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

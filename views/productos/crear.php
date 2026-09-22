@@ -73,7 +73,7 @@ ob_start();
 
                     <!-- Datos Generales -->
                     <div class="row g-3 mb-3">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="form-label">Código <span class="text-danger">*</span></label>
                             <input type="text" name="codigo" class="form-control" 
                                     placeholder="Ej: PROD-001 / SERV-01" required
@@ -82,16 +82,6 @@ ob_start();
                             <div class="invalid-feedback">Por favor ingrese un código válido</div>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label">Precio de Venta <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" name="precio" class="form-control" 
-                                       step="0.01" min="0.01" placeholder="0.00" 
-                                       required>
-                            </div>
-                            <div class="invalid-feedback">El precio debe ser mayor a 0</div>
-                        </div>
                     </div>
 
                     <div class="mb-3">

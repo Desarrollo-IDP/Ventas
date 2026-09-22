@@ -2,6 +2,8 @@
 require_once '../../config/init.php';
 require_once '../../models/Usuario.php';
 
+SecurityService::requiredRole('admin');
+
 $page_title = "Gestión de Usuarios y Roles";
 $page_actions = '
     <a href="crear.php" class="btn btn-primary">

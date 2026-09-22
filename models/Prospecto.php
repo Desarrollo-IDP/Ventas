@@ -1,5 +1,6 @@
 <?php
 require_once 'Auditoria.php';
+require_once __DIR__ . '/HistorialEtapa.php';
 
 class Prospecto {
     public const ESTADOS = ['lead', 'contacto', 'conectado', 'prospecto', 'oportunidad', 'ganada', 'perdida', 'no_viable'];
@@ -36,9 +37,9 @@ class Prospecto {
     }
 
     public function listarConFiltros($filtros = []) {
-        $query = "SELECT p.*, u.nombre as vendedor_nombre 
+        $query = "SELECT p.*, u.nombre as vendedor_nombre
                   FROM {$this->table} p 
-                  LEFT JOIN usuarios u ON p.vendedor_id = u.id 
+                  LEFT JOIN usuarios u ON p.vendedor_id = u.id AND u.rol <> 'admin'
                   WHERE 1=1";
         $params = [];
 
@@ -89,7 +90,7 @@ class Prospecto {
 
     public function listarPaginado($filtros = [], $pagina = 1, $porPagina = 20) {
         $query = "SELECT p.*, u.nombre as vendedor_nombre FROM {$this->table} p
-                  LEFT JOIN usuarios u ON p.vendedor_id = u.id WHERE 1=1";
+                  LEFT JOIN usuarios u ON p.vendedor_id = u.id AND u.rol <> 'admin' WHERE 1=1";
         $params = [];
         $this->agregarFiltros($query, $params, $filtros);
         $offset = max(0, ($pagina - 1) * $porPagina);
@@ -116,9 +117,9 @@ class Prospecto {
     }
 
     public function obtenerPorId($id) {
-        $query = "SELECT p.*, u.nombre as vendedor_nombre 
+        $query = "SELECT p.*, u.nombre as vendedor_nombre
                   FROM {$this->table} p 
-                  LEFT JOIN usuarios u ON p.vendedor_id = u.id 
+                  LEFT JOIN usuarios u ON p.vendedor_id = u.id AND u.rol <> 'admin'
                   WHERE p.id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
@@ -130,21 +131,27 @@ class Prospecto {
             throw new InvalidArgumentException('Ya existe un registro con el mismo correo, teléfono o empresa y contacto.');
         }
 
-          $query = "INSERT INTO {$this->table} (nombre, empresa, email, telefono, ubicacion, informes_llamada, cargo_contacto, origen, estado, vendedor_id, notas, fecha_primer_contacto)
-              VALUES (:nombre, :empresa, :email, :telefono, :ubicacion, :informes_llamada, :cargo_contacto, :origen, :estado, :vendedor_id, :notas, :fecha_primer_contacto)";
+        $query = "INSERT INTO {$this->table} (folio, nombre, empresa, email, telefono, whatsapp, ubicacion, informes_llamada, cargo_contacto, origen, estado, valor_estimado, probabilidad_cierre, fecha_estimada_cierre, vendedor_id, notas, fecha_primer_contacto)
+              VALUES (:folio, :nombre, :empresa, :email, :telefono, :whatsapp, :ubicacion, :informes_llamada, :cargo_contacto, :origen, :estado, :valor_estimado, :probabilidad_cierre, :fecha_estimada_cierre, :vendedor_id, :notas, :fecha_primer_contacto)";
         
         $stmt = $this->conn->prepare($query);
+        $estadoInicial = $this->estadoValido($datos['estado'] ?? 'lead');
         
         $params = [
+            ':folio' => !empty($datos['folio']) ? $datos['folio'] : null,
             ':nombre' => $datos['nombre'],
             ':empresa' => $datos['empresa'] ?? null,
             ':email' => $datos['email'] ?? null,
             ':telefono' => $datos['telefono'] ?? null,
+            ':whatsapp' => $datos['whatsapp'] ?? null,
             ':ubicacion' => $datos['ubicacion'] ?? null,
             ':informes_llamada' => $datos['informes_llamada'] ?? null,
             ':cargo_contacto' => $datos['cargo_contacto'] ?? null,
             ':origen' => $datos['origen'] ?? 'Directo',
-            ':estado' => $this->estadoValido($datos['estado'] ?? 'lead'),
+            ':estado' => $estadoInicial,
+            ':valor_estimado' => !empty($datos['valor_estimado']) ? $datos['valor_estimado'] : 0.00,
+            ':probabilidad_cierre' => isset($datos['probabilidad_cierre']) ? (int)$datos['probabilidad_cierre'] : 10,
+            ':fecha_estimada_cierre' => !empty($datos['fecha_estimada_cierre']) ? $datos['fecha_estimada_cierre'] : null,
             ':vendedor_id' => !empty($datos['vendedor_id']) ? $datos['vendedor_id'] : null,
             ':notas' => $datos['notas'] ?? null,
             ':fecha_primer_contacto' => !empty($datos['fecha_primer_contacto']) ? $datos['fecha_primer_contacto'] : date('Y-m-d')
@@ -152,6 +159,15 @@ class Prospecto {
 
         if ($stmt->execute($params)) {
             $nuevoId = $this->conn->lastInsertId();
+            if (empty($datos['folio'])) {
+                $folioAuto = 'LEAD-' . str_pad($nuevoId, 4, '0', STR_PAD_LEFT);
+                $this->conn->query("UPDATE {$this->table} SET folio = '{$folioAuto}' WHERE id = {$nuevoId}");
+            }
+            // Registrar etapa inicial en historial_etapas
+            if (class_exists('HistorialEtapa')) {
+                $hist = new HistorialEtapa($this->conn);
+                $hist->registrarCambio($nuevoId, null, $estadoInicial, $datos['vendedor_id'] ?? null, 'Registro inicial de prospecto');
+            }
             $this->auditoria->registrar($this->table, $nuevoId, 'INSERT', null, json_encode($datos));
             return $nuevoId;
         }
@@ -170,7 +186,23 @@ class Prospecto {
             ':nombre' => trim($datos['nombre'] ?? ''),
             ':empresa' => trim($datos['empresa'] ?? '')
         ]);
-        return (int) $stmt->fetchColumn() > 0;
+        if ((int) $stmt->fetchColumn() > 0) {
+            return true;
+        }
+
+        $queryCliente = "SELECT COUNT(*) FROM clientes
+                         WHERE (email IS NOT NULL AND email <> '' AND email = :email)
+                            OR (telefono IS NOT NULL AND telefono <> '' AND telefono = :telefono)
+                            OR (empresa IS NOT NULL AND empresa <> '' AND nombre = :nombre AND empresa = :empresa)";
+        $stmtCliente = $this->conn->prepare($queryCliente);
+        $stmtCliente->execute([
+            ':email' => trim($datos['email'] ?? ''),
+            ':telefono' => trim($datos['telefono'] ?? ''),
+            ':nombre' => trim($datos['nombre'] ?? ''),
+            ':empresa' => trim($datos['empresa'] ?? '')
+        ]);
+
+        return (int) $stmtCliente->fetchColumn() > 0;
     }
 
     public function actualizar($id, $datos) {
@@ -183,7 +215,7 @@ class Prospecto {
             $datos['estado'] = $this->estadoValido($datos['estado']);
         }
         
-        $permitidos = ['nombre', 'empresa', 'email', 'telefono', 'ubicacion', 'informes_llamada', 'cargo_contacto', 'origen', 'estado', 'vendedor_id', 'notas', 'fecha_primer_contacto'];
+        $permitidos = ['folio', 'nombre', 'empresa', 'email', 'telefono', 'whatsapp', 'ubicacion', 'informes_llamada', 'cargo_contacto', 'origen', 'estado', 'valor_estimado', 'probabilidad_cierre', 'fecha_estimada_cierre', 'vendedor_id', 'notas', 'fecha_primer_contacto', 'motivo_perdida', 'detalle_perdida', 'cliente_convertido_id', 'fecha_conversion'];
         foreach ($permitidos as $campo) {
             if (array_key_exists($campo, $datos)) {
                 $campos[] = "{$campo} = ?";
@@ -198,14 +230,21 @@ class Prospecto {
         $stmt = $this->conn->prepare($query);
 
         if ($stmt->execute($params)) {
+            // Si el estado cambió, registrar en historial_etapas
+            if (!empty($datos['estado']) && $datos['estado'] !== ($prospecto_actual['estado'] ?? '')) {
+                if (class_exists('HistorialEtapa')) {
+                    $hist = new HistorialEtapa($this->conn);
+                    $hist->registrarCambio($id, $prospecto_actual['estado'] ?? null, $datos['estado'], $datos['vendedor_id'] ?? ($prospecto_actual['vendedor_id'] ?? null), $datos['motivo_cambio'] ?? null);
+                }
+            }
             $this->auditoria->registrar($this->table, $id, 'UPDATE', json_encode($prospecto_actual), json_encode($datos));
             return true;
         }
         return false;
     }
 
-    public function cambiarEstado($id, $nuevoEstado) {
-        return $this->actualizar($id, ['estado' => $nuevoEstado]);
+    public function cambiarEstado($id, $nuevoEstado, $motivoCambio = null) {
+        return $this->actualizar($id, ['estado' => $nuevoEstado, 'motivo_cambio' => $motivoCambio]);
     }
 
     private function estadoValido($estado) {
@@ -232,26 +271,47 @@ class Prospecto {
         $prospecto = $this->obtenerPorId($prospectoId);
         if (!$prospecto) return false;
 
-        // Crear cliente
-        $queryCliente = "INSERT INTO clientes (nombre, email, telefono, direccion, activo, prospecto_id, vendedor_asignado_id)
-                         VALUES (:nombre, :email, :telefono, :direccion, 1, :prospecto_id, :vendedor_asignado_id)";
+        $queryDuplicado = "SELECT COUNT(*) FROM clientes
+                           WHERE (email IS NOT NULL AND email <> '' AND email = :email)
+                              OR (telefono IS NOT NULL AND telefono <> '' AND telefono = :telefono)
+                              OR (empresa IS NOT NULL AND empresa <> '' AND nombre = :nombre AND empresa = :empresa)";
+        $stmtDuplicado = $this->conn->prepare($queryDuplicado);
+        $stmtDuplicado->execute([
+            ':email' => trim($prospecto['email'] ?? ''),
+            ':telefono' => trim($prospecto['telefono'] ?? ($prospecto['whatsapp'] ?? '')),
+            ':nombre' => trim($prospecto['nombre'] ?? ''),
+            ':empresa' => trim($prospecto['empresa'] ?? '')
+        ]);
+        if ((int) $stmtDuplicado->fetchColumn() > 0) {
+            throw new InvalidArgumentException('Ya existe un cliente con los mismos datos de contacto.');
+        }
+
+        // 1. Crear cliente formalizado
+        $queryCliente = "INSERT INTO clientes (nombre, empresa, email, telefono, direccion, activo, prospecto_id, vendedor_asignado_id, fecha_conversion, etapa_crm)
+                         VALUES (:nombre, :empresa, :email, :telefono, :direccion, 1, :prospecto_id, :vendedor_asignado_id, CURDATE(), 'activo')";
         $stmtCliente = $this->conn->prepare($queryCliente);
         
         $stmtCliente->execute([
-            ':nombre' => $prospecto['empresa'] ? ($prospecto['nombre'] . ' (' . $prospecto['empresa'] . ')') : $prospecto['nombre'],
+            ':nombre' => $prospecto['nombre'],
+            ':empresa' => $prospecto['empresa'] ?? null,
             ':email' => $prospecto['email'] ?? 'sin_email@pos.com',
-            ':telefono' => $prospecto['telefono'] ?? '',
-            ':direccion' => $prospecto['notas'] ?? '',
+            ':telefono' => $prospecto['telefono'] ?? ($prospecto['whatsapp'] ?? ''),
+            ':direccion' => $prospecto['ubicacion'] ?? ($prospecto['notas'] ?? ''),
             ':prospecto_id' => $prospectoId,
             ':vendedor_asignado_id' => $prospecto['vendedor_id']
         ]);
 
         $clienteId = $this->conn->lastInsertId();
 
-        // Convertir un prospecto en cliente cierra la oportunidad como ganada.
-        $this->cambiarEstado($prospectoId, 'ganada');
+        // 2. Cerrar prospecto como ganado y registrar fecha_conversion
+        $this->actualizar($prospectoId, [
+            'estado' => 'ganada',
+            'cliente_convertido_id' => $clienteId,
+            'fecha_conversion' => date('Y-m-d H:i:s'),
+            'motivo_cambio' => 'Conversión a cliente formal'
+        ]);
 
-        // Vincular seguimientos existentes del prospecto al cliente
+        // 3. Vincular seguimientos del prospecto al cliente
         $stmtSeg = $this->conn->prepare("UPDATE seguimientos_llamadas SET cliente_id = ? WHERE prospecto_id = ?");
         $stmtSeg->execute([$clienteId, $prospectoId]);
 

@@ -2791,3 +2791,591 @@ Stack trace:
 [17-Sep-2026 13:09:39 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.019s
 [17-Sep-2026 13:09:50 America/Mexico_City] Sistema iniciado - 2026-09-17 13:09:50
 [17-Sep-2026 13:09:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.038s
+[21-Sep-2026 09:22:26 America/Mexico_City] Sistema iniciado - 2026-09-21 09:22:26
+[21-Sep-2026 09:22:27 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[21-Sep-2026 09:22:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.633s
+[21-Sep-2026 09:22:39 America/Mexico_City] Sistema iniciado - 2026-09-21 09:22:39
+[21-Sep-2026 09:22:40 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.751s
+[21-Sep-2026 09:22:40 America/Mexico_City] Sistema iniciado - 2026-09-21 09:22:40
+[21-Sep-2026 09:22:40 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 09:22:40 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.079s
+[21-Sep-2026 09:22:40 America/Mexico_City] Sistema iniciado - 2026-09-21 09:22:40
+[21-Sep-2026 09:22:40 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.151s
+[21-Sep-2026 09:22:48 America/Mexico_City] Sistema iniciado - 2026-09-21 09:22:48
+[21-Sep-2026 09:22:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.046s
+[21-Sep-2026 09:28:19 America/Mexico_City] Sistema iniciado - 2026-09-21 09:28:19
+[21-Sep-2026 09:28:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.075s
+[21-Sep-2026 09:28:20 America/Mexico_City] Sistema iniciado - 2026-09-21 09:28:20
+[21-Sep-2026 09:28:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.079s
+[21-Sep-2026 09:28:23 America/Mexico_City] Sistema iniciado - 2026-09-21 09:28:23
+[21-Sep-2026 09:28:23 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[21-Sep-2026 09:35:54 America/Mexico_City] Sistema iniciado - 2026-09-21 09:35:54
+[21-Sep-2026 09:35:54 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.097s
+[21-Sep-2026 09:36:10 America/Mexico_City] Sistema iniciado - 2026-09-21 09:36:10
+[21-Sep-2026 09:36:10 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.053s
+[21-Sep-2026 09:36:21 America/Mexico_City] Sistema iniciado - 2026-09-21 09:36:21
+[21-Sep-2026 09:36:21 America/Mexico_City] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'tabla' in 'where clause' in C:\Users\Elisa GC\.gemini\antigravity\brain\c30a2e0d-38dd-4359-b0fa-4c4281daf61c\scratch\check_inserted.php:6
+Stack trace:
+#0 C:\Users\Elisa GC\.gemini\antigravity\brain\c30a2e0d-38dd-4359-b0fa-4c4281daf61c\scratch\check_inserted.php(6): PDO->exec('DELETE FROM aud...')
+#1 {main}
+  thrown in C:\Users\Elisa GC\.gemini\antigravity\brain\c30a2e0d-38dd-4359-b0fa-4c4281daf61c\scratch\check_inserted.php on line 6
+[21-Sep-2026 09:36:21 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.066s
+[21-Sep-2026 09:36:27 America/Mexico_City] Sistema iniciado - 2026-09-21 09:36:27
+[21-Sep-2026 09:36:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.055s
+[21-Sep-2026 09:39:07 America/Mexico_City] Sistema iniciado - 2026-09-21 09:39:07
+[21-Sep-2026 09:39:07 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.067s
+[21-Sep-2026 09:39:14 America/Mexico_City] Sistema iniciado - 2026-09-21 09:39:14
+[21-Sep-2026 09:39:14 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.081s
+[21-Sep-2026 09:39:16 America/Mexico_City] Sistema iniciado - 2026-09-21 09:39:16
+[21-Sep-2026 09:39:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.101s
+[21-Sep-2026 09:42:20 America/Mexico_City] Sistema iniciado - 2026-09-21 09:42:20
+[21-Sep-2026 09:42:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[21-Sep-2026 09:42:35 America/Mexico_City] Sistema iniciado - 2026-09-21 09:42:35
+[21-Sep-2026 09:42:35 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.054s
+[21-Sep-2026 09:42:43 America/Mexico_City] Sistema iniciado - 2026-09-21 09:42:43
+[21-Sep-2026 09:42:43 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.03s
+[21-Sep-2026 09:42:59 America/Mexico_City] Sistema iniciado - 2026-09-21 09:42:59
+[21-Sep-2026 09:42:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.048s
+[21-Sep-2026 09:43:01 America/Mexico_City] Sistema iniciado - 2026-09-21 09:43:01
+[21-Sep-2026 09:43:01 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.026s
+[21-Sep-2026 09:43:05 America/Mexico_City] Sistema iniciado - 2026-09-21 09:43:05
+[21-Sep-2026 09:43:05 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.027s
+[21-Sep-2026 09:43:09 America/Mexico_City] Sistema iniciado - 2026-09-21 09:43:09
+[21-Sep-2026 09:43:09 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.032s
+[21-Sep-2026 09:43:16 America/Mexico_City] Sistema iniciado - 2026-09-21 09:43:16
+[21-Sep-2026 09:43:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[21-Sep-2026 09:44:46 America/Mexico_City] Sistema iniciado - 2026-09-21 09:44:46
+[21-Sep-2026 09:44:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.044s
+[21-Sep-2026 09:51:58 America/Mexico_City] Sistema iniciado - 2026-09-21 09:51:58
+[21-Sep-2026 09:51:58 America/Mexico_City] PHP Fatal error:  Cannot redeclare normalizarEncabezado() (previously declared in C:\xampp\htdocs\Punto-de-venta\controllers\importar_leads.php:10) in C:\xampp\htdocs\Punto-de-venta\controllers\importar_leads.php on line 20
+[21-Sep-2026 09:51:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.16s
+[21-Sep-2026 09:52:14 America/Mexico_City] Sistema iniciado - 2026-09-21 09:52:14
+[21-Sep-2026 09:52:14 America/Mexico_City] Sistema iniciado - 2026-09-21 09:52:14
+[21-Sep-2026 09:52:14 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.16s
+[21-Sep-2026 09:52:15 America/Mexico_City] Sistema iniciado - 2026-09-21 09:52:15
+[21-Sep-2026 09:52:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.142s
+[21-Sep-2026 09:52:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 1.426s
+[21-Sep-2026 09:54:23 America/Mexico_City] Sistema iniciado - 2026-09-21 09:54:23
+[21-Sep-2026 09:54:24 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[21-Sep-2026 09:54:24 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.625s
+[21-Sep-2026 09:54:29 America/Mexico_City] Sistema iniciado - 2026-09-21 09:54:29
+[21-Sep-2026 09:54:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.542s
+[21-Sep-2026 09:54:30 America/Mexico_City] Sistema iniciado - 2026-09-21 09:54:30
+[21-Sep-2026 09:54:30 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 09:54:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.058s
+[21-Sep-2026 09:54:30 America/Mexico_City] Sistema iniciado - 2026-09-21 09:54:30
+[21-Sep-2026 09:54:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[21-Sep-2026 09:54:36 America/Mexico_City] Sistema iniciado - 2026-09-21 09:54:36
+[21-Sep-2026 09:54:36 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.09s
+[21-Sep-2026 09:55:56 America/Mexico_City] Sistema iniciado - 2026-09-21 09:55:56
+[21-Sep-2026 09:55:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[21-Sep-2026 09:55:58 America/Mexico_City] Sistema iniciado - 2026-09-21 09:55:58
+[21-Sep-2026 09:55:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[21-Sep-2026 09:56:27 America/Mexico_City] Sistema iniciado - 2026-09-21 09:56:27
+[21-Sep-2026 09:56:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.055s
+[21-Sep-2026 09:59:26 America/Mexico_City] Sistema iniciado - 2026-09-21 09:59:26
+[21-Sep-2026 09:59:26 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[21-Sep-2026 09:59:48 America/Mexico_City] Sistema iniciado - 2026-09-21 09:59:48
+[21-Sep-2026 09:59:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.06s
+[21-Sep-2026 10:03:53 America/Mexico_City] Sistema iniciado - 2026-09-21 10:03:53
+[21-Sep-2026 10:03:54 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[21-Sep-2026 10:04:40 America/Mexico_City] Sistema iniciado - 2026-09-21 10:04:40
+[21-Sep-2026 10:04:40 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.07s
+[21-Sep-2026 10:04:42 America/Mexico_City] Sistema iniciado - 2026-09-21 10:04:42
+[21-Sep-2026 10:04:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[21-Sep-2026 10:05:24 America/Mexico_City] Sistema iniciado - 2026-09-21 10:05:24
+[21-Sep-2026 10:05:24 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[21-Sep-2026 10:06:14 America/Mexico_City] Sistema iniciado - 2026-09-21 10:06:14
+[21-Sep-2026 10:06:14 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.09s
+[21-Sep-2026 10:06:16 America/Mexico_City] Sistema iniciado - 2026-09-21 10:06:16
+[21-Sep-2026 10:06:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.027s
+[21-Sep-2026 10:06:19 America/Mexico_City] Sistema iniciado - 2026-09-21 10:06:19
+[21-Sep-2026 10:06:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[21-Sep-2026 10:06:35 America/Mexico_City] Sistema iniciado - 2026-09-21 10:06:35
+[21-Sep-2026 10:06:35 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[21-Sep-2026 10:07:16 America/Mexico_City] Sistema iniciado - 2026-09-21 10:07:16
+[21-Sep-2026 10:07:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[21-Sep-2026 10:07:22 America/Mexico_City] Sistema iniciado - 2026-09-21 10:07:22
+[21-Sep-2026 10:07:22 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.036s
+[21-Sep-2026 10:07:34 America/Mexico_City] Sistema iniciado - 2026-09-21 10:07:34
+[21-Sep-2026 10:07:34 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[21-Sep-2026 10:07:40 America/Mexico_City] Sistema iniciado - 2026-09-21 10:07:40
+[21-Sep-2026 10:07:40 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.032s
+[21-Sep-2026 10:07:46 America/Mexico_City] Sistema iniciado - 2026-09-21 10:07:46
+[21-Sep-2026 10:07:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.032s
+[21-Sep-2026 10:08:25 America/Mexico_City] Sistema iniciado - 2026-09-21 10:08:25
+[21-Sep-2026 10:08:25 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.069s
+[21-Sep-2026 10:08:40 America/Mexico_City] Sistema iniciado - 2026-09-21 10:08:40
+[21-Sep-2026 10:08:41 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.023s
+[21-Sep-2026 10:08:42 America/Mexico_City] Sistema iniciado - 2026-09-21 10:08:42
+[21-Sep-2026 10:08:42 America/Mexico_City] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\Punto-de-venta\views\reportes\index.php on line 232
+[21-Sep-2026 10:08:42 America/Mexico_City] PHP Deprecated:  number_format(): Passing null to parameter #1 ($num) of type float is deprecated in C:\xampp\htdocs\Punto-de-venta\views\reportes\index.php on line 234
+[21-Sep-2026 10:08:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[21-Sep-2026 10:09:13 America/Mexico_City] Sistema iniciado - 2026-09-21 10:09:13
+[21-Sep-2026 10:09:13 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.051s
+[21-Sep-2026 10:09:22 America/Mexico_City] Sistema iniciado - 2026-09-21 10:09:22
+[21-Sep-2026 10:09:22 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.044s
+[21-Sep-2026 10:09:27 America/Mexico_City] Sistema iniciado - 2026-09-21 10:09:27
+[21-Sep-2026 10:09:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.027s
+[21-Sep-2026 10:09:30 America/Mexico_City] Sistema iniciado - 2026-09-21 10:09:30
+[21-Sep-2026 10:09:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[21-Sep-2026 10:09:57 America/Mexico_City] Sistema iniciado - 2026-09-21 10:09:57
+[21-Sep-2026 10:09:57 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.054s
+[21-Sep-2026 10:10:09 America/Mexico_City] Sistema iniciado - 2026-09-21 10:10:09
+[21-Sep-2026 10:10:09 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.03s
+[21-Sep-2026 10:10:12 America/Mexico_City] Sistema iniciado - 2026-09-21 10:10:12
+[21-Sep-2026 10:10:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.021s
+[21-Sep-2026 10:10:15 America/Mexico_City] Sistema iniciado - 2026-09-21 10:10:15
+[21-Sep-2026 10:10:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[21-Sep-2026 10:10:27 America/Mexico_City] Sistema iniciado - 2026-09-21 10:10:27
+[21-Sep-2026 10:10:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[21-Sep-2026 10:10:53 America/Mexico_City] Sistema iniciado - 2026-09-21 10:10:53
+[21-Sep-2026 10:10:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.023s
+[21-Sep-2026 10:11:01 America/Mexico_City] Sistema iniciado - 2026-09-21 10:11:01
+[21-Sep-2026 10:11:01 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[21-Sep-2026 10:11:12 America/Mexico_City] Sistema iniciado - 2026-09-21 10:11:12
+[21-Sep-2026 10:11:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.051s
+[21-Sep-2026 10:55:29 America/Mexico_City] Sistema iniciado - 2026-09-21 10:55:29
+[21-Sep-2026 10:55:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.131s
+[21-Sep-2026 10:59:07 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:07
+[21-Sep-2026 10:59:07 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.038s
+[21-Sep-2026 10:59:10 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:10
+[21-Sep-2026 10:59:10 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[21-Sep-2026 10:59:20 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:20
+[21-Sep-2026 10:59:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.552s
+[21-Sep-2026 10:59:22 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:22
+[21-Sep-2026 10:59:22 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[21-Sep-2026 10:59:31 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:31
+[21-Sep-2026 10:59:31 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 10:59:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[21-Sep-2026 10:59:31 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:31
+[21-Sep-2026 10:59:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.057s
+[21-Sep-2026 10:59:58 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:58
+[21-Sep-2026 10:59:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.536s
+[21-Sep-2026 10:59:59 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:59
+[21-Sep-2026 10:59:59 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 10:59:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[21-Sep-2026 10:59:59 America/Mexico_City] Sistema iniciado - 2026-09-21 10:59:59
+[21-Sep-2026 10:59:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.062s
+[21-Sep-2026 11:56:28 America/Mexico_City] Sistema iniciado - 2026-09-21 11:56:28
+[21-Sep-2026 11:56:29 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.527s
+[21-Sep-2026 11:56:29 America/Mexico_City] Sistema iniciado - 2026-09-21 11:56:29
+[21-Sep-2026 11:56:29 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 11:56:29 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[21-Sep-2026 11:56:29 America/Mexico_City] Sistema iniciado - 2026-09-21 11:56:29
+[21-Sep-2026 11:56:29 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.038s
+[21-Sep-2026 11:56:47 America/Mexico_City] Sistema iniciado - 2026-09-21 11:56:47
+[21-Sep-2026 11:56:47 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.048s
+[21-Sep-2026 11:56:50 America/Mexico_City] Sistema iniciado - 2026-09-21 11:56:50
+[21-Sep-2026 11:56:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.016s
+[21-Sep-2026 11:56:52 America/Mexico_City] Sistema iniciado - 2026-09-21 11:56:52
+[21-Sep-2026 11:56:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[21-Sep-2026 11:57:08 America/Mexico_City] Sistema iniciado - 2026-09-21 11:57:08
+[21-Sep-2026 11:57:08 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[21-Sep-2026 11:57:13 America/Mexico_City] Sistema iniciado - 2026-09-21 11:57:13
+[21-Sep-2026 11:57:13 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[21-Sep-2026 12:01:20 America/Mexico_City] Sistema iniciado - 2026-09-21 12:01:20
+[21-Sep-2026 12:01:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.03s
+[21-Sep-2026 12:02:13 America/Mexico_City] Sistema iniciado - 2026-09-21 12:02:13
+[21-Sep-2026 12:02:13 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.054s
+[21-Sep-2026 12:15:30 America/Mexico_City] Sistema iniciado - 2026-09-21 12:15:30
+[21-Sep-2026 12:15:30 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[21-Sep-2026 12:31:58 America/Mexico_City] Sistema iniciado - 2026-09-21 12:31:58
+[21-Sep-2026 12:31:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.026s
+[21-Sep-2026 12:32:46 America/Mexico_City] Sistema iniciado - 2026-09-21 12:32:46
+[21-Sep-2026 12:32:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.044s
+[21-Sep-2026 13:09:31 America/Mexico_City] Sistema iniciado - 2026-09-21 13:09:31
+[21-Sep-2026 13:09:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.046s
+[21-Sep-2026 13:15:27 America/Mexico_City] Sistema iniciado - 2026-09-21 13:15:27
+[21-Sep-2026 13:15:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[21-Sep-2026 13:15:31 America/Mexico_City] Sistema iniciado - 2026-09-21 13:15:31
+[21-Sep-2026 13:15:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.036s
+[21-Sep-2026 13:15:49 America/Mexico_City] Sistema iniciado - 2026-09-21 13:15:49
+[21-Sep-2026 13:15:49 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[21-Sep-2026 13:15:51 America/Mexico_City] Sistema iniciado - 2026-09-21 13:15:51
+[21-Sep-2026 13:15:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.032s
+[21-Sep-2026 13:16:01 America/Mexico_City] Sistema iniciado - 2026-09-21 13:16:01
+[21-Sep-2026 13:16:01 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[21-Sep-2026 13:18:26 America/Mexico_City] Sistema iniciado - 2026-09-21 13:18:26
+[21-Sep-2026 13:18:26 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[21-Sep-2026 13:26:47 America/Mexico_City] Sistema iniciado - 2026-09-21 13:26:47
+[21-Sep-2026 13:26:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.679s
+[21-Sep-2026 13:26:48 America/Mexico_City] Sistema iniciado - 2026-09-21 13:26:48
+[21-Sep-2026 13:26:48 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 13:26:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[21-Sep-2026 13:26:48 America/Mexico_City] Sistema iniciado - 2026-09-21 13:26:48
+[21-Sep-2026 13:26:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.059s
+[21-Sep-2026 13:31:54 America/Mexico_City] Sistema iniciado - 2026-09-21 13:31:54
+[21-Sep-2026 13:31:54 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.032s
+[21-Sep-2026 13:31:54 America/Mexico_City] Sistema iniciado - 2026-09-21 13:31:54
+[21-Sep-2026 13:31:54 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.027s
+[21-Sep-2026 13:31:59 America/Mexico_City] Sistema iniciado - 2026-09-21 13:31:59
+[21-Sep-2026 13:31:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.023s
+[21-Sep-2026 13:32:00 America/Mexico_City] Sistema iniciado - 2026-09-21 13:32:00
+[21-Sep-2026 13:32:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.044s
+[21-Sep-2026 13:32:02 America/Mexico_City] Sistema iniciado - 2026-09-21 13:32:02
+[21-Sep-2026 13:32:02 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[21-Sep-2026 13:45:18 America/Mexico_City] Sistema iniciado - 2026-09-21 13:45:18
+[21-Sep-2026 13:45:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.656s
+[21-Sep-2026 13:45:19 America/Mexico_City] Sistema iniciado - 2026-09-21 13:45:19
+[21-Sep-2026 13:45:19 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 13:45:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[21-Sep-2026 13:45:19 America/Mexico_City] Sistema iniciado - 2026-09-21 13:45:19
+[21-Sep-2026 13:45:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[21-Sep-2026 13:45:38 America/Mexico_City] Sistema iniciado - 2026-09-21 13:45:38
+[21-Sep-2026 13:45:38 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[21-Sep-2026 13:50:48 America/Mexico_City] Sistema iniciado - 2026-09-21 13:50:48
+[21-Sep-2026 13:50:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.167s
+[21-Sep-2026 13:50:50 America/Mexico_City] Sistema iniciado - 2026-09-21 13:50:50
+[21-Sep-2026 13:50:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[21-Sep-2026 13:50:53 America/Mexico_City] Sistema iniciado - 2026-09-21 13:50:53
+[21-Sep-2026 13:50:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.105s
+[21-Sep-2026 13:54:42 America/Mexico_City] Sistema iniciado - 2026-09-21 13:54:42
+[21-Sep-2026 13:54:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[21-Sep-2026 13:54:43 America/Mexico_City] Sistema iniciado - 2026-09-21 13:54:43
+[21-Sep-2026 13:54:43 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.047s
+[21-Sep-2026 13:54:46 America/Mexico_City] Sistema iniciado - 2026-09-21 13:54:46
+[21-Sep-2026 13:54:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[21-Sep-2026 13:54:49 America/Mexico_City] Sistema iniciado - 2026-09-21 13:54:49
+[21-Sep-2026 13:54:49 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.027s
+[21-Sep-2026 13:55:10 America/Mexico_City] Sistema iniciado - 2026-09-21 13:55:10
+[21-Sep-2026 13:55:10 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.12s
+[21-Sep-2026 13:55:11 America/Mexico_City] Sistema iniciado - 2026-09-21 13:55:11
+[21-Sep-2026 13:55:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[21-Sep-2026 13:55:13 America/Mexico_City] Sistema iniciado - 2026-09-21 13:55:13
+[21-Sep-2026 13:55:13 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[21-Sep-2026 13:55:18 America/Mexico_City] Sistema iniciado - 2026-09-21 13:55:18
+[21-Sep-2026 13:55:18 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.028s
+[21-Sep-2026 13:55:21 America/Mexico_City] Sistema iniciado - 2026-09-21 13:55:21
+[21-Sep-2026 13:55:21 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.046s
+[21-Sep-2026 15:19:37 America/Mexico_City] Sistema iniciado - 2026-09-21 15:19:37
+[21-Sep-2026 15:19:37 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[21-Sep-2026 15:19:50 America/Mexico_City] Sistema iniciado - 2026-09-21 15:19:50
+[21-Sep-2026 15:19:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[21-Sep-2026 15:19:52 America/Mexico_City] Sistema iniciado - 2026-09-21 15:19:52
+[21-Sep-2026 15:19:52 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[21-Sep-2026 15:19:56 America/Mexico_City] Sistema iniciado - 2026-09-21 15:19:56
+[21-Sep-2026 15:19:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.041s
+[21-Sep-2026 16:07:11 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:11
+[21-Sep-2026 16:07:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.486s
+[21-Sep-2026 16:07:11 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:11
+[21-Sep-2026 16:07:11 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[21-Sep-2026 16:07:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[21-Sep-2026 16:07:11 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:11
+[21-Sep-2026 16:07:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.047s
+[21-Sep-2026 16:07:20 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:20
+[21-Sep-2026 16:07:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[21-Sep-2026 16:07:23 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:23
+[21-Sep-2026 16:07:23 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[21-Sep-2026 16:07:25 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:25
+[21-Sep-2026 16:07:25 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.053s
+[21-Sep-2026 16:07:33 America/Mexico_City] Sistema iniciado - 2026-09-21 16:07:33
+[21-Sep-2026 16:07:33 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.02s
+[21-Sep-2026 16:08:03 America/Mexico_City] Sistema iniciado - 2026-09-21 16:08:03
+[21-Sep-2026 16:08:03 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.027s
+[21-Sep-2026 17:39:37 America/Mexico_City] Sistema iniciado - 2026-09-21 17:39:37
+[21-Sep-2026 17:39:37 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.056s
+[21-Sep-2026 17:42:41 America/Mexico_City] Sistema iniciado - 2026-09-21 17:42:41
+[21-Sep-2026 17:42:41 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.156s
+[21-Sep-2026 17:42:43 America/Mexico_City] Sistema iniciado - 2026-09-21 17:42:43
+[21-Sep-2026 17:42:43 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.059s
+[21-Sep-2026 17:42:46 America/Mexico_City] Sistema iniciado - 2026-09-21 17:42:46
+[21-Sep-2026 17:42:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.043s
+[21-Sep-2026 17:42:55 America/Mexico_City] Sistema iniciado - 2026-09-21 17:42:55
+[21-Sep-2026 17:42:55 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.1s
+[21-Sep-2026 17:42:56 America/Mexico_City] Sistema iniciado - 2026-09-21 17:42:56
+[21-Sep-2026 17:42:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.023s
+[21-Sep-2026 17:42:58 America/Mexico_City] Sistema iniciado - 2026-09-21 17:42:58
+[21-Sep-2026 17:42:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[21-Sep-2026 17:43:00 America/Mexico_City] Sistema iniciado - 2026-09-21 17:43:00
+[21-Sep-2026 17:43:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[21-Sep-2026 17:43:03 America/Mexico_City] Sistema iniciado - 2026-09-21 17:43:03
+[21-Sep-2026 17:43:03 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.038s
+[22-Sep-2026 09:27:38 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:38
+[22-Sep-2026 09:27:39 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.654s
+[22-Sep-2026 09:27:39 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:39
+[22-Sep-2026 09:27:39 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[22-Sep-2026 09:27:39 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[22-Sep-2026 09:27:39 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:39
+[22-Sep-2026 09:27:39 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[22-Sep-2026 09:27:50 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:50
+[22-Sep-2026 09:27:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.07s
+[22-Sep-2026 09:27:55 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:55
+[22-Sep-2026 09:27:55 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.048s
+[22-Sep-2026 09:27:57 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:57
+[22-Sep-2026 09:27:57 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 09:27:59 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:59
+[22-Sep-2026 09:27:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[22-Sep-2026 09:27:59 America/Mexico_City] Sistema iniciado - 2026-09-22 09:27:59
+[22-Sep-2026 09:27:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[22-Sep-2026 09:28:02 America/Mexico_City] Sistema iniciado - 2026-09-22 09:28:02
+[22-Sep-2026 09:28:02 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.062s
+[22-Sep-2026 09:28:08 America/Mexico_City] Sistema iniciado - 2026-09-22 09:28:08
+[22-Sep-2026 09:28:08 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.061s
+[22-Sep-2026 09:41:39 America/Mexico_City] Sistema iniciado - 2026-09-22 09:41:39
+[22-Sep-2026 09:41:39 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.046s
+[22-Sep-2026 09:41:41 America/Mexico_City] Sistema iniciado - 2026-09-22 09:41:41
+[22-Sep-2026 09:41:41 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.095s
+[22-Sep-2026 09:42:43 America/Mexico_City] Sistema iniciado - 2026-09-22 09:42:43
+[22-Sep-2026 09:42:43 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[22-Sep-2026 09:42:48 America/Mexico_City] Sistema iniciado - 2026-09-22 09:42:48
+[22-Sep-2026 09:42:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[22-Sep-2026 09:42:53 America/Mexico_City] Sistema iniciado - 2026-09-22 09:42:53
+[22-Sep-2026 09:42:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.081s
+[22-Sep-2026 09:42:59 America/Mexico_City] Sistema iniciado - 2026-09-22 09:42:59
+[22-Sep-2026 09:42:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.068s
+[22-Sep-2026 09:44:08 America/Mexico_City] Sistema iniciado - 2026-09-22 09:44:08
+[22-Sep-2026 09:44:08 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.044s
+[22-Sep-2026 09:45:32 America/Mexico_City] Sistema iniciado - 2026-09-22 09:45:32
+[22-Sep-2026 09:45:32 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.06s
+[22-Sep-2026 09:45:58 America/Mexico_City] Sistema iniciado - 2026-09-22 09:45:58
+[22-Sep-2026 09:45:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.241s
+[22-Sep-2026 09:46:00 America/Mexico_City] Sistema iniciado - 2026-09-22 09:46:00
+[22-Sep-2026 09:46:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.107s
+[22-Sep-2026 09:46:53 America/Mexico_City] Sistema iniciado - 2026-09-22 09:46:53
+[22-Sep-2026 09:46:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.03s
+[22-Sep-2026 09:46:56 America/Mexico_City] Sistema iniciado - 2026-09-22 09:46:56
+[22-Sep-2026 09:46:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[22-Sep-2026 09:47:31 America/Mexico_City] Sistema iniciado - 2026-09-22 09:47:31
+[22-Sep-2026 09:47:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[22-Sep-2026 09:47:34 America/Mexico_City] Sistema iniciado - 2026-09-22 09:47:34
+[22-Sep-2026 09:47:34 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.054s
+[22-Sep-2026 09:47:43 America/Mexico_City] Sistema iniciado - 2026-09-22 09:47:43
+[22-Sep-2026 09:47:43 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.026s
+[22-Sep-2026 09:53:42 America/Mexico_City] Sistema iniciado - 2026-09-22 09:53:42
+[22-Sep-2026 09:53:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[22-Sep-2026 09:53:48 America/Mexico_City] Sistema iniciado - 2026-09-22 09:53:48
+[22-Sep-2026 09:53:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[22-Sep-2026 09:53:50 America/Mexico_City] Sistema iniciado - 2026-09-22 09:53:50
+[22-Sep-2026 09:53:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[22-Sep-2026 09:54:03 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:03
+[22-Sep-2026 09:54:03 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[22-Sep-2026 09:54:04 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:04
+[22-Sep-2026 09:54:04 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[22-Sep-2026 09:54:08 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:08
+[22-Sep-2026 09:54:08 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[22-Sep-2026 09:54:12 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:12
+[22-Sep-2026 09:54:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 09:54:20 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:20
+[22-Sep-2026 09:54:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.046s
+[22-Sep-2026 09:54:28 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:28
+[22-Sep-2026 09:54:28 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.035s
+[22-Sep-2026 09:54:31 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:31
+[22-Sep-2026 09:54:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[22-Sep-2026 09:54:49 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:49
+[22-Sep-2026 09:54:49 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[22-Sep-2026 09:54:50 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:50
+[22-Sep-2026 09:54:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[22-Sep-2026 09:54:55 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:55
+[22-Sep-2026 09:54:55 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[22-Sep-2026 09:54:59 America/Mexico_City] Sistema iniciado - 2026-09-22 09:54:59
+[22-Sep-2026 09:54:59 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[22-Sep-2026 09:55:09 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:09
+[22-Sep-2026 09:55:09 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 09:55:11 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:11
+[22-Sep-2026 09:55:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.028s
+[22-Sep-2026 09:55:16 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:16
+[22-Sep-2026 09:55:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.045s
+[22-Sep-2026 09:55:17 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:17
+[22-Sep-2026 09:55:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 09:55:28 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:28
+[22-Sep-2026 09:55:28 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[22-Sep-2026 09:55:34 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:34
+[22-Sep-2026 09:55:34 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.056s
+[22-Sep-2026 09:55:36 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:36
+[22-Sep-2026 09:55:36 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.067s
+[22-Sep-2026 09:55:39 America/Mexico_City] Sistema iniciado - 2026-09-22 09:55:39
+[22-Sep-2026 09:55:39 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[22-Sep-2026 09:58:33 America/Mexico_City] Sistema iniciado - 2026-09-22 09:58:33
+[22-Sep-2026 09:58:33 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[22-Sep-2026 09:59:14 America/Mexico_City] Sistema iniciado - 2026-09-22 09:59:14
+[22-Sep-2026 09:59:14 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.165s
+[22-Sep-2026 09:59:16 America/Mexico_City] Sistema iniciado - 2026-09-22 09:59:16
+[22-Sep-2026 09:59:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[22-Sep-2026 09:59:33 America/Mexico_City] Sistema iniciado - 2026-09-22 09:59:33
+[22-Sep-2026 09:59:33 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.034s
+[22-Sep-2026 09:59:41 America/Mexico_City] Sistema iniciado - 2026-09-22 09:59:41
+[22-Sep-2026 09:59:41 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.026s
+[22-Sep-2026 10:00:14 America/Mexico_City] Sistema iniciado - 2026-09-22 10:00:14
+[22-Sep-2026 10:00:14 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 10:02:01 America/Mexico_City] Sistema iniciado - 2026-09-22 10:02:01
+[22-Sep-2026 10:02:01 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.028s
+[22-Sep-2026 10:03:33 America/Mexico_City] Sistema iniciado - 2026-09-22 10:03:33
+[22-Sep-2026 10:03:33 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[22-Sep-2026 10:03:59 America/Mexico_City] Sistema iniciado - 2026-09-22 10:03:59
+[22-Sep-2026 10:04:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.064s
+[22-Sep-2026 10:04:51 America/Mexico_City] Sistema iniciado - 2026-09-22 10:04:51
+[22-Sep-2026 10:04:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.159s
+[22-Sep-2026 10:04:53 America/Mexico_City] Sistema iniciado - 2026-09-22 10:04:53
+[22-Sep-2026 10:04:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.055s
+[22-Sep-2026 10:18:14 America/Mexico_City] Sistema iniciado - 2026-09-22 10:18:14
+[22-Sep-2026 10:18:14 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[22-Sep-2026 10:18:20 America/Mexico_City] Sistema iniciado - 2026-09-22 10:18:20
+[22-Sep-2026 10:18:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.064s
+[22-Sep-2026 10:18:29 America/Mexico_City] Sistema iniciado - 2026-09-22 10:18:29
+[22-Sep-2026 10:18:29 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.026s
+[22-Sep-2026 10:18:34 America/Mexico_City] Sistema iniciado - 2026-09-22 10:18:34
+[22-Sep-2026 10:18:34 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.062s
+[22-Sep-2026 10:18:36 America/Mexico_City] Sistema iniciado - 2026-09-22 10:18:36
+[22-Sep-2026 10:18:36 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.025s
+[22-Sep-2026 10:19:49 America/Mexico_City] Sistema iniciado - 2026-09-22 10:19:49
+[22-Sep-2026 10:19:49 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.022s
+[22-Sep-2026 10:19:53 America/Mexico_City] Sistema iniciado - 2026-09-22 10:19:53
+[22-Sep-2026 10:19:54 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[22-Sep-2026 10:50:02 America/Mexico_City] Sistema iniciado - 2026-09-22 10:50:02
+[22-Sep-2026 10:50:02 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.031s
+[22-Sep-2026 10:50:05 America/Mexico_City] Sistema iniciado - 2026-09-22 10:50:05
+[22-Sep-2026 10:50:05 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.023s
+[22-Sep-2026 10:50:56 America/Mexico_City] Sistema iniciado - 2026-09-22 10:50:56
+[22-Sep-2026 10:50:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.6s
+[22-Sep-2026 10:50:58 America/Mexico_City] Sistema iniciado - 2026-09-22 10:50:58
+[22-Sep-2026 10:50:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[22-Sep-2026 10:54:20 America/Mexico_City] Sistema iniciado - 2026-09-22 10:54:20
+[22-Sep-2026 10:54:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[22-Sep-2026 10:54:50 America/Mexico_City] Sistema iniciado - 2026-09-22 10:54:50
+[22-Sep-2026 10:54:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 10:54:58 America/Mexico_City] Sistema iniciado - 2026-09-22 10:54:58
+[22-Sep-2026 10:54:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[22-Sep-2026 11:07:55 America/Mexico_City] Sistema iniciado - 2026-09-22 11:07:55
+[22-Sep-2026 11:07:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.519s
+[22-Sep-2026 11:07:56 America/Mexico_City] Sistema iniciado - 2026-09-22 11:07:56
+[22-Sep-2026 11:07:56 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[22-Sep-2026 11:07:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[22-Sep-2026 11:07:56 America/Mexico_City] Sistema iniciado - 2026-09-22 11:07:56
+[22-Sep-2026 11:07:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[22-Sep-2026 11:08:09 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:09
+[22-Sep-2026 11:08:09 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[22-Sep-2026 11:08:11 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:11
+[22-Sep-2026 11:08:11 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.043s
+[22-Sep-2026 11:08:17 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:17
+[22-Sep-2026 11:08:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[22-Sep-2026 11:08:19 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:19
+[22-Sep-2026 11:08:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.036s
+[22-Sep-2026 11:08:22 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:22
+[22-Sep-2026 11:08:22 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[22-Sep-2026 11:08:31 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:31
+[22-Sep-2026 11:08:31 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[22-Sep-2026 11:08:33 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:33
+[22-Sep-2026 11:08:33 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 11:08:45 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:45
+[22-Sep-2026 11:08:45 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.041s
+[22-Sep-2026 11:08:49 America/Mexico_City] Sistema iniciado - 2026-09-22 11:08:49
+[22-Sep-2026 11:08:50 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[22-Sep-2026 11:17:46 America/Mexico_City] Sistema iniciado - 2026-09-22 11:17:46
+[22-Sep-2026 11:17:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 11:17:48 America/Mexico_City] Sistema iniciado - 2026-09-22 11:17:48
+[22-Sep-2026 11:17:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[22-Sep-2026 11:17:53 America/Mexico_City] Sistema iniciado - 2026-09-22 11:17:53
+[22-Sep-2026 11:17:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[22-Sep-2026 11:17:57 America/Mexico_City] Sistema iniciado - 2026-09-22 11:17:57
+[22-Sep-2026 11:17:57 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
+[22-Sep-2026 11:18:03 America/Mexico_City] Sistema iniciado - 2026-09-22 11:18:03
+[22-Sep-2026 11:18:03 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 11:18:06 America/Mexico_City] Sistema iniciado - 2026-09-22 11:18:06
+[22-Sep-2026 11:18:06 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.041s
+[22-Sep-2026 11:19:24 America/Mexico_City] Sistema iniciado - 2026-09-22 11:19:24
+[22-Sep-2026 11:19:24 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[22-Sep-2026 11:21:01 America/Mexico_City] Sistema iniciado - 2026-09-22 11:21:01
+[22-Sep-2026 11:21:01 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.044s
+[22-Sep-2026 11:23:02 America/Mexico_City] Sistema iniciado - 2026-09-22 11:23:02
+[22-Sep-2026 11:23:02 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[22-Sep-2026 11:23:25 America/Mexico_City] Sistema iniciado - 2026-09-22 11:23:25
+[22-Sep-2026 11:23:26 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.041s
+[22-Sep-2026 11:23:36 America/Mexico_City] Sistema iniciado - 2026-09-22 11:23:36
+[22-Sep-2026 11:23:36 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.057s
+[22-Sep-2026 11:23:41 America/Mexico_City] Sistema iniciado - 2026-09-22 11:23:41
+[22-Sep-2026 11:23:41 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.063s
+[22-Sep-2026 11:23:45 America/Mexico_City] Sistema iniciado - 2026-09-22 11:23:45
+[22-Sep-2026 11:23:45 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[22-Sep-2026 11:28:12 America/Mexico_City] Sistema iniciado - 2026-09-22 11:28:12
+[22-Sep-2026 11:28:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.512s
+[22-Sep-2026 11:28:12 America/Mexico_City] Sistema iniciado - 2026-09-22 11:28:12
+[22-Sep-2026 11:28:12 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[22-Sep-2026 11:28:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.036s
+[22-Sep-2026 11:28:12 America/Mexico_City] Sistema iniciado - 2026-09-22 11:28:12
+[22-Sep-2026 11:28:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.079s
+[22-Sep-2026 11:28:16 America/Mexico_City] Sistema iniciado - 2026-09-22 11:28:16
+[22-Sep-2026 11:28:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[22-Sep-2026 11:31:49 America/Mexico_City] Sistema iniciado - 2026-09-22 11:31:49
+[22-Sep-2026 11:31:49 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.03s
+[22-Sep-2026 11:31:53 America/Mexico_City] Sistema iniciado - 2026-09-22 11:31:53
+[22-Sep-2026 11:31:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.043s
+[22-Sep-2026 11:31:56 America/Mexico_City] Sistema iniciado - 2026-09-22 11:31:56
+[22-Sep-2026 11:31:56 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 11:32:02 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:02
+[22-Sep-2026 11:32:02 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.041s
+[22-Sep-2026 11:32:16 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:16
+[22-Sep-2026 11:32:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.489s
+[22-Sep-2026 11:32:17 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:17
+[22-Sep-2026 11:32:17 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[22-Sep-2026 11:32:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.048s
+[22-Sep-2026 11:32:17 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:17
+[22-Sep-2026 11:32:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.054s
+[22-Sep-2026 11:32:58 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:58
+[22-Sep-2026 11:32:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.543s
+[22-Sep-2026 11:32:58 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:58
+[22-Sep-2026 11:32:58 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[22-Sep-2026 11:32:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[22-Sep-2026 11:32:58 America/Mexico_City] Sistema iniciado - 2026-09-22 11:32:58
+[22-Sep-2026 11:32:58 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.05s
+[22-Sep-2026 11:33:01 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:01
+[22-Sep-2026 11:33:01 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.049s
+[22-Sep-2026 11:33:10 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:10
+[22-Sep-2026 11:33:10 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[22-Sep-2026 11:33:12 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:12
+[22-Sep-2026 11:33:12 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.018s
+[22-Sep-2026 11:33:15 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:15
+[22-Sep-2026 11:33:15 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[22-Sep-2026 11:33:21 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:21
+[22-Sep-2026 11:33:21 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.059s
+[22-Sep-2026 11:33:23 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:23
+[22-Sep-2026 11:33:23 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.028s
+[22-Sep-2026 11:33:51 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:51
+[22-Sep-2026 11:33:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s
+[22-Sep-2026 11:33:53 America/Mexico_City] Sistema iniciado - 2026-09-22 11:33:53
+[22-Sep-2026 11:33:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[22-Sep-2026 11:34:00 America/Mexico_City] Sistema iniciado - 2026-09-22 11:34:00
+[22-Sep-2026 11:34:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.019s
+[22-Sep-2026 11:34:32 America/Mexico_City] Sistema iniciado - 2026-09-22 11:34:32
+[22-Sep-2026 11:34:32 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.028s
+[22-Sep-2026 11:36:19 America/Mexico_City] Sistema iniciado - 2026-09-22 11:36:19
+[22-Sep-2026 11:36:19 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.567s
+[22-Sep-2026 11:36:20 America/Mexico_City] Sistema iniciado - 2026-09-22 11:36:20
+[22-Sep-2026 11:36:20 America/Mexico_City] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\xampp\htdocs\Punto-de-venta\index.php on line 11
+[22-Sep-2026 11:36:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.04s
+[22-Sep-2026 11:36:20 America/Mexico_City] Sistema iniciado - 2026-09-22 11:36:20
+[22-Sep-2026 11:36:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.059s
+[22-Sep-2026 11:36:32 America/Mexico_City] Sistema iniciado - 2026-09-22 11:36:32
+[22-Sep-2026 11:36:32 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 11:38:35 America/Mexico_City] Sistema iniciado - 2026-09-22 11:38:35
+[22-Sep-2026 11:38:35 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 11:38:42 America/Mexico_City] Sistema iniciado - 2026-09-22 11:38:42
+[22-Sep-2026 11:38:42 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.053s
+[22-Sep-2026 11:38:46 America/Mexico_City] Sistema iniciado - 2026-09-22 11:38:46
+[22-Sep-2026 11:38:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.036s
+[22-Sep-2026 11:38:51 America/Mexico_City] Sistema iniciado - 2026-09-22 11:38:51
+[22-Sep-2026 11:38:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.026s
+[22-Sep-2026 11:38:53 America/Mexico_City] Sistema iniciado - 2026-09-22 11:38:53
+[22-Sep-2026 11:38:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.021s
+[22-Sep-2026 11:39:00 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:00
+[22-Sep-2026 11:39:00 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 11:39:03 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:03
+[22-Sep-2026 11:39:03 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[22-Sep-2026 11:39:18 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:18
+[22-Sep-2026 11:39:18 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.042s
+[22-Sep-2026 11:39:20 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:20
+[22-Sep-2026 11:39:20 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[22-Sep-2026 11:39:27 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:27
+[22-Sep-2026 11:39:27 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.057s
+[22-Sep-2026 11:39:29 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:29
+[22-Sep-2026 11:39:29 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.021s
+[22-Sep-2026 11:39:53 America/Mexico_City] Sistema iniciado - 2026-09-22 11:39:53
+[22-Sep-2026 11:39:53 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.039s
+[22-Sep-2026 11:40:16 America/Mexico_City] Sistema iniciado - 2026-09-22 11:40:16
+[22-Sep-2026 11:40:16 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.048s
+[22-Sep-2026 11:40:17 America/Mexico_City] Sistema iniciado - 2026-09-22 11:40:17
+[22-Sep-2026 11:40:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.046s
+[22-Sep-2026 11:40:17 America/Mexico_City] Sistema iniciado - 2026-09-22 11:40:17
+[22-Sep-2026 11:40:17 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.024s
+[22-Sep-2026 11:40:18 America/Mexico_City] Sistema iniciado - 2026-09-22 11:40:18
+[22-Sep-2026 11:40:18 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.052s

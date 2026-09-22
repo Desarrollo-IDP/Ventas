@@ -25,7 +25,7 @@ try {
     fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
 
     fputcsv($output, [
-        'Código', 'Nombre', 'Descripción', 'Precio', 'Stock', 'Stock Mínimo',
+        'Código', 'Nombre', 'Descripción', 'Stock', 'Stock Mínimo',
         'Estado', 'Fecha Creación', 'Fecha Modificación'
     ]);
 
@@ -34,7 +34,6 @@ try {
             $row['codigo'],
             $row['nombre'],
             $row['descripcion'] ?? '',
-            $row['precio'],
             $row['stock'],
             $row['stock_minimo'],
             $row['activo'] ? 'Activo' : 'Inactivo',

@@ -124,23 +124,18 @@
             </span>
 
             <div class="navbar-nav ms-auto d-flex align-items-center gap-3">
-                <!-- Rol e Identificación del Usuario -->
-                <div class="d-none d-md-flex align-items-center gap-2">
-                    <span class="badge bg-secondary rounded-pill px-3 py-1 fw-medium" style="font-size: 0.78rem;">
-                        <i class="fas fa-user-shield me-1"></i> Rol: <?= ucfirst($_SESSION['user_rol'] ?? 'Vendedor') ?>
-                    </span>
-                </div>
-
                 <!-- Usuario Dropdown -->
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center text-dark fw-semibold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                         <div class="avatar-circle me-2" style="width: 32px; height: 32px; border-radius: 50%; background: #2563eb; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 0.85rem;">
-                            <?php echo strtoupper(substr($_SESSION['user_nombre'] ?? 'U', 0, 1)); ?>
+                            <?php echo SecurityService::hasRole('admin') ? 'U' : strtoupper(substr($_SESSION['user_nombre'] ?? 'U', 0, 1)); ?>
                         </div>
-                        <span style="font-size: 0.875rem;"><?php echo htmlspecialchars($_SESSION['user_nombre'] ?? 'Usuario'); ?></span>
+                        <span style="font-size: 0.875rem;"><?php echo SecurityService::hasRole('admin') ? 'Usuario' : htmlspecialchars($_SESSION['user_nombre'] ?? 'Usuario'); ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm border mt-2">
-                        <li><a class="dropdown-item" href="../usuarios/listar.php"><i class="fas fa-user-cog me-2 text-primary"></i> Configuración de Cuenta</a></li>
+                        <?php if (SecurityService::hasRole('admin')): ?>
+                            <li><a class="dropdown-item" href="../usuarios/listar.php"><i class="fas fa-user-cog me-2 text-primary"></i> Configuración de Cuenta</a></li>
+                        <?php endif; ?>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="../../controllers/logout.php"><i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión</a></li>
                     </ul>

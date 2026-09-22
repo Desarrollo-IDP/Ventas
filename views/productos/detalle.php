@@ -111,10 +111,6 @@ ob_start();
                             <small class="text-muted d-block">Nombre</small>
                             <span class="fw-bold text-dark fs-6"><?= htmlspecialchars($producto['nombre'] ?? '') ?></span>
                         </div>
-                        <div class="mb-3">
-                            <small class="text-muted d-block">Precio de Venta</small>
-                            <span class="fw-bold text-primary fs-5">$<?= number_format($producto['precio'], 2) ?></span>
-                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">

@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 require_once '../config/init.php';
 require_once '../models/Usuario.php';
 
+SecurityService::requiredRole('admin');
+
 header('Content-Type: application/json; charset=utf-8');
 
 try {

@@ -9,8 +9,15 @@ header('Content-Type: application/json; charset=utf-8');
 
 function normalizarEncabezado($valor) {
     $valor = trim((string) $valor);
-    $valor = function_exists('iconv') ? iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $valor) : $valor;
-    return strtolower(preg_replace('/[^a-z0-9]+/', '_', $valor));
+    $valor = preg_replace('/^\xEF\xBB\xBF/', '', $valor);
+    $acentos = [
+        'á' => 'a', 'é' => 'e', 'í' => 'i', 'ó' => 'o', 'ú' => 'u',
+        'Á' => 'a', 'É' => 'e', 'Í' => 'i', 'Ó' => 'o', 'Ú' => 'u',
+        'ñ' => 'n', 'Ñ' => 'n', 'ü' => 'u', 'Ü' => 'u'
+    ];
+    $valor = strtr($valor, $acentos);
+    $valor = strtolower($valor);
+    return trim(preg_replace('/[^a-z0-9]+/', '_', $valor), '_');
 }
 
 function leerCsv($ruta) {
@@ -19,9 +26,15 @@ function leerCsv($ruta) {
         throw new RuntimeException('No se pudo leer el archivo.');
     }
     $primeraLinea = fgets($handle);
-    rewind($handle);
-    $delimitador = substr_count($primeraLinea, ';') > substr_count($primeraLinea, ',') ? ';' : ',';
-    $encabezados = fgetcsv($handle, 0, $delimitador);
+    $primeraLineaLimpia = preg_replace('/^\xEF\xBB\xBF/', '', trim($primeraLinea));
+    if (stripos($primeraLineaLimpia, 'sep=') === 0) {
+        $delimitador = substr($primeraLineaLimpia, 4, 1) ?: ';';
+        $encabezados = fgetcsv($handle, 0, $delimitador);
+    } else {
+        rewind($handle);
+        $delimitador = substr_count($primeraLinea, ';') > substr_count($primeraLinea, ',') ? ';' : ',';
+        $encabezados = fgetcsv($handle, 0, $delimitador);
+    }
     $filas = [];
     while (($fila = fgetcsv($handle, 0, $delimitador)) !== false) {
         if (count(array_filter($fila, static fn($valor) => trim((string) $valor) !== '')) > 0) {
@@ -59,10 +72,12 @@ function leerXlsx($ruta) {
     $sheet->registerXPathNamespace('x', $mainNamespace);
     $rows = [];
     foreach ($sheet->xpath('//x:sheetData/x:row') as $row) {
+        $row->registerXPathNamespace('x', $mainNamespace);
         $values = [];
         foreach ($row->xpath('./x:c') as $cell) {
+            $cell->registerXPathNamespace('x', $mainNamespace);
             $attributes = $cell->attributes();
-            $ref = (string) $attributes['r'];
+            $ref = (string) ($attributes['r'] ?? '');
             preg_match('/([A-Z]+)\d+/', $ref, $match);
             $column = 0;
             foreach (str_split($match[1] ?? 'A') as $letter) {
@@ -70,12 +85,12 @@ function leerXlsx($ruta) {
             }
             $valueNodes = $cell->xpath('./x:v');
             $value = (string) ($valueNodes[0] ?? '');
-            if ((string) $attributes['t'] === 's') {
+            if ((string) ($attributes['t'] ?? '') === 's') {
                 $value = $sharedStrings[(int) $value] ?? '';
             }
             $values[$column - 1] = $value;
         }
-        if ($values) {
+        if (count(array_filter($values, static fn($valor) => trim((string) $valor) !== '')) > 0) {
             ksort($values);
             $rows[] = array_values($values);
         }
@@ -107,25 +122,25 @@ function estadoImportado($valor) {
 
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_FILES['archivo'])) {
-        throw new RuntimeException('Selecciona un archivo Excel o CSV.');
+        throw new RuntimeException('Selecciona un archivo CSV.');
     }
     $archivo = $_FILES['archivo'];
     if ($archivo['error'] !== UPLOAD_ERR_OK) {
         throw new RuntimeException('No se pudo subir el archivo.');
     }
     $extension = strtolower(pathinfo($archivo['name'], PATHINFO_EXTENSION));
-    if (!in_array($extension, ['xlsx', 'csv'], true)) {
-        throw new RuntimeException('Formato no válido. Usa un archivo .xlsx o .csv.');
+    if ($extension !== 'csv') {
+        throw new RuntimeException('Formato no válido. Usa un archivo .csv.');
     }
-    [$encabezados, $filas] = $extension === 'xlsx' ? leerXlsx($archivo['tmp_name']) : leerCsv($archivo['tmp_name']);
+    [$encabezados, $filas] = leerCsv($archivo['tmp_name']);
     $mapa = [];
     foreach ($encabezados as $indice => $encabezado) {
         $mapa[normalizarEncabezado($encabezado)] = $indice;
     }
-    $requeridos = ['empresa', 'numero', 'correo_electronico', 'ubicacion', 'informes_de_llamada', 'estatus'];
+    $requeridos = ['empresa'];
     $faltantes = array_values(array_filter($requeridos, static fn($campo) => !array_key_exists($campo, $mapa)));
     if (in_array('empresa', $faltantes, true)) {
-        throw new RuntimeException('Falta la columna obligatoria "Empresa". Columnas esperadas: Empresa, Número, Correo electrónico, Ubicación, Informes de llamada, Estatus.');
+        throw new RuntimeException('Falta la columna obligatoria "Empresa". Columnas esperadas: Empresa, Contacto, Teléfono, Correo electrónico, Ubicación, Informes de llamada, Estatus.');
     }
 
     $db = Database::getInstance('development')->getConnection();
@@ -134,18 +149,20 @@ try {
     $omitidos = [];
     foreach ($filas as $indice => $fila) {
         $numeroFila = $indice + 2;
-        $empresa = valorDeFila($fila, $mapa, ['empresa']);
+        $empresa = valorDeFila($fila, $mapa, ['empresa', 'negocio', 'razon_social']);
         if ($empresa === '') {
             $omitidos[] = "Fila {$numeroFila}: falta Empresa.";
             continue;
         }
+        $contacto = valorDeFila($fila, $mapa, ['contacto', 'nombre_de_contacto', 'nombre_del_contacto', 'nombre_contacto', 'persona_de_contacto', 'nombre']);
         $datos = [
-            'nombre' => $empresa,
+            'nombre' => $contacto !== '' ? $contacto : $empresa,
             'empresa' => $empresa,
+            'cargo_contacto' => valorDeFila($fila, $mapa, ['cargo', 'puesto', 'cargo_contacto']),
             'email' => valorDeFila($fila, $mapa, ['correo_electronico', 'correo', 'email']),
-            'telefono' => valorDeFila($fila, $mapa, ['numero', 'telefono', 'teléfono']),
-            'ubicacion' => valorDeFila($fila, $mapa, ['ubicacion', 'dirección', 'direccion']),
-            'informes_llamada' => valorDeFila($fila, $mapa, ['informes_de_llamada', 'informes_llamada', 'informe_de_llamada']),
+            'telefono' => valorDeFila($fila, $mapa, ['telefono', 'teléfono', 'numero', 'número', 'whatsapp', 'celular']),
+            'ubicacion' => valorDeFila($fila, $mapa, ['ubicacion', 'dirección', 'direccion', 'ciudad']),
+            'informes_llamada' => valorDeFila($fila, $mapa, ['informes_de_llamada', 'informes_llamada', 'informe_de_llamada', 'notas', 'comentarios']),
             'estado' => estadoImportado(valorDeFila($fila, $mapa, ['estatus', 'estado'])),
             'origen' => 'Base de datos',
             'vendedor_id' => $_SESSION['user_id'] ?? null,

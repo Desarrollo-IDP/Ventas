@@ -2,6 +2,7 @@
 require_once '../../config/init.php';
 require_once '../../models/Prospecto.php';
 require_once '../../models/Seguimiento.php';
+require_once '../../models/HistorialEtapa.php';
 
 $id = intval($_GET['id'] ?? 0);
 if ($id <= 0) {
@@ -10,11 +11,13 @@ if ($id <= 0) {
 }
 
 $page_title = "Detalle de Prospecto";
+$puedeVerHistorialEtapas = SecurityService::hasRole(['admin', 'supervisor']);
 
 try {
     $db = Database::getInstance('development')->getConnection();
     $prospectoModel = new Prospecto($db);
     $seguimientoModel = new Seguimiento($db);
+    $historialModel = new HistorialEtapa($db);
 
     $prospecto = $prospectoModel->obtenerPorId($id);
     if (!$prospecto) {
@@ -23,6 +26,7 @@ try {
 
     $seguimientos_stmt = $seguimientoModel->listarConFiltros(['prospecto_id' => $id]);
     $seguimientos = $seguimientos_stmt->fetchAll(PDO::FETCH_ASSOC);
+    $historialEtapas = $puedeVerHistorialEtapas ? $historialModel->obtenerPorProspecto($id) : [];
 
 } catch (Exception $e) {
     die("Error: " . $e->getMessage());
@@ -193,6 +197,53 @@ ob_start();
                 <?php endif; ?>
             </div>
         </div>
+
+        <?php if ($puedeVerHistorialEtapas): ?>
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-header bg-white py-3">
+                <h5 class="card-title mb-0 fw-bold"><i class="fas fa-route text-info me-2"></i> Historial de Etapas</h5>
+            </div>
+            <div class="card-body p-4">
+                <?php if (empty($historialEtapas)): ?>
+                    <div class="text-center py-4 text-muted">
+                        <i class="fas fa-route fa-2x mb-2 opacity-50 d-block"></i>
+                        <p class="mb-0">Aún no hay cambios de etapa registrados.</p>
+                    </div>
+                <?php else: ?>
+                    <div class="list-group list-group-flush">
+                        <?php foreach ($historialEtapas as $etapa): ?>
+                            <?php
+                            $etapasNombres = ['lead' => 'BD / Lead', 'contacto' => 'Contacto', 'conectado' => 'Conectado', 'prospecto' => 'Prospecto', 'oportunidad' => 'Oportunidad', 'ganada' => 'Ganada', 'perdida' => 'Perdida', 'no_viable' => 'No viable'];
+                            $etapaAnterior = $etapasNombres[$etapa['etapa_anterior']] ?? ($etapa['etapa_anterior'] ?: 'Inicio');
+                            $etapaNueva = $etapasNombres[$etapa['etapa_nueva']] ?? $etapa['etapa_nueva'];
+                            ?>
+                            <div class="list-group-item px-0 py-3">
+                                <div class="d-flex justify-content-between align-items-start gap-3">
+                                    <div>
+                                        <div class="fw-semibold">
+                                            <span class="badge bg-light text-dark border"><?= htmlspecialchars($etapaAnterior) ?></span>
+                                            <i class="fas fa-arrow-right mx-2 text-muted"></i>
+                                            <span class="badge bg-info text-white"><?= htmlspecialchars($etapaNueva) ?></span>
+                                        </div>
+                                        <div class="small text-muted mt-2">
+                                            <i class="fas fa-user me-1"></i><?= htmlspecialchars($etapa['usuario_nombre'] ?? 'Sistema') ?>
+                                            <?php if (!empty($etapa['motivo_cambio'])): ?>
+                                                <span class="mx-2">·</span><?= htmlspecialchars($etapa['motivo_cambio']) ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="text-end small text-muted text-nowrap">
+                                        <div><?= date('d/m/Y H:i', strtotime($etapa['created_at'])) ?></div>
+                                        <div><?= (int) $etapa['duracion_dias'] ?> días en etapa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 

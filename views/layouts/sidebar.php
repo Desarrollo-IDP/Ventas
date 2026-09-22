@@ -80,7 +80,7 @@
 
             <!-- Reportes -->
             <li class="nav-item mb-2">
-                <a class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], 'reportes') !== false) ? 'active' : ''; ?>" href="../reportes/index.php" title="Reportes por horas y llamadas">
+                <a class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], 'reportes') !== false) ? 'active' : ''; ?>" href="../reportes/index.php" title="Clientes obtenidos y desempeño de vendedores">
                     <i class="fas fa-chart-line me-2"></i>
                     <span>Reportes & Analytics</span>
                 </a>
@@ -168,12 +168,14 @@
             </li>
 
             <!-- Usuarios / Configuración -->
-            <li class="nav-item mb-1">
-                <a class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], 'usuarios') !== false) ? 'active' : ''; ?>" href="../usuarios/listar.php">
-                    <i class="fas fa-shield-alt me-2"></i>
-                    <span>Usuarios & Roles</span>
-                </a>
-            </li>
+            <?php if (SecurityService::hasRole('admin')): ?>
+                <li class="nav-item mb-1">
+                    <a class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], 'usuarios') !== false) ? 'active' : ''; ?>" href="../usuarios/listar.php">
+                        <i class="fas fa-shield-alt me-2"></i>
+                        <span>Usuarios & Roles</span>
+                    </a>
+                </li>
+            <?php endif; ?>
 
             <!-- Footer del Sidebar -->
             <li class="nav-item mt-4 mb-3">

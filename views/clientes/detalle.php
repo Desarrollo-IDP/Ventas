@@ -2,6 +2,7 @@
 require_once '../../config/init.php';
 require_once '../../models/Cliente.php';
 require_once '../../models/Seguimiento.php';
+require_once '../../models/ClienteContacto.php';
 
 $cliente_id = $_GET['id'] ?? null;
 
@@ -27,6 +28,9 @@ try {
     $seguimientos_stmt = $seguimientoModel->listarConFiltros(['cliente_id' => $cliente_id]);
     $seguimientos = $seguimientos_stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    $contactoModel = new ClienteContacto($db);
+    $contactos = $contactoModel->listarPorCliente($cliente_id);
+
     // Cargar cotizaciones de este cliente
     $stmtCot = $db->prepare("SELECT * FROM cotizaciones WHERE cliente_id = ? ORDER BY fecha_creacion DESC");
     $stmtCot->execute([$cliente_id]);
@@ -39,6 +43,10 @@ try {
 }
 
 $page_title = "Detalle de Cliente — " . ($cliente['nombre'] ?? '');
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrf_token = $_SESSION['csrf_token'] ?? '';
 $page_actions = '
     <div class="btn-group">
         <a href="listar.php" class="btn btn-outline-secondary">
@@ -104,6 +112,46 @@ function formatoFechaHora($valor) {
                     <small class="text-muted d-block">Fecha de Registro</small>
                     <span class="small text-muted"><i class="far fa-calendar me-2"></i><?= formatoFechaHora($cliente['created_at']) ?></span>
                 </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h6 class="card-title mb-0 fw-semibold text-dark"><i class="fas fa-address-book me-2 text-primary"></i> Contactos adicionales</h6>
+                <button type="button" class="btn btn-sm btn-primary" onclick="abrirModalContacto()">
+                    <i class="fas fa-plus me-1"></i> Agregar
+                </button>
+            </div>
+            <div class="card-body p-0">
+                <?php if (empty($contactos)): ?>
+                    <div class="p-4 text-center text-muted small">
+                        <i class="fas fa-user-plus fa-2x mb-2 opacity-50 d-block"></i>
+                        Aún no hay contactos adicionales registrados.
+                    </div>
+                <?php else: ?>
+                    <div class="list-group list-group-flush">
+                        <?php foreach ($contactos as $contacto): ?>
+                            <div class="list-group-item p-3">
+                                <div class="d-flex justify-content-between align-items-start gap-2">
+                                    <div>
+                                        <div class="fw-semibold text-dark">
+                                            <?= htmlspecialchars($contacto['nombre']) ?>
+                                        </div>
+                                        <?php if ($contacto['cargo']): ?><div class="small text-muted"><?= htmlspecialchars($contacto['cargo']) ?></div><?php endif; ?>
+                                        <div class="small mt-2">
+                                            <?php if ($contacto['email']): ?><span class="me-3"><i class="fas fa-envelope me-1 text-secondary"></i><?= htmlspecialchars($contacto['email']) ?></span><?php endif; ?>
+                                            <?php if ($contacto['telefono']): ?><span><i class="fas fa-phone me-1 text-secondary"></i><?= htmlspecialchars($contacto['telefono']) ?></span><?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-outline-secondary" title="Editar contacto" onclick='abrirModalContacto(<?= json_encode($contacto, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>)'><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-outline-danger" title="Eliminar contacto" onclick="eliminarContacto(<?= (int) $contacto['id'] ?>)"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -195,6 +243,48 @@ function formatoFechaHora($valor) {
     </div>
 </div>
 
+<!-- Modal para gestionar contactos adicionales -->
+<div class="modal fade" id="modalContacto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-3">
+                <h5 class="modal-title fs-6"><i class="fas fa-address-book me-2 text-primary"></i> <span id="tituloModalContacto">Agregar contacto</span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="formContacto" onsubmit="guardarContacto(event)">
+                <div class="modal-body">
+                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token) ?>">
+                    <input type="hidden" name="accion" id="contactoAccion" value="crear">
+                    <input type="hidden" name="contacto_id" id="contactoId" value="">
+                    <input type="hidden" name="cliente_id" value="<?= (int) $cliente_id ?>">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Nombre completo *</label>
+                        <input type="text" name="nombre" id="contactoNombre" class="form-control" maxlength="255" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Cargo o área</label>
+                        <input type="text" name="cargo" id="contactoCargo" class="form-control" maxlength="150" placeholder="Compras, administración, soporte...">
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <label class="form-label">Correo electrónico</label>
+                            <input type="email" name="email" id="contactoEmail" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" name="telefono" id="contactoTelefono" class="form-control" maxlength="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i> Guardar contacto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Modal para Registrar Seguimiento de Cliente -->
 <div class="modal fade" id="modalSeguimiento" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -266,6 +356,48 @@ function formatoFechaHora($valor) {
 function abrirModalSeguimiento() {
     var modal = new bootstrap.Modal(document.getElementById('modalSeguimiento'));
     modal.show();
+}
+
+function abrirModalContacto(contacto = null) {
+    const form = document.getElementById('formContacto');
+    form.reset();
+    document.getElementById('contactoAccion').value = contacto ? 'actualizar' : 'crear';
+    document.getElementById('contactoId').value = contacto ? contacto.id : '';
+    document.getElementById('tituloModalContacto').textContent = contacto ? 'Editar contacto' : 'Agregar contacto';
+    if (contacto) {
+        document.getElementById('contactoNombre').value = contacto.nombre || '';
+        document.getElementById('contactoCargo').value = contacto.cargo || '';
+        document.getElementById('contactoEmail').value = contacto.email || '';
+        document.getElementById('contactoTelefono').value = contacto.telefono || '';
+    }
+    new bootstrap.Modal(document.getElementById('modalContacto')).show();
+}
+
+function guardarContacto(event) {
+    event.preventDefault();
+    fetch('../../controllers/gestionar_contacto_cliente.php', { method: 'POST', body: new FormData(event.target) })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) location.reload();
+            else alert(result.message);
+        })
+        .catch(() => alert('No se pudo guardar el contacto.'));
+}
+
+function eliminarContacto(contactoId) {
+    if (!confirm('¿Eliminar este contacto adicional?')) return;
+    const data = new FormData();
+    data.append('csrf_token', '<?= htmlspecialchars($csrf_token) ?>');
+    data.append('accion', 'eliminar');
+    data.append('contacto_id', contactoId);
+    data.append('cliente_id', '<?= (int) $cliente_id ?>');
+    fetch('../../controllers/gestionar_contacto_cliente.php', { method: 'POST', body: data })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) location.reload();
+            else alert(result.message);
+        })
+        .catch(() => alert('No se pudo eliminar el contacto.'));
 }
 
 function guardarSeguimientoCliente(e) {

@@ -4,6 +4,7 @@ error_reporting(E_ALL);
 
 require_once '../config/init.php';
 require_once '../models/Seguimiento.php';
+require_once '../models/Prospecto.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -41,9 +42,14 @@ try {
     if ($segId) {
         // Los resultados terminales actualizan la etapa correspondiente del prospecto.
         if (!empty($datos['prospecto_id']) && in_array($datos['resultado'], ['venta_cerrada', 'rechazado'], true)) {
-            require_once '../models/Prospecto.php';
             $pModel = new Prospecto($db);
             $pModel->cambiarEstado($datos['prospecto_id'], $datos['resultado'] === 'venta_cerrada' ? 'ganada' : 'no_viable');
+        } elseif (!empty($datos['prospecto_id'])) {
+            $pModel = new Prospecto($db);
+            $prospecto = $pModel->obtenerPorId($datos['prospecto_id']);
+            if (($prospecto['estado'] ?? null) === 'lead') {
+                $pModel->cambiarEstado($datos['prospecto_id'], 'prospecto', 'Primera llamada registrada');
+            }
         }
 
         echo json_encode([

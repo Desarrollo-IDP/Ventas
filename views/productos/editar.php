@@ -122,22 +122,13 @@ ob_start();
                     </div>
 
                     <div class="row g-3 mb-3">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label class="form-label">Código del Ítem <span class="text-danger">*</span></label>
                             <input type="text" name="codigo" class="form-control"
                                    value="<?php echo htmlspecialchars($producto['codigo'] ?? ''); ?>" 
                                    required pattern="[A-Za-z0-9\-_]+" maxlength="50">
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label">Precio <span class="text-danger">*</span></label>
-                            <div class="input-group">
-                                <span class="input-group-text">$</span>
-                                <input type="number" name="precio" class="form-control" 
-                                       value="<?php echo number_format($producto['precio'], 2, '.', ''); ?>" 
-                                       min="0.01" step="0.01" required>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Sección Inventario (Solo para productos físicos) -->

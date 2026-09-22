@@ -19,7 +19,7 @@ class Seguimiento {
                          p.empresa as prospecto_empresa,
                          cot.folio as cotizacion_folio
                   FROM {$this->table} s
-                  LEFT JOIN usuarios u ON s.vendedor_id = u.id
+                  LEFT JOIN usuarios u ON s.vendedor_id = u.id AND u.rol <> 'admin'
                   LEFT JOIN clientes c ON s.cliente_id = c.id
                   LEFT JOIN prospectos p ON s.prospecto_id = p.id
                   LEFT JOIN cotizaciones cot ON s.cotizacion_id = cot.id
@@ -85,7 +85,7 @@ class Seguimiento {
                          p.empresa as prospecto_empresa,
                          cot.folio as cotizacion_folio
                   FROM {$this->table} s
-                  LEFT JOIN usuarios u ON s.vendedor_id = u.id
+                  LEFT JOIN usuarios u ON s.vendedor_id = u.id AND u.rol <> 'admin'
                   LEFT JOIN clientes c ON s.cliente_id = c.id
                   LEFT JOIN prospectos p ON s.prospecto_id = p.id
                   LEFT JOIN cotizaciones cot ON s.cotizacion_id = cot.id
@@ -97,8 +97,8 @@ class Seguimiento {
 
     public function crear($datos) {
         $query = "INSERT INTO {$this->table} 
-                  (tipo, cliente_id, prospecto_id, vendedor_id, cotizacion_id, fecha_llamada, duracion_minutos, resultado, resumen, proxima_accion, fecha_proxima_accion, productos_presentados)
-                  VALUES (:tipo, :cliente_id, :prospecto_id, :vendedor_id, :cotizacion_id, :fecha_llamada, :duracion_minutos, :resultado, :resumen, :proxima_accion, :fecha_proxima_accion, :productos_presentados)";
+                  (tipo, cliente_id, prospecto_id, vendedor_id, cotizacion_id, fecha_llamada, duracion_minutos, resultado, resumen, requiere_seguimiento, proxima_accion, fecha_proxima_accion, estado_proxima_accion, productos_presentados, archivos_adjuntos)
+                  VALUES (:tipo, :cliente_id, :prospecto_id, :vendedor_id, :cotizacion_id, :fecha_llamada, :duracion_minutos, :resultado, :resumen, :requiere_seguimiento, :proxima_accion, :fecha_proxima_accion, :estado_proxima_accion, :productos_presentados, :archivos_adjuntos)";
         
         $stmt = $this->conn->prepare($query);
 
@@ -112,9 +112,12 @@ class Seguimiento {
             ':duracion_minutos' => !empty($datos['duracion_minutos']) ? intval($datos['duracion_minutos']) : 0,
             ':resultado' => $datos['resultado'] ?? 'exitoso',
             ':resumen' => $datos['resumen'],
+            ':requiere_seguimiento' => !empty($datos['requiere_seguimiento']) ? 1 : (!empty($datos['proxima_accion']) ? 1 : 0),
             ':proxima_accion' => $datos['proxima_accion'] ?? null,
             ':fecha_proxima_accion' => !empty($datos['fecha_proxima_accion']) ? $datos['fecha_proxima_accion'] : null,
-            ':productos_presentados' => $datos['productos_presentados'] ?? null
+            ':estado_proxima_accion' => $datos['estado_proxima_accion'] ?? 'pendiente',
+            ':productos_presentados' => $datos['productos_presentados'] ?? null,
+            ':archivos_adjuntos' => !empty($datos['archivos_adjuntos']) ? (is_array($datos['archivos_adjuntos']) ? json_encode($datos['archivos_adjuntos']) : $datos['archivos_adjuntos']) : null
         ];
 
         if ($stmt->execute($params)) {
@@ -123,6 +126,12 @@ class Seguimiento {
             return $nuevoId;
         }
         return false;
+    }
+
+    public function cambiarEstadoAccion($id, $estado = 'completada') {
+        $query = "UPDATE {$this->table} SET estado_proxima_accion = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([$estado, $id]);
     }
 
     public function eliminar($id) {
@@ -167,7 +176,8 @@ class Seguimiento {
                          SUM(s.resultado = 'exitoso') as exitosas,
                          COALESCE(SUM(s.duracion_minutos), 0) as minutos_totales
                   FROM usuarios u
-                  LEFT JOIN {$this->table} s ON u.id = s.vendedor_id";
+                  LEFT JOIN {$this->table} s ON u.id = s.vendedor_id
+                  WHERE u.rol <> 'admin'";
         $params = [];
         if ($fechaInicio || $fechaFin) {
             $query .= " AND 1=1";
