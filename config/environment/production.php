@@ -7,22 +7,22 @@ return [
     'app' => [
         'environment' => 'production',
         'debug' => false,
-        'url' => 'https://tudominio.com'
+        'url' => getenv('APP_URL') ?: 'https://tudominio.com'
     ],
     'database' => [
-        'host' => 'localhost',
-        'database' => 'sistema_pos_prod',
-        'username' => 'pos_user',
-        'password' => 'your_secure_password',
-        'port' => 3306
+        'host' => getenv('DB_HOST') ?: 'localhost',
+        'database' => getenv('DB_DATABASE') ?: 'sistema_pos_production',
+        'username' => getenv('DB_USERNAME') ?: 'pos_user',
+        'password' => getenv('DB_PASSWORD') ?: '',
+        'port' => (int) (getenv('DB_PORT') ?: 3306)
     ],
     'email' => [
         'driver' => 'smtp',
-        'host' => 'smtp.gmail.com',
-        'port' => 587,
-        'username' => 'sistema@tudominio.com',
-        'password' => 'your_app_password',
-        'encryption' => 'tls',
+        'host' => getenv('MAIL_HOST') ?: 'smtp.gmail.com',
+        'port' => (int) (getenv('MAIL_PORT') ?: 587),
+        'username' => getenv('MAIL_USERNAME') ?: '',
+        'password' => getenv('MAIL_PASSWORD') ?: '',
+        'encryption' => getenv('MAIL_ENCRYPTION') ?: 'tls',
         'testing' => false
     ],
     'logging' => [

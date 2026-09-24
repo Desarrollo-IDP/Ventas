@@ -154,7 +154,7 @@ class Prospecto {
             ':fecha_estimada_cierre' => !empty($datos['fecha_estimada_cierre']) ? $datos['fecha_estimada_cierre'] : null,
             ':vendedor_id' => !empty($datos['vendedor_id']) ? $datos['vendedor_id'] : null,
             ':notas' => $datos['notas'] ?? null,
-            ':fecha_primer_contacto' => !empty($datos['fecha_primer_contacto']) ? $datos['fecha_primer_contacto'] : date('Y-m-d')
+            ':fecha_primer_contacto' => array_key_exists('fecha_primer_contacto', $datos) ? $datos['fecha_primer_contacto'] : date('Y-m-d')
         ];
 
         if ($stmt->execute($params)) {
@@ -207,6 +207,11 @@ class Prospecto {
 
     public function actualizar($id, $datos) {
         $prospecto_actual = $this->obtenerPorId($id);
+        if (!$prospecto_actual) return false;
+
+        if (in_array($prospecto_actual['estado'], ['ganada', 'no_viable'], true)) {
+            throw new InvalidArgumentException('Este prospecto ya no puede editarse porque está cerrado.');
+        }
 
         $campos = [];
         $params = [];
@@ -244,6 +249,9 @@ class Prospecto {
     }
 
     public function cambiarEstado($id, $nuevoEstado, $motivoCambio = null) {
+        if ($nuevoEstado === 'ganada') {
+            return $this->convertirACliente($id);
+        }
         return $this->actualizar($id, ['estado' => $nuevoEstado, 'motivo_cambio' => $motivoCambio]);
     }
 
@@ -286,36 +294,41 @@ class Prospecto {
             throw new InvalidArgumentException('Ya existe un cliente con los mismos datos de contacto.');
         }
 
-        // 1. Crear cliente formalizado
-        $queryCliente = "INSERT INTO clientes (nombre, empresa, email, telefono, direccion, activo, prospecto_id, vendedor_asignado_id, fecha_conversion, etapa_crm)
-                         VALUES (:nombre, :empresa, :email, :telefono, :direccion, 1, :prospecto_id, :vendedor_asignado_id, CURDATE(), 'activo')";
-        $stmtCliente = $this->conn->prepare($queryCliente);
-        
-        $stmtCliente->execute([
-            ':nombre' => $prospecto['nombre'],
-            ':empresa' => $prospecto['empresa'] ?? null,
-            ':email' => $prospecto['email'] ?? 'sin_email@pos.com',
-            ':telefono' => $prospecto['telefono'] ?? ($prospecto['whatsapp'] ?? ''),
-            ':direccion' => $prospecto['ubicacion'] ?? ($prospecto['notas'] ?? ''),
-            ':prospecto_id' => $prospectoId,
-            ':vendedor_asignado_id' => $prospecto['vendedor_id']
-        ]);
+        $this->conn->beginTransaction();
 
-        $clienteId = $this->conn->lastInsertId();
+        try {
+            // Crear cliente formalizado conservando el prospecto como referencia de origen.
+            $queryCliente = "INSERT INTO clientes (nombre, empresa, email, telefono, direccion, activo, prospecto_id, vendedor_asignado_id, fecha_conversion, etapa_crm)
+                             VALUES (:nombre, :empresa, :email, :telefono, :direccion, 1, :prospecto_id, :vendedor_asignado_id, CURDATE(), 'activo')";
+            $stmtCliente = $this->conn->prepare($queryCliente);
+            $stmtCliente->execute([
+                ':nombre' => $prospecto['nombre'],
+                ':empresa' => $prospecto['empresa'] ?? null,
+                ':email' => $prospecto['email'] ?? 'sin_email@pos.com',
+                ':telefono' => $prospecto['telefono'] ?? ($prospecto['whatsapp'] ?? ''),
+                ':direccion' => $prospecto['ubicacion'] ?? ($prospecto['notas'] ?? ''),
+                ':prospecto_id' => $prospectoId,
+                ':vendedor_asignado_id' => $prospecto['vendedor_id']
+            ]);
 
-        // 2. Cerrar prospecto como ganado y registrar fecha_conversion
-        $this->actualizar($prospectoId, [
-            'estado' => 'ganada',
-            'cliente_convertido_id' => $clienteId,
-            'fecha_conversion' => date('Y-m-d H:i:s'),
-            'motivo_cambio' => 'Conversión a cliente formal'
-        ]);
+            $clienteId = $this->conn->lastInsertId();
 
-        // 3. Vincular seguimientos del prospecto al cliente
-        $stmtSeg = $this->conn->prepare("UPDATE seguimientos_llamadas SET cliente_id = ? WHERE prospecto_id = ?");
-        $stmtSeg->execute([$clienteId, $prospectoId]);
+            // Transferir el historial de seguimientos antes de eliminar el prospecto.
+            $stmtSeg = $this->conn->prepare("UPDATE seguimientos_llamadas SET cliente_id = ?, prospecto_id = NULL WHERE prospecto_id = ?");
+            $stmtSeg->execute([$clienteId, $prospectoId]);
 
-        return $clienteId;
+            if (!$this->eliminar($prospectoId)) {
+                throw new RuntimeException('No se pudo eliminar el prospecto convertido');
+            }
+
+            $this->conn->commit();
+            return $clienteId;
+        } catch (Throwable $e) {
+            if ($this->conn->inTransaction()) {
+                $this->conn->rollBack();
+            }
+            throw $e;
+        }
     }
 
     public function obtenerEstadisticas() {

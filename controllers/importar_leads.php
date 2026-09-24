@@ -10,6 +10,13 @@ header('Content-Type: application/json; charset=utf-8');
 function normalizarEncabezado($valor) {
     $valor = trim((string) $valor);
     $valor = preg_replace('/^\xEF\xBB\xBF/', '', $valor);
+    $valor = str_replace([
+        'Ã¡', 'Ã©', 'Ã­', 'Ã³', 'Ãº', 'Ã±', 'Ã¼',
+        'Ã', 'Ã‰', 'Ã', 'Ã“', 'Ãš', 'Ã‘', 'Ãœ', 'Â'
+    ], [
+        'á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü',
+        'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ü', ''
+    ], $valor);
     $acentos = [
         'á' => 'a', 'é' => 'e', 'í' => 'i', 'ó' => 'o', 'ú' => 'u',
         'Á' => 'a', 'É' => 'e', 'Í' => 'i', 'Ó' => 'o', 'Ú' => 'u',
@@ -29,11 +36,24 @@ function leerCsv($ruta) {
     $primeraLineaLimpia = preg_replace('/^\xEF\xBB\xBF/', '', trim($primeraLinea));
     if (stripos($primeraLineaLimpia, 'sep=') === 0) {
         $delimitador = substr($primeraLineaLimpia, 4, 1) ?: ';';
-        $encabezados = fgetcsv($handle, 0, $delimitador);
+        $lineaEncabezados = fgets($handle);
+        $encabezados = str_getcsv($lineaEncabezados, $delimitador);
+        if (count($encabezados) <= 1) {
+            foreach ([',', ';', "\t"] as $candidato) {
+                $posibles = str_getcsv($lineaEncabezados, $candidato);
+                if (count($posibles) > count($encabezados)) {
+                    $delimitador = $candidato;
+                    $encabezados = $posibles;
+                }
+            }
+        }
     } else {
         rewind($handle);
-        $delimitador = substr_count($primeraLinea, ';') > substr_count($primeraLinea, ',') ? ';' : ',';
-        $encabezados = fgetcsv($handle, 0, $delimitador);
+        $lineaEncabezados = fgets($handle);
+        $delimitadores = [';' => substr_count($lineaEncabezados, ';'), ',' => substr_count($lineaEncabezados, ','), "\t" => substr_count($lineaEncabezados, "\t")];
+        arsort($delimitadores);
+        $delimitador = (string) array_key_first($delimitadores);
+        $encabezados = str_getcsv($lineaEncabezados, $delimitador);
     }
     $filas = [];
     while (($fila = fgetcsv($handle, 0, $delimitador)) !== false) {
@@ -108,18 +128,6 @@ function valorDeFila($fila, $mapa, $nombres) {
     return '';
 }
 
-function estadoImportado($valor) {
-    $estado = normalizarEncabezado($valor);
-    $estados = [
-        'lead' => 'lead', 'bd_lead' => 'lead', 'nuevo' => 'lead',
-        'contacto' => 'contacto', 'contactado' => 'contacto',
-        'conectado' => 'conectado', 'prospecto' => 'prospecto',
-        'oportunidad' => 'oportunidad', 'ganada' => 'ganada', 'ganado' => 'ganada',
-        'perdida' => 'perdida', 'perdido' => 'perdida', 'no_viable' => 'no_viable'
-    ];
-    return $estados[$estado] ?? 'lead';
-}
-
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST' || empty($_FILES['archivo'])) {
         throw new RuntimeException('Selecciona un archivo CSV.');
@@ -140,10 +148,10 @@ try {
     $requeridos = ['empresa'];
     $faltantes = array_values(array_filter($requeridos, static fn($campo) => !array_key_exists($campo, $mapa)));
     if (in_array('empresa', $faltantes, true)) {
-        throw new RuntimeException('Falta la columna obligatoria "Empresa". Columnas esperadas: Empresa, Contacto, Teléfono, Correo electrónico, Ubicación, Informes de llamada, Estatus.');
+        throw new RuntimeException('Falta la columna obligatoria "Empresa". Columnas esperadas: Empresa, Número, Correo electrónico y Ubicación.');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $modelo = new Prospecto($db);
     $importados = 0;
     $omitidos = [];
@@ -159,14 +167,14 @@ try {
             'nombre' => $contacto !== '' ? $contacto : $empresa,
             'empresa' => $empresa,
             'cargo_contacto' => valorDeFila($fila, $mapa, ['cargo', 'puesto', 'cargo_contacto']),
-            'email' => valorDeFila($fila, $mapa, ['correo_electronico', 'correo', 'email']),
-            'telefono' => valorDeFila($fila, $mapa, ['telefono', 'teléfono', 'numero', 'número', 'whatsapp', 'celular']),
-            'ubicacion' => valorDeFila($fila, $mapa, ['ubicacion', 'dirección', 'direccion', 'ciudad']),
+            'email' => valorDeFila($fila, $mapa, ['correo_electronico', 'correo', 'email', 'correo_de_contacto']),
+            'telefono' => valorDeFila($fila, $mapa, ['telefono', 'teléfono', 'numero', 'número', 'n_mero', 'numero_de_telefono', 'telefono_de_contacto', 'whatsapp', 'celular']),
+            'ubicacion' => valorDeFila($fila, $mapa, ['ubicacion', 'ubicación', 'ubicaci_n', 'direccion', 'dirección', 'ciudad', 'municipio', 'estado']),
             'informes_llamada' => valorDeFila($fila, $mapa, ['informes_de_llamada', 'informes_llamada', 'informe_de_llamada', 'notas', 'comentarios']),
-            'estado' => estadoImportado(valorDeFila($fila, $mapa, ['estatus', 'estado'])),
-            'origen' => 'Base de datos',
+            'estado' => 'lead',
+            'origen' => valorDeFila($fila, $mapa, ['origen', 'fuente', 'procedencia']) ?: 'Base de datos',
             'vendedor_id' => $_SESSION['user_id'] ?? null,
-            'fecha_primer_contacto' => date('Y-m-d')
+            'fecha_primer_contacto' => null
         ];
         try {
             $modelo->crear($datos);

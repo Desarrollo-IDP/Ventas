@@ -10,7 +10,7 @@ try {
 
     $codigo = trim($_GET['codigo']);
 
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $productoModel = new Producto($db);

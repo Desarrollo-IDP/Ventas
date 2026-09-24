@@ -17,7 +17,7 @@ class DatabaseConfig {
         'production' => [
             'host' => 'localhost',
             'database' => 'sistema_pos_production',
-            'username' => 'root',
+            'username' => 'pos_user',
             'password' => '',
             'charset' => 'utf8mb4',
             'port' => 3306
@@ -42,7 +42,21 @@ class DatabaseConfig {
             throw new Exception("Entorno de base de datos no válido: {$environment}");
         }
 
-        return self::$environments[$environment];
+        $config = self::$environments[$environment];
+
+        if ($environment === 'production') {
+            $config['host'] = getenv('DB_HOST') ?: $config['host'];
+            $config['database'] = getenv('DB_DATABASE') ?: $config['database'];
+            $config['username'] = getenv('DB_USERNAME') ?: $config['username'];
+            $config['password'] = getenv('DB_PASSWORD') ?: $config['password'];
+            $config['port'] = (int) (getenv('DB_PORT') ?: $config['port']);
+        }
+
+        if ($environment === 'production' && $config['password'] === '') {
+            throw new Exception('DB_PASSWORD debe configurarse en producción.');
+        }
+
+        return $config;
     }
 
     // Obtener el entorno actual

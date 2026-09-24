@@ -66,7 +66,7 @@ try {
     }
 
     // Conectar a la base de datos
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     // Verificar si el producto existe

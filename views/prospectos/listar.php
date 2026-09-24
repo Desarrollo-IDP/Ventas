@@ -14,7 +14,7 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $prospectoModel = new Prospecto($db);
     $usuarioModel = new Usuario($db);
 
@@ -291,9 +291,11 @@ ob_start();
                                         <a href="detalle.php?id=<?= $item['id'] ?>" class="btn btn-outline-primary" title="Ver detalle">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="editar.php?id=<?= $item['id'] ?>" class="btn btn-outline-secondary" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
+                                        <?php if (!in_array($item['estado'], ['ganada', 'no_viable'], true)): ?>
+                                            <a href="editar.php?id=<?= $item['id'] ?>" class="btn btn-outline-secondary" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>

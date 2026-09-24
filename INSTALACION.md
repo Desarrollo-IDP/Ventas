@@ -31,6 +31,48 @@ mysql -u root -p sistema_pos_development < config/sistema_pos_development.sql
 
 ### 2. Configuración de Ambiente
 
+Para producción, crear una base y un usuario exclusivo. No usar `root`:
+
+```sql
+CREATE DATABASE IF NOT EXISTS sistema_pos_production
+    CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'pos_user'@'localhost' IDENTIFIED BY 'CAMBIAR_POR_UNA_CONTRASENA_FUERTE';
+GRANT ALL PRIVILEGES ON sistema_pos_production.* TO 'pos_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+Importar el respaldo de la base actual en producción:
+
+```bash
+mysql -u pos_user -p sistema_pos_production < respaldo_pos.sql
+```
+
+Configurar estas variables en el servidor, fuera del repositorio:
+
+```text
+APP_ENV=production
+APP_URL=https://tu-dominio-o-ddns
+DB_HOST=localhost
+DB_DATABASE=sistema_pos_production
+DB_USERNAME=pos_user
+DB_PASSWORD=la_contrasena_fuerte_del_usuario
+DB_PORT=3306
+MAIL_HOST=servidor.smtp
+MAIL_PORT=587
+MAIL_USERNAME=cuenta@dominio.com
+MAIL_PASSWORD=contrasena_smtp_nueva
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=cuenta@dominio.com
+MAIL_FROM_NAME=Sistema Punto de Venta
+IMAP_HOST=servidor.imap
+IMAP_PORT=993
+IMAP_USERNAME=cuenta@dominio.com
+IMAP_PASSWORD=contrasena_imap_nueva
+IMAP_ENCRYPTION=ssl
+```
+
+La aplicación rechazará el uso de correo en producción si `MAIL_PASSWORD` no está configurada. La contraseña SMTP anterior debe revocarse o cambiarse en el proveedor de correo.
+
 Editar `config/database.php`:
 
 ```php

@@ -2,7 +2,7 @@
 require_once '../../config/init.php';
 require_once '../../models/Usuario.php';
 
-$page_title = "Agregar BD / Lead";
+$page_title = "Agregar BD";
 $page_actions = '
     <a href="listar.php" class="btn btn-outline-secondary">
         <i class="fas fa-arrow-left me-1"></i> Volver al Tablero
@@ -10,7 +10,7 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $usuarioModel = new Usuario($db);
     $vendedores = $usuarioModel->listarVendedores();
 } catch (Exception $e) {
@@ -24,8 +24,8 @@ ob_start();
     <div class="col-lg-9">
         <div class="card">
             <div class="card-header bg-white py-3">
-                <h6 class="card-title mb-1 fw-semibold text-dark"><i class="fas fa-database text-primary me-2"></i> Agregar registro a BD / Lead</h6>
-                <p class="small text-muted mb-0">Captura la empresa y el contacto primario antes de calificarlo como prospecto.</p>
+                <h6 class="card-title mb-1 fw-semibold text-dark"><i class="fas fa-database text-primary me-2"></i> Agregar registro a BD</h6>
+                    <p class="small text-muted mb-0">Captura los datos básicos del registro. El contacto primario se agregará al pasar a prospecto.</p>
             </div>
             <div class="card-body p-4">
                 <form id="formCrearLead" onsubmit="guardarLead(event)">
@@ -48,16 +48,9 @@ ob_start();
                         </div>
                     </div>
 
-                    <h6 class="text-uppercase text-muted small fw-bold mb-3">Contacto primario</h6>
+                        <h6 class="text-uppercase text-muted small fw-bold mb-3">Datos de contacto disponibles</h6>
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Nombre completo <span class="text-danger">*</span></label>
-                            <input type="text" name="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Cargo / Responsabilidad</label>
-                            <input type="text" name="cargo_contacto" class="form-control" placeholder="Ej. Dueño, compras, gerente">
-                        </div>
                         <div class="col-md-6">
                             <label class="form-label fw-bold">Correo electrónico</label>
                             <input type="email" name="email" class="form-control" placeholder="contacto@empresa.com">
@@ -70,7 +63,7 @@ ob_start();
 
                     <div class="row g-3 mb-4">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">Fecha de registro</label>
+                                <label class="form-label fw-bold">Fecha de registro del lead</label>
                             <input type="date" name="fecha_primer_contacto" class="form-control" value="<?= date('Y-m-d') ?>">
                         </div>
                         <div class="col-md-6">

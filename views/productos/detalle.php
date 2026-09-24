@@ -10,7 +10,7 @@ if (!$producto_id) {
 }
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $productoModel = new Producto($db);

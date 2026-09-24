@@ -11,6 +11,7 @@ class AppConfig {
             'name' => 'Sistema Punto de Venta',
             'version' => '1.0.0',
             'description' => 'Sistema completo de punto de venta con cotizaciones',
+            'environment' => 'development',
             'url' => 'http://13.0.0.49:1993',
             'timezone' => 'America/Mexico_City',
             'locale' => 'es_MX',
@@ -185,7 +186,7 @@ class AppConfig {
         if (file_exists($filePath)) {
             $externalConfig = include $filePath;
             if (is_array($externalConfig)) {
-                self::$config = array_merge(self::$config, $externalConfig);
+                self::$config = array_replace_recursive(self::$config, $externalConfig);
             }
         }
     }
@@ -330,15 +331,21 @@ class AppConfig {
     }
 }
 
-// Inicializar configuración automáticamente
-AppConfig::initialize();
+// Resolver el entorno y los valores públicos antes de inicializar la aplicación
+$environment = defined('APP_ENVIRONMENT') ? APP_ENVIRONMENT : (getenv('APP_ENV') ?: 'development');
+AppConfig::set('app.environment', $environment);
+if ($appUrl = getenv('APP_URL')) {
+    AppConfig::set('app.url', $appUrl);
+}
 
 // Cargar configuración de entorno específico
-$environment = AppConfig::get('app.environment', 'development');
 $envFile = __DIR__ . "/environment/{$environment}.php";
 if (file_exists($envFile)) {
     AppConfig::loadFromFile($envFile);
 }
+
+// Inicializar configuración automáticamente
+AppConfig::initialize();
 
 // Función helper global para acceder a configuración
 function config($key = null, $default = null) {

@@ -31,7 +31,7 @@ try {
 		throw new Exception('ID de cotización inválido');
 	}
 
-	$database = Database::getInstance('development');
+	$database = Database::getInstance();
 	$db = $database->getConnection();
 
 	require_once '../models/Cotizacion.php';

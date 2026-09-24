@@ -14,7 +14,7 @@ try {
         throw new Exception('Método no permitido');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $usuarioModel = new Usuario($db);
 
     $id = intval($_POST['id'] ?? 0);

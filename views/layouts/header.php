@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($page_title) ? $page_title : 'Sistema CRM & Punto de Venta'; ?></title>
+    <title><?php echo isset($page_title) ? $page_title : 'Ventas'; ?></title>
     <!-- Google Fonts Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,7 +120,7 @@
                 <i class="fas fa-bars"></i>
             </button>
             <span class="navbar-brand mb-0 h1 d-flex align-items-center gap-2">
-                <i class="fas fa-building text-primary fs-5"></i> Sistema CRM & Punto de Venta
+                <i class="fas fa-building text-primary fs-5"></i> Ventas
             </span>
 
             <div class="navbar-nav ms-auto d-flex align-items-center gap-3">
@@ -133,9 +133,7 @@
                         <span style="font-size: 0.875rem;"><?php echo SecurityService::hasRole('admin') ? 'Usuario' : htmlspecialchars($_SESSION['user_nombre'] ?? 'Usuario'); ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow-sm border mt-2">
-                        <?php if (SecurityService::hasRole('admin')): ?>
-                            <li><a class="dropdown-item" href="../usuarios/listar.php"><i class="fas fa-user-cog me-2 text-primary"></i> Configuración de Cuenta</a></li>
-                        <?php endif; ?>
+                        <li><a class="dropdown-item" href="../usuarios/cuenta.php"><i class="fas fa-user-cog me-2 text-primary"></i> Configuración de Cuenta</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="../../controllers/logout.php"><i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión</a></li>
                     </ul>

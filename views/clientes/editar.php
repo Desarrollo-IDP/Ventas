@@ -11,7 +11,7 @@ if (!$cliente_id || !is_numeric($cliente_id) || $cliente_id <= 0) {
 }
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $clienteModel = new Cliente($db);

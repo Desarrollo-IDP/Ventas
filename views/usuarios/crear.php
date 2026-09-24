@@ -10,7 +10,7 @@ $usuario = null;
 if ($id > 0) {
     $page_title = "Editar Usuario";
     try {
-        $db = Database::getInstance('development')->getConnection();
+        $db = Database::getInstance()->getConnection();
         $usuarioModel = new Usuario($db);
         $usuario = $usuarioModel->obtenerPorId($id);
     } catch (Exception $e) {}

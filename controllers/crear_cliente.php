@@ -48,7 +48,7 @@ try {
     }
 
     // Conectar a la base de datos
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     if (!$db) {

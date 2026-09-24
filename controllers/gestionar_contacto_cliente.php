@@ -22,7 +22,7 @@ try {
         throw new Exception('Cliente inválido');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $clienteModel = new Cliente($db);
     if (!$clienteModel->obtenerPorId($clienteId)) {
         throw new Exception('Cliente no encontrado');

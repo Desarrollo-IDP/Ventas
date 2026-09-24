@@ -10,11 +10,11 @@ class EmailConfig {
             'driver' => 'smtp',
             'host' => 'mail.securiti.info',
             'port' => 587,
-            'username' => 'sispuntoventa@secureitmx.com',
-            'password' => 'sispuntoventa123',
+            'username' => '',
+            'password' => '',
             'encryption' => 'tls',
             'from' => [
-                'address' => 'sispuntoventa@secureitmx.com',
+                'address' => 'sistema@example.com',
                 'name' => 'Elisa Garduño'
             ],
             'testing' => false,
@@ -22,8 +22,8 @@ class EmailConfig {
                 'enabled' => true,
                 'host' => 'mail.securiti.info',
                 'port' => 993,
-                'username' => 'sispuntoventa@secureitmx.com',
-                'password' => 'sispuntoventa123',
+                'username' => '',
+                'password' => '',
                 'encryption' => 'ssl',
                 'mailbox' => 'INBOX',
                 'mark_as_read' => true
@@ -33,11 +33,11 @@ class EmailConfig {
             'driver' => 'smtp',
             'host' => 'mail.securiti.info',
             'port' => 587,
-            'username' => 'sispuntoventa@secureitmx.com',
-            'password' => 'sispuntoventa123',
+            'username' => '',
+            'password' => '',
             'encryption' => 'tls',
             'from' => [
-                'address' => 'sispuntoventa@secureitmx.com',
+                'address' => 'sistema@example.com',
                 'name' => 'Sistema Punto de Venta'
             ],
             'testing' => false,
@@ -45,8 +45,8 @@ class EmailConfig {
                 'enabled' => true,
                 'host' => 'mail.securiti.info',
                 'port' => 993,
-                'username' => 'sispuntoventa@secureitmx.com',
-                'password' => 'sispuntoventa123',
+                'username' => '',
+                'password' => '',
                 'encryption' => 'ssl',
                 'mailbox' => 'INBOX',
                 'mark_as_read' => true
@@ -56,11 +56,11 @@ class EmailConfig {
             'driver' => 'log',
             'host' => 'mail.securiti.info',
             'port' => 587,
-            'username' => 'sispuntoventa@secureitmx.com',
-            'password' => 'sispuntoventa123',
+            'username' => '',
+            'password' => '',
             'encryption' => 'tls',
             'from' => [
-                'address' => 'sispuntoventa@secureitmx.com',
+                'address' => 'sistema@example.com',
                 'name' => 'Sistema Punto de Venta - Testing'
             ],
             'testing' => true,
@@ -68,8 +68,8 @@ class EmailConfig {
                 'enabled' => false,
                 'host' => 'mail.securiti.info',
                 'port' => 993,
-                'username' => 'sispuntoventa@secureitmx.com',
-                'password' => 'sispuntoventa123',
+                'username' => '',
+                'password' => '',
                 'encryption' => 'ssl',
                 'mailbox' => 'INBOX',
                 'mark_as_read' => false
@@ -118,7 +118,27 @@ class EmailConfig {
         if (!isset(self::$configs[$environment])) {
             throw new Exception("Configuración de email no encontrada para el entorno: {$environment}");
         }
-        return self::$configs[$environment];
+
+        $config = self::$configs[$environment];
+        $config['host'] = getenv('MAIL_HOST') ?: $config['host'];
+        $config['port'] = (int) (getenv('MAIL_PORT') ?: $config['port']);
+        $config['username'] = getenv('MAIL_USERNAME') ?: '';
+        $config['password'] = getenv('MAIL_PASSWORD') ?: '';
+        $config['encryption'] = getenv('MAIL_ENCRYPTION') ?: $config['encryption'];
+        $config['from']['address'] = getenv('MAIL_FROM_ADDRESS') ?: $config['from']['address'];
+        $config['from']['name'] = getenv('MAIL_FROM_NAME') ?: $config['from']['name'];
+
+        $config['imap']['host'] = getenv('IMAP_HOST') ?: $config['imap']['host'];
+        $config['imap']['port'] = (int) (getenv('IMAP_PORT') ?: $config['imap']['port']);
+        $config['imap']['username'] = getenv('IMAP_USERNAME') ?: '';
+        $config['imap']['password'] = getenv('IMAP_PASSWORD') ?: '';
+        $config['imap']['encryption'] = getenv('IMAP_ENCRYPTION') ?: $config['imap']['encryption'];
+
+        if ($environment === 'production' && $config['password'] === '') {
+            throw new Exception('MAIL_PASSWORD debe configurarse en producción.');
+        }
+
+        return $config;
     }
 
     public static function getCurrentEnvironment() {

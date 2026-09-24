@@ -17,13 +17,17 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $prospectoModel = new Prospecto($db);
     $usuarioModel = new Usuario($db);
 
     $prospecto = $prospectoModel->obtenerPorId($id);
     if (!$prospecto) {
         die("Prospecto no encontrado");
+    }
+    if (in_array($prospecto['estado'], ['ganada', 'no_viable'], true)) {
+        header("Location: detalle.php?id=" . $id . "&error= Prospecto cerrado");
+        exit;
     }
 
     $vendedores = $usuarioModel->listarVendedores();
@@ -127,8 +131,10 @@ function actualizarProspecto(e) {
     .then(r => r.json())
     .then(data => {
         if (data.success) {
-            alert('Prospecto actualizado correctamente');
-            window.location.href = 'detalle.php?id=<?= $prospecto['id'] ?>';
+            alert(data.message);
+            window.location.href = data.cliente_id
+                ? '../clientes/detalle.php?id=' + data.cliente_id
+                : 'detalle.php?id=<?= $prospecto['id'] ?>';
         } else {
             alert('Error: ' + data.message);
         }

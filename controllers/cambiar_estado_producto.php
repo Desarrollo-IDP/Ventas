@@ -6,7 +6,7 @@ require_once '../models/Producto.php';
 header('Content-Type: application/json');
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $producto_id = $_POST['producto_id'] ?? null;

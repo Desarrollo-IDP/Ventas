@@ -12,7 +12,7 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $clienteModel = new Cliente($db);
     $prospectoModel = new Prospecto($db);
     $usuarioModel = new Usuario($db);

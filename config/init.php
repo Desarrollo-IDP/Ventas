@@ -96,7 +96,7 @@ function initialize_system() {
 
     // Verificar conexión a base de datos (solo si no estamos en producción o si la BD existe)
     try {
-        $db = Database::getInstance('development');
+        $db = Database::getInstance();
         $connection = $db->getConnection();
         // Probar la conexión con una consulta simple
         $stmt = $connection->query("SELECT 1");

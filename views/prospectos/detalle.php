@@ -14,7 +14,7 @@ $page_title = "Detalle de Prospecto";
 $puedeVerHistorialEtapas = SecurityService::hasRole(['admin', 'supervisor']);
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $prospectoModel = new Prospecto($db);
     $seguimientoModel = new Seguimiento($db);
     $historialModel = new HistorialEtapa($db);
@@ -40,9 +40,7 @@ $page_actions = '
         <button class="btn btn-primary" onclick="convertirACliente(' . $prospecto['id'] . ')">
             <i class="fas fa-user-check me-1"></i> Convertir a Cliente
         </button>
-        <a href="editar.php?id=' . $prospecto['id'] . '" class="btn btn-outline-secondary">
-            <i class="fas fa-edit"></i>
-        </a>
+        ' . (!in_array($prospecto['estado'], ['ganada', 'no_viable'], true) ? '<a href="editar.php?id=' . $prospecto['id'] . '" class="btn btn-outline-secondary"><i class="fas fa-edit"></i></a>' : '') . '
     </div>
 ';
 

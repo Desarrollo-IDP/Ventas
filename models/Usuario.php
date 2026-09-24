@@ -47,6 +47,27 @@ class Usuario {
     }
 
     /**
+     * Cambiar la contraseña verificando la contraseña actual
+     */
+    public function cambiarPassword($id, $passwordActual, $passwordNueva) {
+        $query = "SELECT password FROM {$this->table} WHERE id = ? AND estado = 1 LIMIT 1";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$usuario || !password_verify($passwordActual, $usuario['password'])) {
+            return false;
+        }
+
+        $query = "UPDATE {$this->table} SET password = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        return $stmt->execute([
+            password_hash($passwordNueva, PASSWORD_BCRYPT, ['cost' => 12]),
+            $id
+        ]);
+    }
+
+    /**
      * Actualizar la fecha de último acceso
      */
     private function actualizarUltimoAcceso($id) {

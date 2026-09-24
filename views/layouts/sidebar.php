@@ -7,19 +7,19 @@
             <li class="nav-item mb-2">
                 <a class="nav-link <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php' && strpos($_SERVER['REQUEST_URI'], 'dashboard') !== false) ? 'active' : ''; ?>" href="../dashboard/" title="Panel de control principal">
                     <i class="fas fa-chart-pie me-2"></i>
-                    <span>Dashboard CRM</span>
+                    <span>Dashboard</span>
                 </a>
             </li>
 
-            <!-- SECCIÓN CRM & VENTAS -->
+            <!-- SECCIÓN VENTAS -->
             <div class="text-uppercase text-slate-400 px-3 mt-3 mb-1 fw-bold" style="font-size: 0.65rem; letter-spacing: 0.08em; color: #64748b;">Gestión de Ventas</div>
 
-            <!-- Prospectos / CRM -->
+            <!-- Prospectos -->
             <li class="nav-item mb-1">
                 <div class="nav-link dropdown-toggle d-flex align-items-center justify-content-between <?php echo (strpos($_SERVER['REQUEST_URI'], 'prospectos') !== false) ? 'active' : ''; ?>" data-bs-toggle="collapse" data-bs-target="#prospectosMenu" aria-expanded="false" style="cursor: pointer;">
                     <div class="d-flex align-items-center">
                         <i class="fas fa-users-cog me-2"></i>
-                        <span>Prospectos (CRM)</span>
+                        <span>Prospectos</span>
                     </div>
                 </div>
                 <div class="collapse <?php echo (strpos($_SERVER['REQUEST_URI'], 'prospectos') !== false) ? 'show' : ''; ?>" id="prospectosMenu">
@@ -173,6 +173,12 @@
                     <a class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], 'usuarios') !== false) ? 'active' : ''; ?>" href="../usuarios/listar.php">
                         <i class="fas fa-shield-alt me-2"></i>
                         <span>Usuarios & Roles</span>
+                    </a>
+                </li>
+                <li class="nav-item mb-1">
+                    <a class="nav-link <?php echo (strpos($_SERVER['REQUEST_URI'], 'auditoria') !== false) ? 'active' : ''; ?>" href="../auditoria/listar.php">
+                        <i class="fas fa-history me-2"></i>
+                        <span>Historial de Movimientos</span>
                     </a>
                 </li>
             <?php endif; ?>

@@ -3,7 +3,7 @@ define('IS_AUTH_PROCESS', true);
 require_once __DIR__ . '/init.php';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     
     // Step 1: Users table alter/create
     $db->exec("CREATE TABLE IF NOT EXISTS `usuarios` (

@@ -17,7 +17,7 @@ try {
         throw new Exception('ID de seguimiento inválido');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $seguimientoModel = new Seguimiento($db);
 
     if ($seguimientoModel->eliminar($id)) {

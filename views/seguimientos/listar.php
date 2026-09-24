@@ -11,7 +11,7 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $seguimientoModel = new Seguimiento($db);
     $usuarioModel = new Usuario($db);
 

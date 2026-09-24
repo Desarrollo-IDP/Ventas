@@ -17,7 +17,7 @@ try {
         throw new Exception('ID de prospecto inválido');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $prospectoModel = new Prospecto($db);
 
     if ($prospectoModel->eliminar($id)) {

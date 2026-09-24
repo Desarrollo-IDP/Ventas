@@ -16,7 +16,7 @@ $vendedores = [];
 $vendedorFiltro = $esSupervisor ? (int) ($_GET['vendedor_id'] ?? 0) : $usuarioId;
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $usuarioModel = new Usuario($db);
     $vendedores = $usuarioModel->listarVendedores();
 

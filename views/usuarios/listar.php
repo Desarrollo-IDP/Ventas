@@ -12,7 +12,7 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $usuarioModel = new Usuario($db);
     $usuarios = $usuarioModel->listar()->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {

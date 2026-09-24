@@ -11,7 +11,7 @@ if (!$producto_id || !is_numeric($producto_id) || $producto_id <= 0) {
 }
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $productoModel = new Producto($db);

@@ -9,7 +9,7 @@ require_once '../config/init.php';
 header('Content-Type: application/json');
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $cliente_id = $_POST['cliente_id'] ?? null;

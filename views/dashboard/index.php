@@ -1,18 +1,18 @@
 <?php
-$page_title = "Dashboard General & CRM Ventas";
+$page_title = "Dashboard General Ventas";
 require_once '../../config/init.php';
 require_once '../../models/Prospecto.php';
 require_once '../../models/Seguimiento.php';
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $prospectoModel = new Prospecto($db);
     $seguimientoModel = new Seguimiento($db);
     $statsPipeline = $prospectoModel->obtenerEstadisticas();
 
-    // Estadísticas CRM
+    // Estadísticas 
     $total_prospectos = $db->query("SELECT COUNT(*) as total FROM prospectos WHERE estado NOT IN ('ganada', 'perdida', 'no_viable')")->fetch()['total'];
     $total_llamadas_hoy = $db->query("SELECT COUNT(*) as total FROM seguimientos_llamadas WHERE DATE(fecha_llamada) = CURDATE()")->fetch()['total'];
     $total_cotizaciones = $db->query("SELECT COUNT(*) as total FROM cotizaciones")->fetch()['total'];
@@ -47,7 +47,7 @@ try {
 ob_start();
 ?>
 
-<!-- Métricas rápidas CRM & POS en formato Ejecutivo Sobrio -->
+<!-- Métricas rápidas & POS en formato Ejecutivo Sobrio -->
 <div class="row g-3 mb-4">
     <div class="col-md-3">
         <div class="card h-100 p-3 bg-white">
@@ -100,7 +100,7 @@ ob_start();
         </div>
     </div>
 
-    <div class="col-md-3">
+    <!--<div class="col-md-3">
         <div class="card h-100 p-3 bg-white">
             <div class="d-flex justify-content-between align-items-start">
                 <div>
@@ -115,7 +115,7 @@ ob_start();
                 <a href="../reportes/index.php" class="small text-decoration-none text-primary fw-medium">Ver Reporte Analítico <i class="fas fa-arrow-right ms-1 style="font-size: 0.7rem;""></i></a>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <div class="row g-4 mb-4">
@@ -210,7 +210,7 @@ ob_start();
     </div>
 </div>
 
-<!-- Flujo CRM visible desde el panel principal -->
+<!-- Flujo visible desde el panel principal -->
 <section class="card border-0 shadow-sm mb-4" aria-labelledby="titulo-flujo-crm">
     <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
         <div>
@@ -286,7 +286,7 @@ ob_start();
         </div>
     </div>
 
-    <!-- Productos con Stock Bajo -->
+    <!-- Productos con Stock Bajo
     <div class="col-lg-4">
         <div class="card">
             <div class="card-header bg-white py-3">
@@ -310,7 +310,7 @@ ob_start();
                 <?php endif; ?>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <?php

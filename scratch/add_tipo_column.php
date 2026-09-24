@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../config/database.php';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     
     // Check if column 'tipo' exists
     $stmt = $db->query("SHOW COLUMNS FROM productos LIKE 'tipo'");

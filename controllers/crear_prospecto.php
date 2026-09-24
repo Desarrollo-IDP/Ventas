@@ -12,28 +12,29 @@ try {
         throw new Exception('Método no permitido');
     }
 
-    if (empty($_POST['nombre'])) {
+    $esLead = ($_POST['es_lead'] ?? '') === '1';
+    if (!$esLead && empty($_POST['nombre'])) {
         throw new Exception('El nombre del prospecto es requerido');
     }
 
-    if (($_POST['es_lead'] ?? '') === '1' && empty($_POST['empresa'])) {
+    if ($esLead && empty($_POST['empresa'])) {
         throw new Exception('La empresa es requerida para un BD / Lead');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $prospectoModel = new Prospecto($db);
 
     $datos = [
-        'nombre' => trim($_POST['nombre']),
+        'nombre' => $esLead ? trim($_POST['empresa']) : trim($_POST['nombre'] ?? ''),
         'empresa' => trim($_POST['empresa'] ?? ''),
         'email' => trim($_POST['email'] ?? ''),
         'telefono' => trim($_POST['telefono'] ?? ''),
         'cargo_contacto' => trim($_POST['cargo_contacto'] ?? ''),
         'origen' => $_POST['origen'] ?? 'Directo',
-        'estado' => ($_POST['es_lead'] ?? '') === '1' ? 'lead' : ($_POST['estado'] ?? 'prospecto'),
+        'estado' => $esLead ? 'lead' : ($_POST['estado'] ?? 'prospecto'),
         'vendedor_id' => !empty($_POST['vendedor_id']) ? intval($_POST['vendedor_id']) : ($_SESSION['user_id'] ?? null),
         'notas' => trim($_POST['notas'] ?? ''),
-        'fecha_primer_contacto' => !empty($_POST['fecha_primer_contacto']) ? $_POST['fecha_primer_contacto'] : date('Y-m-d')
+        'fecha_primer_contacto' => $esLead ? null : (!empty($_POST['fecha_primer_contacto']) ? $_POST['fecha_primer_contacto'] : date('Y-m-d'))
     ];
 
     $prospectoId = $prospectoModel->crear($datos);

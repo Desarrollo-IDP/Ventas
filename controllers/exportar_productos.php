@@ -4,7 +4,7 @@ require_once '../config/database.php';
 require_once '../models/Producto.php';
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     $filtros = $_GET ?? [];

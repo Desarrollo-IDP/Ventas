@@ -9,7 +9,7 @@ $page_actions = '
 ';
 
 try {
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
     
     $clienteModel = new Cliente($db);

@@ -17,7 +17,7 @@ try {
         throw new Exception('ID de prospecto inválido');
     }
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $prospectoModel = new Prospecto($db);
 
     $datos = [];
@@ -28,7 +28,27 @@ try {
         }
     }
 
-    if ($prospectoModel->actualizar($id, $datos)) {
+    $clienteId = null;
+    $convertirACliente = ($datos['estado'] ?? null) === 'ganada';
+    if ($convertirACliente) {
+        unset($datos['estado']);
+    }
+
+    if (!empty($datos) && !$prospectoModel->actualizar($id, $datos)) {
+        throw new Exception('No se pudieron guardar los cambios del prospecto');
+    }
+
+    if ($convertirACliente) {
+        $clienteId = $prospectoModel->convertirACliente($id);
+    }
+
+    if ($convertirACliente && $clienteId) {
+        echo json_encode([
+            'success' => true,
+            'message' => 'Prospecto convertido a cliente correctamente',
+            'cliente_id' => $clienteId
+        ]);
+    } elseif (!$convertirACliente && !empty($datos)) {
         echo json_encode([
             'success' => true,
             'message' => 'Prospecto actualizado correctamente'

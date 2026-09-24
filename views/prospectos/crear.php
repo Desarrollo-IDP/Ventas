@@ -10,7 +10,7 @@ $page_actions = '
 ';
 
 try {
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $usuarioModel = new Usuario($db);
     $vendedores = $usuarioModel->listarVendedores();
 } catch (Exception $e) {

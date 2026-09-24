@@ -19,7 +19,7 @@ try {
 
     $vendedor_id = !empty($_POST['vendedor_id']) ? intval($_POST['vendedor_id']) : ($_SESSION['user_id'] ?? 1);
 
-    $db = Database::getInstance('development')->getConnection();
+    $db = Database::getInstance()->getConnection();
     $seguimientoModel = new Seguimiento($db);
 
     $datos = [

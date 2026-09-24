@@ -29,7 +29,7 @@ try {
         throw new Exception('La cantidad debe ser mayor a 0');
     }
 
-    $database = Database::getInstance('development');
+    $database = Database::getInstance();
     $db = $database->getConnection();
 
     // Obtener producto actual
