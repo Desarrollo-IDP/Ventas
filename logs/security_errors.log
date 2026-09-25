@@ -3868,3 +3868,21 @@ Stack trace:
 [25-Sep-2026 08:55:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.033s
 [25-Sep-2026 08:55:51 America/Mexico_City] Sistema iniciado - 2026-09-25 08:55:51
 [25-Sep-2026 08:55:51 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.037s
+[25-Sep-2026 15:34:34 America/Mexico_City] Sistema iniciado - 2026-09-25 15:34:34
+[25-Sep-2026 15:34:34 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[25-Sep-2026 15:34:34 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.574s
+[25-Sep-2026 15:34:37 America/Mexico_City] Sistema iniciado - 2026-09-25 15:34:37
+[25-Sep-2026 15:34:37 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[25-Sep-2026 15:34:37 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.555s
+[25-Sep-2026 15:34:45 America/Mexico_City] Sistema iniciado - 2026-09-25 15:34:45
+[25-Sep-2026 15:34:46 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[25-Sep-2026 15:34:46 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.535s
+[25-Sep-2026 15:34:47 America/Mexico_City] Sistema iniciado - 2026-09-25 15:34:47
+[25-Sep-2026 15:34:48 America/Mexico_City] Error en login_process.php: Credenciales incorrectas o cuenta inactiva
+[25-Sep-2026 15:34:48 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.516s
+[25-Sep-2026 16:02:44 America/Mexico_City] Sistema iniciado - 2026-09-25 16:02:44
+[25-Sep-2026 16:02:45 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.471s
+[25-Sep-2026 16:02:45 America/Mexico_City] Sistema iniciado - 2026-09-25 16:02:45
+[25-Sep-2026 16:02:45 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.029s
+[25-Sep-2026 16:02:45 America/Mexico_City] Sistema iniciado - 2026-09-25 16:02:45
+[25-Sep-2026 16:02:45 America/Mexico_City] Script finalizado - Tiempo de ejecución: 0.054s

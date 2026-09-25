@@ -186,7 +186,7 @@
             <!-- Footer del Sidebar -->
             <li class="nav-item mt-4 mb-3">
                 <div class="px-3 py-2 text-center">
-                    <small class="text-slate-400" style="font-size: 0.72rem; color: #64748b;">CRM & POS Enterprise v3.0</small>
+                    <small class="text-slate-400" style="font-size: 0.72rem; color: #64748b;">Enterprise v3.0</small>
                 </div>
             </li>
         </ul>
