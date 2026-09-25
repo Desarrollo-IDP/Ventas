@@ -16,8 +16,8 @@ class DatabaseConfig {
         ],
         'production' => [
             'host' => 'localhost',
-            'database' => 'sistema_pos_production',
-            'username' => 'pos_user',
+            'database' => 'ventas',
+            'username' => 'root',
             'password' => '',
             'charset' => 'utf8mb4',
             'port' => 3306
@@ -34,9 +34,8 @@ class DatabaseConfig {
 
     // Obtener configuración según el entorno
     public static function getConfig($environment = null) {
-        if ($environment === null) {
-            $environment = self::getCurrentEnvironment();
-        }
+        // Forzar siempre producción para uso real del sistema
+        $environment = 'production';
 
         if (!isset(self::$environments[$environment])) {
             throw new Exception("Entorno de base de datos no válido: {$environment}");
@@ -44,15 +43,13 @@ class DatabaseConfig {
 
         $config = self::$environments[$environment];
 
-        if ($environment === 'production') {
-            $config['host'] = getenv('DB_HOST') ?: $config['host'];
-            $config['database'] = getenv('DB_DATABASE') ?: $config['database'];
-            $config['username'] = getenv('DB_USERNAME') ?: $config['username'];
-            $config['password'] = getenv('DB_PASSWORD') ?: $config['password'];
-            $config['port'] = (int) (getenv('DB_PORT') ?: $config['port']);
-        }
+        $config['host'] = getenv('DB_HOST') ?: $config['host'];
+        $config['database'] = getenv('DB_DATABASE') ?: $config['database'];
+        $config['username'] = getenv('DB_USERNAME') ?: $config['username'];
+        $config['password'] = getenv('DB_PASSWORD') ?: $config['password'];
+        $config['port'] = (int) (getenv('DB_PORT') ?: $config['port']);
 
-        if ($environment === 'production' && $config['password'] === '') {
+        if ($config['password'] === '') {
             throw new Exception('DB_PASSWORD debe configurarse en producción.');
         }
 
@@ -61,26 +58,7 @@ class DatabaseConfig {
 
     // Obtener el entorno actual
     public static function getCurrentEnvironment() {
-        // Verificar variable de entorno
-        if ($env = getenv('APP_ENV')) {
-            return $env;
-        }
-
-        // Verificar en archivo de configuración
-        if (defined('APP_ENVIRONMENT')) {
-            return APP_ENVIRONMENT;
-        }
-
-        // Detectar automáticamente por nombre de servidor
-        $hostname = gethostname();
-        if (strpos(strtolower($hostname), 'local') !== false || strpos(strtolower($hostname), 'dev') !== false) {
-            return 'development';
-        } elseif (strpos(strtolower($hostname), 'test') !== false) {
-            return 'testing';
-        } else {
-            // Por seguridad en entornos de desarrollo locales, devolver 'development' por defecto
-            return 'development';
-        }
+        return 'production';
     }
 
     // Crear DSN para PDO

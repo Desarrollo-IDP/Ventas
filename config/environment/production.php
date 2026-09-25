@@ -7,7 +7,7 @@ return [
     'app' => [
         'environment' => 'production',
         'debug' => false,
-        'url' => getenv('APP_URL') ?: 'https://tudominio.com'
+        'url' => getenv('APP_URL') ?: 'https://securiti.dyndns.tv:93'
     ],
     'database' => [
         'host' => getenv('DB_HOST') ?: 'localhost',

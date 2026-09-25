@@ -11,8 +11,8 @@ class AppConfig {
             'name' => 'Sistema Punto de Venta',
             'version' => '1.0.0',
             'description' => 'Sistema completo de punto de venta con cotizaciones',
-            'environment' => 'development',
-            'url' => 'http://13.0.0.49:1993',
+            'environment' => 'production',
+            'url' => 'https://securiti.dyndns.tv:93',
             'timezone' => 'America/Mexico_City',
             'locale' => 'es_MX',
             'currency' => 'MXN'
@@ -24,7 +24,7 @@ class AppConfig {
             'lifetime' => 7200, // 2 horas en segundos
             'path' => '/',
             'domain' => '',
-            'secure' => false,
+            'secure' => true,
             'httponly' => true,
             'samesite' => 'Lax'
         ],

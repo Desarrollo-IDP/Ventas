@@ -8,7 +8,7 @@ define('APP_NAME', 'Sistema Punto de Venta');
 define('APP_VERSION', '1.0.0');
 define('APP_BUILD', '2023121501');
 define('APP_AUTHOR', 'Tu Empresa');
-define('APP_URL', 'http://13.0.0.49:1993');
+define('APP_URL', getenv('APP_URL') ?: 'https://securiti.dyndns.tv:93');
 define('APP_ROOT', dirname(__DIR__));
 
 // ===== CONSTANTES DE ENTORNO =====
@@ -36,8 +36,8 @@ if (!defined('APP_ENVIRONMENT')) {
         } elseif (strpos(strtolower($hostname), 'test') !== false) {
             define('APP_ENVIRONMENT', ENV_TESTING);
         } else {
-            // Por defecto, usar desarrollo si no hay indicios claros
-            define('APP_ENVIRONMENT', ENV_DEVELOPMENT);
+            // En un servidor real, por defecto usar producción
+            define('APP_ENVIRONMENT', ENV_PRODUCTION);
         }
     }
 }

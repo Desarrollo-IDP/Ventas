@@ -41,7 +41,7 @@ class SecurityConfig {
         'session' => [
             'regenerate_id' => true,
             'regenerate_interval' => 300, // 5 minutos
-            'check_ip' => true,
+            'check_ip' => false,
             'check_user_agent' => true
         ],
         'headers' => [
